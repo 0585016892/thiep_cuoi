@@ -7,22 +7,49 @@
       name="viewport"
       content="width=device-width, initial-scale=1, maximum-scale=5"
     />
-
     <meta name="theme-color" content="#8b0000" />
 
-    <title>Khánh Hưng & Trang Trang</title>
+    <!-- Tiêu đề hiển thị trên trình duyệt -->
+    <title>Khánh Hưng & Trang Trang - Wedding Album</title>
     <meta
       name="description"
-      content="Lưu giữ những khoảnh khắc hạnh phúc nhất trong ngày cưới của bạn với thiết kế sang trọng."
+      content="Trân trọng mời bạn ghé thăm album ảnh cưới và chung vui cùng vợ chồng chúng mình."
     />
 
-    <meta property="og:title" content="Album Ảnh Cưới Của Chúng Mình" />
+    <!-- Open Graph / Facebook / Zalo (Hiển thị khi gửi link) -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://ten-mien-cua-ban.com/" />
+    <meta
+      property="og:title"
+      content="Khánh Hưng & Trang Trang - Album Ảnh Cưới"
+    />
     <meta
       property="og:description"
+      content="Lưu giữ những khoảnh khắc hạnh phúc nhất. Trân trọng mời bạn ghé thăm!"
+    />
+
+    <!-- QUAN TRỌNG: Đường dẫn ảnh phải là link tuyệt đối -->
+    <meta
+      property="og:image"
+      content="https://ten-mien-cua-ban.com/anhcuoi.png"
+    />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+
+    <!-- Twitter -->
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta
+      property="twitter:title"
+      content="Khánh Hưng & Trang Trang - Album Ảnh Cưới"
+    />
+    <meta
+      property="twitter:description"
       content="Trân trọng mời bạn ghé thăm album ảnh cưới của cặp đôi chúng mình."
     />
-    <meta property="og:type" content="website" />
-    <meta property="og:image" content="%PUBLIC_URL%/logo512.png" />
+    <meta
+      property="twitter:image"
+      content="https://ten-mien-cua-ban.com/anhcuoi.png"
+    />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
@@ -35,7 +62,6 @@
     <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
 
     <style>
-      /* Reset cơ bản để tránh lỗi hiển thị */
       * {
         box-sizing: border-box;
       }
@@ -43,6 +69,7 @@
         margin: 0;
         font-family: "Inter", sans-serif;
         -webkit-font-smoothing: antialiased;
+        background-color: #fcfcfc;
       }
     </style>
   </head>

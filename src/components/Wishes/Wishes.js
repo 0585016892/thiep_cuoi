@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
-import { FaHeart, FaPenNib } from "react-icons/fa";
+import { FaPenNib } from "react-icons/fa";
 import "./Wishes.css";
 
 function Wishes() {
