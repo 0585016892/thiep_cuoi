@@ -1,149 +1,173 @@
-    import React, { useEffect, useState } from "react";
-    import { motion } from "framer-motion";
-    import { FaHeart, FaRing, FaCompass, FaStar } from "react-icons/fa";
-    import "./LoveStory.css";
+import React from "react";
+import { motion } from "framer-motion";
 
-    function LoveStory() {
-    const [isMobile, setIsMobile] = useState(false);
+import {
+  FaHeart,
+  FaRing,
+  FaCompass,
+  FaStar,
+  FaCameraRetro,
+} from "react-icons/fa";
 
-    useEffect(() => {
-        const handleResize = () => {
-        setIsMobile(window.innerWidth <= 768);
-        };
-        handleResize();
-        window.addEventListener("resize", handleResize);
-        return () => window.removeEventListener("resize", handleResize);
-    }, []);
+import "./LoveStory.css";
 
-    const stories = [
-        {
-        icon: <FaCompass />,
-        title: "Lần Đầu Gặp Gỡ",
-        date: "2022",
-        desc: "Khánh Hưng và Trang Trang gặp nhau trong một dịp rất tình cờ. Từ những cuộc trò chuyện nhỏ, cả hai dần trở nên thân thiết và nhận ra tần số chung của nhau.",
-        },
-        {
-        icon: <FaHeart />,
-        title: "Bắt Đầu Yêu",
-        date: "2023",
-        desc: "Sau khoảng thời gian đồng hành, cả hai nhận ra đối phương chính là mảnh ghép hoàn hảo mà mình muốn cùng đi qua những tháng năm thanh xuân sau này.",
-        },
-        {
-        icon: <FaStar />,
-        title: "Lời Cầu Hôn Ngọt Ngào",
-        date: "2025",
-        desc: "Dưới ánh hoàng hôn lãng mạn, một lời cầu hôn chân thành đã được thốt lên, đánh dấu một bước ngoặt mới đầy hạnh phúc của Khánh Hưng và Trang Trang.",
-        },
-        {
-        icon: <FaRing />,
-        title: "Ngày Chung Đôi",
-        date: "2027",
-        desc: "Và hôm nay, kết thúc một hành trình yêu để mở ra một chương mới cuộc đời, chúng mình chính thức nắm tay nhau về chung một nhà ❤️",
-        },
-    ];
+function LoveStory() {
+  const stories = [
+    {
+      icon: <FaCompass />,
+      year: "18 . 03 . 2022",
+      title: "Lần Đầu Gặp Gỡ",
+      desc: "Một buổi tối rất bình thường, cả hai vô tình gặp nhau trong một quán nước nhỏ. Chẳng ai ngờ rằng ly nước hôm ấy lại là khởi đầu cho một câu chuyện dài thật đẹp. Từ vài câu hỏi thăm xã giao, chúng mình nói chuyện quên cả giờ về — như thể đã quen nhau từ rất lâu rồi vậy.",
+    },
 
-    const containerVariants = {
-        hidden: { opacity: 0 },
-        visible: {
-        opacity: 1,
-        transition: { staggerChildren: 0.2 },
-        },
-    };
+    {
+      icon: <FaHeart />,
+      year: "22 . 05 . 2022",
+      title: "Lời Tỏ Tình",
+      desc: "Sau những ngày nhắn tin tới khuya, những lần quan tâm vụng về và vô số cái cớ để được gặp nhau… cuối cùng Khánh Hưng cũng lấy hết can đảm để nói lời yêu. Không cần hoa hay điều gì quá lớn lao, chỉ cần một câu 'Hay mình yêu nhau nhé?' cũng đủ khiến trái tim ai đó rung động mãi về sau ❤️",
+    },
 
-    const cardVariants = (index) => {
-        if (isMobile) {
-        return {
-            hidden: { opacity: 0, x: 30, y: 10 },
-            visible: { opacity: 1, x: 0, y: 0, transition: { duration: 0.5 } },
-        };
-        }
-        // PC: Thẻ chẵn bay từ trái sang, thẻ lẻ bay từ phải sang
-        return {
-        hidden: { opacity: 0, x: index % 2 === 0 ? -80 : 80, y: 0 },
-        visible: {
+    {
+      icon: <FaStar />,
+      year: "2023 - 2025",
+      title: "Những Năm Tháng Đồng Hành",
+      desc: "Chúng mình cùng nhau đi qua rất nhiều điều nhỏ bé trong cuộc sống — những buổi cà phê quen thuộc, những lần giận hờn trẻ con, những chuyến đi ngắn ngày và cả những lúc mệt mỏi nhất. Càng trưởng thành, cả hai càng hiểu rằng tình yêu không chỉ là rung động, mà còn là sự kiên nhẫn và cùng nhau cố gắng mỗi ngày.",
+    },
+
+    {
+      icon: <FaRing />,
+      year: "18 . 03 . 2026",
+      title: "Ngày Dặm Ngõ",
+      desc: "Sau 4 năm kể từ lần đầu gặp gỡ, chúng mình chính thức đưa câu chuyện tình yêu ấy về với gia đình hai bên. Một ngày thật đặc biệt — không còn là hai người yêu nhau đơn thuần nữa, mà là hai gia đình cùng ngồi lại, cùng vun vén cho một tương lai mang tên 'chúng ta'.",
+    },
+
+    {
+      icon: <FaHeart />,
+      year: "10 . 01 . 2027",
+      title: "Ngày Chung Đôi",
+      desc: "Và rồi ngày hạnh phúc nhất cũng đến ✨ Sau tất cả những yêu thương, chờ đợi và đồng hành, Khánh Hưng & Trang Trang chính thức nắm tay nhau bước sang một chương mới của cuộc đời — nơi mỗi ngày thức dậy đều có nhau bên cạnh.",
+    },
+  ];
+  return (
+    <section className="romantic-story">
+      {/* FLOATING HEARTS */}
+
+      <div className="floating-hearts">
+        <span>❤</span>
+        <span>❤</span>
+        <span>❤</span>
+        <span>❤</span>
+        <span>❤</span>
+      </div>
+
+      {/* BLUR BACKGROUND */}
+
+      <div className="story-blur blur1"></div>
+      <div className="story-blur blur2"></div>
+
+      <div className="story-container">
+        {/* HEADER */}
+
+        <motion.div
+          className="story-header"
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
             opacity: 1,
-            x: 0,
             y: 0,
-            transition: {
-            type: "spring",
-            stiffness: 60,
-            damping: 14,
-            duration: 0.6,
-            },
-        },
-        };
-    };
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.8,
+          }}
+        >
+          <div className="story-icon">
+            <FaCameraRetro />
+          </div>
 
-    return (
-        <section className="luxury-story-section">
-        <div className="story-container">
-            <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: false, amount: 0.3 }}
-            transition={{ duration: 0.6 }}
-            className="story-header"
-            >
-            <span className="story-tag">OUR JOURNEY</span>
-            <h2 className="story-main-title">Câu Chuyện Tình Yêu</h2>
-            <div className="story-title-divider"></div>
-            </motion.div>
+          <span className="story-tag">OUR LOVE STORY</span>
 
+          <h2>Câu Chuyện Tình Yêu</h2>
+
+          <div className="story-divider"></div>
+
+          <p>
+            Từ những điều bình dị nhất, chúng mình đã cùng nhau viết nên một
+            hành trình thật đẹp 🤍
+          </p>
+        </motion.div>
+
+        {/* TIMELINE */}
+
+        <div className="story-timeline">
+          {/* CENTER LINE */}
+
+          <motion.div
+            className="story-line"
+            initial={{
+              scaleY: 0,
+            }}
+            whileInView={{
+              scaleY: 1,
+            }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 1.5,
+              ease: "easeInOut",
+            }}
+          />
+
+          {stories.map((item, index) => (
             <motion.div
-            className="timeline-wrapper"
-            variants={containerVariants}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: false, amount: 0.1 }}
+              key={index}
+              className={`story-item ${index % 2 === 0 ? "left" : "right"}`}
+              initial={{
+                opacity: 0,
+                y: 60,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.2,
+              }}
             >
-            {/* Trục dọc chính */}
-            <motion.div
-                className="timeline-center-line"
-                variants={{
-                hidden: { scaleY: 0 },
-                visible: {
-                    scaleY: 1,
-                    transition: { duration: 1, ease: "easeInOut" },
-                },
+              {/* ICON */}
+
+              <motion.div
+                className="story-badge"
+                whileHover={{
+                  scale: 1.08,
                 }}
-            />
+              >
+                {item.icon}
+              </motion.div>
 
-            {stories.map((item, index) => (
-                /* Đổi class động theo chẵn lẻ: item-even (bên trái) và item-odd (bên phải) */
-                <div
-                className={`timeline-item ${index % 2 === 0 ? "item-even" : "item-odd"}`}
-                key={index}
-                >
-                {/* Nút chứa Icon ở giữa */}
-                <motion.div
-                    className="timeline-badge"
-                    variants={{
-                    hidden: { scale: 0, opacity: 0 },
-                    visible: {
-                        scale: 1,
-                        opacity: 1,
-                        transition: { delay: index * 0.1, duration: 0.4 },
-                    },
-                    }}
-                >
-                    {item.icon}
-                </motion.div>
+              {/* CARD */}
 
-                {/* Thẻ nội dung câu chuyện */}
-                <motion.div
-                    className="story-content-card"
-                    variants={cardVariants(index)}
-                >
-                    <span className="story-year">{item.date}</span>
-                    <h3 className="story-node-title">{item.title}</h3>
-                    <p className="story-node-desc">{item.desc}</p>
-                </motion.div>
-                </div>
-            ))}
+              <motion.div
+                className="story-card"
+                whileHover={{
+                  y: -8,
+                }}
+              >
+                <span className="story-year">{item.year}</span>
+
+                <h3>{item.title}</h3>
+
+                <p>{item.desc}</p>
+              </motion.div>
             </motion.div>
+          ))}
         </div>
-        </section>
-    );
-    }
+      </div>
+    </section>
+  );
+}
 
-    export default LoveStory;
+export default LoveStory;

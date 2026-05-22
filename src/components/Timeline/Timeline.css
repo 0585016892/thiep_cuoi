@@ -1,232 +1,472 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap");
 
-:root {
-  --t-pink: #f48fb1;
-  --t-deep: #d81b60;
-  --t-gold: #c5a880;
-  --t-dark: #2d2d2d;
-  --t-glass: rgba(255, 255, 255, 0.9);
-}
+/* ======================================= */
+/* MAIN */
+/* ======================================= */
 
-.luxury-timeline-section {
-  width: 100%;
-  padding: 100px 20px;
-  background-color: #fffbfa;
+.romantic-timeline {
+  position: relative;
+
   overflow: hidden;
+
+  padding: 120px 20px;
+
+  background: linear-gradient(180deg, #fffaf8 0%, #fff5f7 50%, #ffffff 100%);
+
+  font-family: "Montserrat", sans-serif;
 }
+
+/* ======================================= */
+/* FLOATING HEARTS */
+/* ======================================= */
+
+.floating-hearts span {
+  position: absolute;
+
+  color: rgba(216, 139, 161, 0.14);
+
+  font-size: 22px;
+
+  animation: floatingHearts 12s linear infinite;
+}
+
+.floating-hearts span:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-hearts span:nth-child(2) {
+  left: 35%;
+  animation-delay: 3s;
+}
+
+.floating-hearts span:nth-child(3) {
+  left: 65%;
+  animation-delay: 6s;
+}
+
+.floating-hearts span:nth-child(4) {
+  left: 85%;
+  animation-delay: 9s;
+}
+
+@keyframes floatingHearts {
+  0% {
+    transform: translateY(100px) scale(0.5);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-900px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* ======================================= */
+/* BLUR */
+/* ======================================= */
+
+.blur {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(90px);
+}
+
+.blur1 {
+  width: 280px;
+  height: 280px;
+
+  background: rgba(255, 192, 203, 0.28);
+
+  top: -60px;
+  left: -60px;
+
+  animation: floatingBlur 8s ease-in-out infinite;
+}
+
+.blur2 {
+  width: 320px;
+  height: 320px;
+
+  background: rgba(255, 228, 196, 0.3);
+
+  bottom: -100px;
+  right: -100px;
+
+  animation: floatingBlur 10s ease-in-out infinite reverse;
+}
+
+@keyframes floatingBlur {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+}
+
+/* ======================================= */
+/* CONTAINER */
+/* ======================================= */
 
 .timeline-container {
-  width: 100%;
-  max-width: 1100px;
-  margin: 0 auto;
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1200px;
+
+  margin: auto;
 }
 
-/* Header */
+/* ======================================= */
+/* HEADER */
+/* ======================================= */
+
 .timeline-header {
   text-align: center;
-  margin-bottom: 70px;
+
+  margin-bottom: 80px;
 }
+
 .timeline-tag {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 5px;
-  color: var(--t-gold);
-  font-weight: 600;
-  display: block;
-}
-.timeline-main-title {
-  font-family: "Cinzel", serif;
-  font-size: 2.5rem;
-  color: var(--t-dark);
-  margin: 10px 0 0;
-}
-.timeline-title-divider {
-  width: 40px;
-  height: 2px;
-  background: var(--t-pink);
-  margin: 15px auto 0;
+  letter-spacing: 4px;
+
+  font-size: 12px;
+
+  color: #c89ca9;
 }
 
-/* --- BỐ CỤC TIMELINE TRÊN PC --- */
-.luxury-timeline-wrapper {
+.timeline-header h2 {
+  margin-top: 18px;
+
+  font-size: 64px;
+
+  font-family: "Great Vibes", cursive;
+
+  font-weight: normal;
+
+  background: linear-gradient(90deg, #b76e79 20%, #f3b3c3 50%, #b76e79 80%);
+
+  background-size: 200px auto;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shimmerText 4s linear infinite;
+}
+
+@keyframes shimmerText {
+  0% {
+    background-position: -200px;
+  }
+
+  100% {
+    background-position: 200px;
+  }
+}
+
+.timeline-line {
+  width: 80px;
+  height: 1px;
+
+  background: #e8c6cf;
+
+  margin: 24px auto;
+}
+
+.timeline-header p {
+  max-width: 620px;
+
+  margin: auto;
+
+  color: #777;
+
+  line-height: 1.9;
+}
+
+/* ======================================= */
+/* WRAPPER */
+/* ======================================= */
+
+.timeline-wrapper {
   position: relative;
-  width: 100%;
-  padding: 20px 0;
 }
 
-/* Trục dọc trung tâm chuẩn chỉ */
-.timeline-main-line {
+/* CENTER LINE */
+
+.center-line {
   position: absolute;
+
+  left: 50%;
   top: 0;
-  bottom: 0;
-  left: 50%;
+
   width: 2px;
+  height: 100%;
+
   background: linear-gradient(
-    to bottom,
-    transparent,
-    var(--t-pink) 10%,
-    var(--t-pink) 90%,
-    transparent
+    180deg,
+    rgba(216, 139, 161, 0),
+    rgba(216, 139, 161, 0.7),
+    rgba(216, 139, 161, 0)
   );
-  transform: translateX(-50%);
+
   transform-origin: top;
-  z-index: 1;
 }
 
-.luxury-timeline-item {
+/* ======================================= */
+/* ITEM */
+/* ======================================= */
+
+.timeline-item {
   position: relative;
-  width: 100%;
-  margin-bottom: 50px;
-  display: flex;
-  align-items: center;
-}
-.luxury-timeline-item:last-child {
-  margin-bottom: 0;
+
+  width: 50%;
+
+  margin-bottom: 80px;
 }
 
-/* Điều hướng trái - phải cho các cột PC */
-.pc-left {
-  flex-direction: row;
-}
-.pc-left .luxury-timeline-content {
-  margin-right: auto;
-  text-align: right;
-}
-.pc-left .luxury-map-btn {
-  flex-direction: row-reverse;
-} /* Đảo chiều icon map bên trái cho thuận mắt */
+.timeline-item.left {
+  left: 0;
 
-.pc-right {
-  flex-direction: row-reverse;
-}
-.pc-right .luxury-timeline-content {
-  margin-left: auto;
-  text-align: left;
+  padding-right: 70px;
 }
 
-/* Hộp nội dung */
-.luxury-timeline-content {
-  position: relative;
-  width: 43%;
-  background: var(--t-glass);
-  border: 1px solid rgba(244, 143, 177, 0.2);
-  backdrop-filter: blur(10px);
-  -webkit-backdrop-filter: blur(10px);
-  padding: 35px;
-  border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(216, 27, 96, 0.02);
-  z-index: 2;
-}
-
-.event-title {
-  font-family: "Montserrat", sans-serif;
-  font-size: 1.3rem;
-  color: var(--t-dark);
-  font-weight: 600;
-  margin: 0 0 10px 0;
-}
-.event-time {
-  font-family: "Cinzel", serif;
-  font-size: 1rem;
-  color: var(--t-deep);
-  font-weight: 600;
-  display: block;
-  margin-bottom: 12px;
-}
-.event-location {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.95rem;
-  color: #555;
-  margin: 0 0 20px 0;
-}
-
-/* Nút Bản Đồ Tinh Tế */
-.luxury-map-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  padding: 10px 22px;
-  border-radius: 50px;
-  background: transparent;
-  border: 1px solid var(--t-pink);
-  color: var(--t-deep);
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.8rem;
-  font-weight: 600;
-  text-decoration: none;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  transition: all 0.3s ease;
-}
-.luxury-map-btn:hover {
-  background: var(--t-deep);
-  color: white;
-  border-color: var(--t-deep);
-  box-shadow: 0 5px 15px rgba(216, 27, 96, 0.2);
-}
-.btn-icon {
-  font-size: 0.9rem;
-}
-
-/* Vòng tròn ghim giữa trục */
-.luxury-timeline-badge {
-  position: absolute;
-  top: 50%;
+.timeline-item.right {
   left: 50%;
-  transform: translate(-50%, -50%);
-  width: 46px;
-  height: 46px;
+
+  padding-left: 70px;
+}
+
+/* ======================================= */
+/* ICON */
+/* ======================================= */
+
+.timeline-icon {
+  position: absolute;
+
+  top: 30px;
+
+  width: 74px;
+  height: 74px;
+
   border-radius: 50%;
-  background: white;
-  border: 2px solid var(--t-pink);
-  color: var(--t-deep);
+
+  background: linear-gradient(135deg, #f5c4cf, #efb7c7);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  font-size: 1.1rem;
+
+  color: white;
+
+  font-size: 26px;
+
+  box-shadow: 0 12px 35px rgba(216, 139, 161, 0.25);
+
   z-index: 5;
-  box-shadow: 0 4px 15px rgba(244, 143, 177, 0.15);
+
+  animation: heartbeat 2.6s infinite;
 }
 
-/* --- XỬ LÝ KHẮC PHỤC LỖI TRÊN MOBILE (DƯỚI 768PX) --- */
+.timeline-item.left .timeline-icon {
+  right: -37px;
+}
+
+.timeline-item.right .timeline-icon {
+  left: -37px;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.08);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.08);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+}
+
+/* ======================================= */
+/* CARD */
+/* ======================================= */
+
+.timeline-card {
+  position: relative;
+
+  overflow: hidden;
+
+  border-radius: 34px;
+
+  padding: 34px 30px;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(18px);
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+
+  transition: all 0.5s ease;
+}
+
+.timeline-card:hover {
+  box-shadow: 0 25px 60px rgba(216, 139, 161, 0.14);
+}
+
+/* ======================================= */
+/* CONTENT */
+/* ======================================= */
+
+.event-time {
+  display: inline-block;
+
+  padding: 8px 16px;
+
+  border-radius: 999px;
+
+  background: rgba(216, 139, 161, 0.1);
+
+  color: #b76e79;
+
+  font-size: 12px;
+
+  letter-spacing: 2px;
+}
+
+.timeline-card h3 {
+  margin-top: 22px;
+
+  font-size: 38px;
+
+  color: #b76e79;
+
+  font-family: "Cormorant Garamond", serif;
+}
+
+.event-desc {
+  margin-top: 18px;
+
+  color: #666;
+
+  line-height: 1.9;
+}
+
+.event-location {
+  margin-top: 22px;
+
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  color: #777;
+
+  font-size: 15px;
+}
+
+.event-location svg {
+  color: #d88ba1;
+}
+
+/* ======================================= */
+/* BUTTON */
+/* ======================================= */
+
+.map-btn {
+  margin-top: 28px;
+
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 14px 22px;
+
+  border-radius: 999px;
+
+  text-decoration: none;
+
+  background: linear-gradient(135deg, #d88ba1, #f3b3c3);
+
+  color: white;
+
+  font-size: 14px;
+  font-weight: 600;
+
+  box-shadow: 0 12px 30px rgba(216, 139, 161, 0.24);
+
+  transition: all 0.3s ease;
+}
+
+.map-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ======================================= */
+/* MOBILE */
+/* ======================================= */
+
 @media (max-width: 768px) {
-  .timeline-main-title {
-    font-size: 2rem;
+  .romantic-timeline {
+    padding: 90px 16px;
   }
 
-  /* Đưa trục dọc về lề trái cố định 20px */
-  .timeline-main-line {
-    left: 20px;
-    transform: none;
+  .timeline-header h2 {
+    font-size: 46px;
   }
 
-  /* Ép mọi hộp dòng thời gian dạt hết sang phải đồng đều */
-  .luxury-timeline-item.pc-left,
-  .luxury-timeline-item.pc-right {
-    flex-direction: row-reverse !important;
-    padding-left: 55px;
-    margin-bottom: 35px;
+  .center-line {
+    left: 36px;
   }
 
-  /* Định hình lại thẻ chữ lề trái thông thường */
-  .luxury-timeline-item.pc-left .luxury-timeline-content,
-  .luxury-timeline-item.pc-right .luxury-timeline-content {
-    width: 100% !important;
-    text-align: left !important;
-    padding: 25px;
+  .timeline-item {
+    width: 100%;
+
+    padding-left: 90px !important;
+    padding-right: 0 !important;
+
+    left: 0 !important;
   }
 
-  .luxury-timeline-item.pc-left .luxury-map-btn {
-    flex-direction: row !important; /* Trả nút map về đúng chiều đọc trái qua phải */
+  .timeline-icon {
+    left: 0 !important;
+
+    width: 68px;
+    height: 68px;
+
+    font-size: 22px;
   }
 
-  /* SỬA LỖI CORE: Ép các nút tròn tâm trục nằm chính xác đè lên đường line lề trái 20px */
-  .luxury-timeline-badge {
-    left: 20px !important;
-    top: 35px !important; /* Neo cố định ở góc trên thẻ thay vì center 50% tránh vỡ layout khi thẻ dài */
-    transform: translate(-50%, 0) !important;
-    width: 36px;
-    height: 36px;
-    font-size: 0.95rem;
+  .timeline-card {
+    padding: 28px 24px;
+
+    border-radius: 28px;
+  }
+
+  .timeline-card h3 {
+    font-size: 30px;
   }
 }

@@ -1,215 +1,396 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500&family=Montserrat:wght@300;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap");
 
-:root {
-  --pink-main: #f48fb1;
-  --pink-deep: #d81b60;
-  --gold-sub: #c5a880;
-  --dark-text: #2d2d2d;
-  --glass-white: rgba(255, 255, 255, 0.85);
-}
+/* ====================================== */
+/* MAIN */
+/* ====================================== */
 
-.luxury-countdown-section {
+.romantic-countdown {
   position: relative;
-  width: 100%;
-  padding: 100px 20px;
-  background-color: #fffbfa;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+
   overflow: hidden;
-}
 
-.countdown-bg-glow {
-  position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(
-    circle,
-    rgba(244, 143, 177, 0.15) 0%,
-    transparent 75%
-  );
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  pointer-events: none;
-  z-index: 1;
-}
+  padding: 120px 20px;
 
-.countdown-wrapper {
-  position: relative;
-  z-index: 10;
-  width: 100%;
-  max-width: 900px;
-  background: var(--glass-white);
-  border: 1px solid rgba(244, 143, 177, 0.2);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  padding: 60px 40px;
-  border-radius: 24px;
-  box-shadow: 0 30px 60px rgba(216, 27, 96, 0.04);
-  text-align: center;
-  will-change:
-    transform, opacity; /* Tối ưu hóa render phần cứng GPU giúp cuộn mượt hơn */
-}
+  background: linear-gradient(180deg, #ffffff 0%, #fff5f7 50%, #fffaf8 100%);
 
-/* Header */
-.countdown-header {
-  margin-bottom: 45px;
-}
-.countdown-tag {
   font-family: "Montserrat", sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 5px;
-  color: var(--gold-sub);
-  font-weight: 600;
-  display: block;
-  margin-bottom: 12px;
 }
-.countdown-main-title {
-  font-family: "Cinzel", serif;
-  font-size: 3rem;
-  font-weight: 400;
-  color: var(--dark-text);
-  margin: 0;
+
+/* ====================================== */
+/* FLOATING HEARTS */
+/* ====================================== */
+
+.floating-hearts span {
+  position: absolute;
+
+  color: rgba(216, 139, 161, 0.12);
+
+  font-size: 22px;
+
+  animation: floatingHearts 12s linear infinite;
 }
-.countdown-line-decorator {
+
+.floating-hearts span:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-hearts span:nth-child(2) {
+  left: 30%;
+  animation-delay: 3s;
+}
+
+.floating-hearts span:nth-child(3) {
+  left: 65%;
+  animation-delay: 6s;
+}
+
+.floating-hearts span:nth-child(4) {
+  left: 85%;
+  animation-delay: 9s;
+}
+
+@keyframes floatingHearts {
+  0% {
+    transform: translateY(100px) scale(0.5);
+
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-900px) scale(1.5);
+
+    opacity: 0;
+  }
+}
+
+/* ====================================== */
+/* BLUR */
+/* ====================================== */
+
+.countdown-blur {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(90px);
+}
+
+.blur1 {
+  width: 280px;
+  height: 280px;
+
+  background: rgba(255, 192, 203, 0.22);
+
+  top: -80px;
+  left: -80px;
+
+  animation: floatingBlur 8s ease-in-out infinite;
+}
+
+.blur2 {
+  width: 320px;
+  height: 320px;
+
+  background: rgba(255, 228, 196, 0.25);
+
+  bottom: -100px;
+  right: -100px;
+
+  animation: floatingBlur 10s ease-in-out infinite reverse;
+}
+
+@keyframes floatingBlur {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+}
+
+/* ====================================== */
+/* CONTAINER */
+/* ====================================== */
+
+.countdown-container {
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1200px;
+
+  margin: auto;
+}
+
+/* ====================================== */
+/* HEADER */
+/* ====================================== */
+
+.countdown-header {
+  text-align: center;
+
+  margin-bottom: 70px;
+}
+
+.countdown-heart {
+  width: 82px;
+  height: 82px;
+
+  margin: auto;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.75);
+
+  backdrop-filter: blur(10px);
+
   display: flex;
   align-items: center;
   justify-content: center;
-  margin-top: 15px;
+
+  color: #d88ba1;
+
+  font-size: 28px;
+
+  box-shadow: 0 12px 35px rgba(216, 139, 161, 0.14);
+
+  animation: heartbeat 2.5s infinite;
 }
-.countdown-line-decorator::before,
-.countdown-line-decorator::after {
-  content: "";
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.08);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.08);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+}
+
+.countdown-tag {
+  display: block;
+
+  margin-top: 24px;
+
+  font-size: 12px;
+
+  letter-spacing: 4px;
+
+  color: #c89ca9;
+}
+
+.countdown-header h2 {
+  margin-top: 18px;
+
+  font-size: 68px;
+
+  line-height: 1.2;
+
+  font-family: "Great Vibes", cursive;
+
+  font-weight: normal;
+
+  background: linear-gradient(90deg, #b76e79 20%, #f3b3c3 50%, #b76e79 80%);
+
+  background-size: 200px auto;
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation: shimmerText 4s linear infinite;
+}
+
+@keyframes shimmerText {
+  0% {
+    background-position: -200px;
+  }
+
+  100% {
+    background-position: 200px;
+  }
+}
+
+.countdown-divider {
+  width: 80px;
+  height: 1px;
+
+  background: #e8c6cf;
+
+  margin: 24px auto;
+}
+
+.countdown-header p {
+  max-width: 620px;
+
+  margin: auto;
+
+  line-height: 1.9;
+
+  color: #777;
+}
+
+/* ====================================== */
+/* GRID */
+/* ====================================== */
+
+.countdown-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 24px;
+}
+
+/* ====================================== */
+/* CARD */
+/* ====================================== */
+
+.countdown-card {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 40px 20px;
+
+  border-radius: 34px;
+
+  background: rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(16px);
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.05);
+
+  text-align: center;
+
+  transition: 0.4s ease;
+}
+
+.countdown-card:hover {
+  box-shadow: 0 24px 60px rgba(216, 139, 161, 0.14);
+}
+
+.card-glow {
+  position: absolute;
+
+  inset: 0;
+
+  background: radial-gradient(
+    circle at top,
+    rgba(255, 192, 203, 0.18),
+    transparent 70%
+  );
+
+  pointer-events: none;
+}
+
+/* ====================================== */
+/* NUMBER */
+/* ====================================== */
+
+.count-number {
+  position: relative;
+
+  font-size: 72px;
+
+  font-family: "Cormorant Garamond", serif;
+
+  font-weight: 600;
+
+  color: #b76e79;
+
+  line-height: 1;
+
+  text-shadow: 0 8px 25px rgba(216, 139, 161, 0.15);
+}
+
+.count-label {
+  display: block;
+
+  margin-top: 18px;
+
+  letter-spacing: 3px;
+
+  font-size: 12px;
+
+  color: #999;
+}
+
+.bottom-line {
   width: 60px;
   height: 1px;
-  background: linear-gradient(to right, transparent, var(--pink-main));
-}
-.countdown-line-decorator::after {
-  background: linear-gradient(to left, transparent, var(--pink-main));
-}
-.countdown-line-decorator .dot {
-  width: 5px;
-  height: 5px;
-  background: var(--pink-deep);
-  border-radius: 50%;
-  margin: 0 12px;
+
+  background: #e8c6cf;
+
+  margin: 22px auto 0;
 }
 
-/* Clock Grid Layout */
-.luxury-clock-grid {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 40px;
-  max-width: 800px;
-  margin: 0 auto 45px;
+/* ====================================== */
+/* FOOTER */
+/* ====================================== */
+
+.countdown-footer {
+  margin-top: 70px;
+
+  text-align: center;
+
+  color: #777;
+
+  font-size: 15px;
+
+  line-height: 1.9;
 }
 
-.countdown-circle-item {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-}
+/* ====================================== */
+/* MOBILE */
+/* ====================================== */
 
-.svg-ring-wrapper {
-  position: relative;
-  width: 140px;
-  height: 140px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.countdown-svg-circle {
-  width: 100%;
-  height: 100%;
-  transform: rotate(-90deg);
-}
-.countdown-svg-circle circle {
-  fill: none;
-  stroke-width: 2.5px;
-}
-.circle-bg {
-  stroke: rgba(244, 143, 177, 0.15);
-}
-.circle-progress {
-  stroke: var(--pink-deep);
-  stroke-linecap: round;
-}
-
-.countdown-number-box {
-  position: absolute;
-  inset: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-.digit {
-  font-family: "Cinzel", serif;
-  font-size: 2.6rem;
-  font-weight: 400;
-  color: var(--dark-text);
-}
-
-.unit-label {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.8rem;
-  letter-spacing: 3px;
-  color: #666;
-  font-weight: 600;
-  margin-top: 18px;
-}
-
-.countdown-footer-text {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.9rem;
-  font-style: italic;
-  color: #888;
-  letter-spacing: 1px;
-  margin: 0;
-}
-
-/* --- RESPONSIVE CSS --- */
 @media (max-width: 768px) {
-  .countdown-wrapper {
-    padding: 45px 20px;
-    border-radius: 20px;
+  .romantic-countdown {
+    padding: 90px 16px;
   }
-  .countdown-main-title {
-    font-size: 2.2rem;
-  }
-  .luxury-clock-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 30px;
-    max-width: 360px;
-  }
-  .svg-ring-wrapper {
-    width: 120px;
-    height: 120px;
-  }
-  .digit {
-    font-size: 2.2rem;
-  }
-  .unit-label {
-    font-size: 0.75rem;
-    margin-top: 12px;
-  }
-}
 
-@media (max-width: 375px) {
-  .luxury-clock-grid {
-    gap: 20px;
-    max-width: 300px;
+  .countdown-header h2 {
+    font-size: 48px;
   }
-  .svg-ring-wrapper {
-    width: 100px;
-    height: 100px;
+
+  .countdown-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    gap: 16px;
   }
-  .digit {
-    font-size: 1.9rem;
+
+  .countdown-card {
+    padding: 30px 16px;
+
+    border-radius: 26px;
   }
-  .unit-label {
-    font-size: 0.7rem;
-    letter-spacing: 2px;
+
+  .count-number {
+    font-size: 52px;
   }
 }

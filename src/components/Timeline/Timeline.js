@@ -1,158 +1,187 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import { motion } from "framer-motion";
-import { FaHeart, FaGlassCheers, FaRing, FaMapMarkerAlt } from "react-icons/fa";
+
+import {
+  FaHeart,
+  FaGlassCheers,
+  FaMapMarkerAlt,
+  FaChurch,
+  FaRing,
+} from "react-icons/fa";
+
 import "./Timeline.css";
 
 function Timeline() {
-  const [isMobile, setIsMobile] = useState(false);
-
-  useEffect(() => {
-    const handleResize = () => {
-      setIsMobile(window.innerWidth <= 768);
-    };
-    handleResize();
-    window.addEventListener("resize", handleResize);
-    return () => window.removeEventListener("resize", handleResize);
-  }, []);
-
   const timelineData = [
     {
       icon: <FaHeart />,
-      title: "Lễ Ăn Hỏi",
-      time: "08:00 AM - 18.01.2027",
+      title: "Lễ Dạm Ngõ",
+      time: "08:00 AM • 18.03.2026",
       location: "Tại tư gia nhà gái",
       map: "https://maps.app.goo.gl/Wf1Fopbw9sWoW8Ab7",
+      description:
+        "Ngày hai gia đình chính thức gặp gỡ, cùng trò chuyện và mở đầu cho hành trình nên duyên của Khánh Hưng & Trang Trang.",
     },
+
     {
-      icon: <FaRing />,
-      title: "Lễ Thành Hôn",
-      time: "09:00 AM - 20.01.2027",
-      location: "Nhà thờ giáo xứ",
-      map: "https://maps.app.goo.gl/qgz9At8wYAMLviVA8",
+      icon: <FaHeart />,
+      title: "Lễ Ăn Hỏi",
+      time: "08:00 AM • 18.01.2027",
+      location: "Tại tư gia nhà gái",
+      map: "https://maps.app.goo.gl/Wf1Fopbw9sWoW8Ab7",
+      description:
+        "Những sính lễ được trao gửi cùng lời thưa chuyện chân thành, đánh dấu ngày đôi bên chính thức hẹn ước trăm năm.",
     },
+
+    {
+      icon: <FaChurch />,
+      title: "Thánh Lễ Hôn Phối",
+      time: "09:00 AM • 20.01.2027",
+      location: "Nhà thờ giáo xứ Đồng Quan",
+      map: "https://maps.app.goo.gl/qgz9At8wYAMLviVA8",
+      description:
+        "Khoảnh khắc thiêng liêng khi Khánh Hưng & Trang Trang cùng nắm tay nhau tuyên hứa trước Chúa và gia đình hai bên.",
+    },
+
     {
       icon: <FaGlassCheers />,
-      title: "Tiệc Cưới",
-      time: "11:00 AM - 20.01.2027",
+      title: "Lễ Thành Hôn & Tiệc Cưới",
+      time: "11:00 AM • 20.01.2027",
       location: "Tại tư gia nhà trai",
       map: "https://maps.app.goo.gl/p7adbek3JrYSdqJM9",
+      description:
+        "Một bữa tiệc ấm cúng để cùng nâng ly chúc mừng, lưu giữ những tiếng cười và khoảnh khắc hạnh phúc bên người thân, bạn bè.",
     },
   ];
 
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.25 },
-    },
-  };
-
-  const cardVariants = (index) => {
-    if (isMobile) {
-      // Trên Mobile: Trượt nhẹ nhàng từ phải qua trái đồng đều
-      return {
-        hidden: { opacity: 0, x: 40 },
-        visible: {
-          opacity: 1,
-          x: 0,
-          transition: { duration: 0.6, ease: "easeOut" },
-        },
-      };
-    }
-    // Trên PC: Thẻ chẵn trượt từ trái (-60px), thẻ lẻ trượt từ phải (60px) cực sang
-    return {
-      hidden: { opacity: 0, x: index % 2 === 0 ? -60 : 60 },
-      visible: {
-        opacity: 1,
-        x: 0,
-        transition: {
-          type: "spring",
-          stiffness: 50,
-          damping: 14,
-          duration: 0.7,
-        },
-      },
-    };
-  };
-
   return (
-    <section className="luxury-timeline-section">
+    <section className="romantic-timeline">
+      {/* FLOATING HEARTS */}
+
+      <div className="floating-hearts">
+        <span>❤</span>
+        <span>❤</span>
+        <span>❤</span>
+        <span>❤</span>
+      </div>
+
+      {/* BLUR BACKGROUND */}
+
+      <div className="blur blur1"></div>
+      <div className="blur blur2"></div>
+
       <div className="timeline-container">
-        {/* Header đồng bộ phong cách Luxury */}
+        {/* HEADER */}
+
         <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: false, amount: 0.3 }}
-          transition={{ duration: 0.6 }}
           className="timeline-header"
+          initial={{
+            opacity: 0,
+            y: 30,
+          }}
+          whileInView={{
+            opacity: 1,
+            y: 0,
+          }}
+          viewport={{ once: true }}
+          transition={{
+            duration: 0.8,
+          }}
         >
-          <span className="timeline-tag">WEDDING PROGRAM</span>
-          <h2 className="timeline-main-title">Lịch Trình Sự Kiện</h2>
-          <div className="timeline-title-divider"></div>
+          <span className="timeline-tag">WEDDING TIMELINE</span>
+
+          <h2>Lịch Trình Sự Kiện</h2>
+
+          <div className="timeline-line"></div>
+
+          <p>
+            Hành trình yêu thương sẽ được viết tiếp bằng những khoảnh khắc đáng
+            nhớ nhất 🤍
+          </p>
         </motion.div>
 
-        {/* Khung chứa dòng thời gian */}
-        <motion.div
-          className="luxury-timeline-wrapper"
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: false, amount: 0.1 }} // Cuộn lên/xuống liên tục kích hoạt lại motion
-        >
-          {/* Trục đứng trung tâm vẽ từ trên xuống */}
+        {/* TIMELINE */}
+
+        <div className="timeline-wrapper">
+          {/* CENTER LINE */}
+
           <motion.div
-            className="timeline-main-line"
-            variants={{
-              hidden: { scaleY: 0 },
-              visible: {
-                scaleY: 1,
-                transition: { duration: 1.2, ease: "easeInOut" },
-              },
+            className="center-line"
+            initial={{
+              scaleY: 0,
+            }}
+            whileInView={{
+              scaleY: 1,
+            }}
+            viewport={{ once: true }}
+            transition={{
+              duration: 1.4,
+              ease: "easeInOut",
             }}
           />
 
           {timelineData.map((item, index) => (
-            <div
-              className={`luxury-timeline-item ${index % 2 === 0 ? "pc-left" : "pc-right"}`}
+            <motion.div
+              className={`timeline-item ${index % 2 === 0 ? "left" : "right"}`}
               key={index}
+              initial={{
+                opacity: 0,
+                y: 60,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.8,
+                delay: index * 0.2,
+              }}
             >
-              {/* Vòng tròn chứa Icon biểu tượng */}
+              {/* ICON */}
+
               <motion.div
-                className="luxury-timeline-badge"
-                variants={{
-                  hidden: { scale: 0, opacity: 0 },
-                  visible: {
-                    scale: 1,
-                    opacity: 1,
-                    transition: { delay: index * 0.15, duration: 0.4 },
-                  },
+                className="timeline-icon"
+                whileHover={{
+                  scale: 1.1,
                 }}
               >
                 {item.icon}
               </motion.div>
 
-              {/* Hộp nội dung chi tiết */}
+              {/* CARD */}
+
               <motion.div
-                className="luxury-timeline-content"
-                variants={cardVariants(index)}
+                className="timeline-card"
+                whileHover={{
+                  y: -8,
+                }}
               >
-                <h3 className="event-title">{item.title}</h3>
                 <span className="event-time">{item.time}</span>
-                <p className="event-location">{item.location}</p>
+
+                <h3>{item.title}</h3>
+
+                <p className="event-desc">{item.description}</p>
+
+                <div className="event-location">
+                  <FaMapMarkerAlt />
+
+                  <span>{item.location}</span>
+                </div>
 
                 <a
                   href={item.map}
                   target="_blank"
                   rel="noreferrer"
-                  className="luxury-map-btn"
+                  className="map-btn"
                 >
-                  <FaMapMarkerAlt className="btn-icon" />
-                  Xem Bản Đồ
+                  <FaMapMarkerAlt />
+                  Xem bản đồ
                 </a>
               </motion.div>
-            </div>
+            </motion.div>
           ))}
-        </motion.div>
+        </div>
       </div>
     </section>
   );

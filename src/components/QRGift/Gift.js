@@ -1,49 +1,107 @@
 import "./Gift.css";
 import { motion } from "framer-motion";
-import { FaCopy, FaDownload, FaHeart, FaUser } from "react-icons/fa";
+import {
+  FaCopy,
+  FaDownload,
+  FaHeart,
+  FaUniversity,
+  FaStar,
+} from "react-icons/fa";
 import Swal from "sweetalert2";
 
 function Gift() {
+  // =========================
+  // COPY
+  // =========================
+
   const copyText = (text) => {
     navigator.clipboard.writeText(text);
+
     Swal.fire({
-      icon: "success",
-      title: "Đã sao chép!",
-      text: "Số tài khoản đã được lưu.",
+      html: `
+        <div class="gift-popup">
+          <div class="gift-popup-icon">💖</div>
+
+          <h2>Đã sao chép!</h2>
+
+          <p>
+            Số tài khoản đã được lưu vào clipboard
+          </p>
+        </div>
+      `,
       showConfirmButton: false,
-      timer: 1500,
-      customClass: { popup: "swal-custom" },
+      timer: 1600,
+      background: "#fffaf8",
+      customClass: {
+        popup: "gift-swal-popup",
+      },
     });
   };
+
+  // =========================
+  // DOWNLOAD QR
+  // =========================
 
   const downloadQR = async (url, name) => {
     try {
       const res = await fetch(url);
+
       const blob = await res.blob();
+
       const blobUrl = window.URL.createObjectURL(blob);
 
       const link = document.createElement("a");
+
       link.href = blobUrl;
       link.download = `QR_MungCuoi_${name}.png`;
+
       document.body.appendChild(link);
+
       link.click();
+
       document.body.removeChild(link);
 
       Swal.fire({
-        icon: "success",
-        title: "Tải thành công!",
-        text: `QR của ${name} đã được lưu.`,
-        timer: 1500,
+        html: `
+          <div class="gift-popup">
+            <div class="gift-popup-icon">✨</div>
+
+            <h2>Tải thành công!</h2>
+
+            <p>
+              QR của ${name} đã được lưu
+            </p>
+          </div>
+        `,
         showConfirmButton: false,
+        timer: 1600,
+        background: "#fffaf8",
+        customClass: {
+          popup: "gift-swal-popup",
+        },
       });
     } catch {
       Swal.fire({
-        icon: "error",
-        title: "Lỗi",
-        text: "Không thể tải QR, thử lại sau.",
+        html: `
+          <div class="gift-popup">
+            <div class="gift-popup-icon">😢</div>
+
+            <h2>Có lỗi xảy ra</h2>
+
+            <p>
+              Không thể tải QR lúc này
+            </p>
+          </div>
+        `,
+        background: "#fffaf8",
+        confirmButtonColor: "#d88ba1",
       });
     }
   };
+
+  // =========================
+  // DATA
+  // =========================
 
   const data = [
     {
@@ -53,6 +111,7 @@ function Gift() {
       stk: "200318076666",
       qr: "https://img.vietqr.io/image/MB-200318076666-compact2.png?addInfo=MungCuoiKhanhHung",
     },
+
     {
       role: "Cô Dâu",
       name: "Trang Trang",
@@ -63,78 +122,119 @@ function Gift() {
   ];
 
   return (
-    <section className="gift-section">
-      <div className="gift-bg">
-        <img
-          src="https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1974&auto=format&fit=crop"
-          alt="bg"
-        />
-        <div className="gift-overlay" />
+    <section className="luxury-gift-section">
+      {/* FLOATING HEARTS */}
+
+      <div className="floating-hearts">
+        <span>❤</span>
+        <span>❤</span>
+        <span>❤</span>
+        <span>❤</span>
       </div>
 
-      <div className="container">
+      {/* BLUR BACKGROUND */}
+
+      <div className="blur blur1"></div>
+      <div className="blur blur2"></div>
+
+      <div className="gift-container">
         {/* HEADER */}
+
         <motion.div
           className="gift-header"
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 40 }}
           whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
           transition={{ duration: 0.8 }}
         >
-          <div className="gift-heart">
+          <div className="gift-icon">
             <FaHeart />
           </div>
 
-          <span className="gift-mini">MỪNG CƯỚI</span>
+          <span className="gift-tag">WEDDING GIFT</span>
 
-          <h2>Khánh Hưng & Trang Trang</h2>
+          <h2>Mừng Cưới</h2>
 
-          <div className="line" />
+          <div className="gift-line"></div>
 
           <p>
             Cảm ơn bạn đã đến chung vui và gửi những lời chúc tốt đẹp nhất đến
             chúng mình 💗
           </p>
 
-          <h3>Nếu có lòng mừng, bạn có thể gửi tại đây ✨</h3>
+          <div className="gift-note">
+            <FaStar />
+
+            <span>
+              Tình cảm của bạn là món quà quý giá nhất dành cho chúng mình 🤍
+            </span>
+          </div>
         </motion.div>
 
-        {/* GRID */}
+        {/* CARDS */}
+
         <div className="gift-grid">
           {data.map((item, index) => (
             <motion.div
               className="gift-card"
               key={index}
-              initial={{ opacity: 0, y: 40 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8 + index * 0.2 }}
-              whileHover={{ scale: 1.03 }}
+              initial={{
+                opacity: 0,
+                y: 50,
+              }}
+              whileInView={{
+                opacity: 1,
+                y: 0,
+              }}
+              viewport={{ once: true }}
+              transition={{
+                duration: 0.7,
+                delay: index * 0.2,
+              }}
+              whileHover={{
+                y: -10,
+              }}
             >
-              <div className="user-icon">
-                <FaUser />
+              {/* TOP */}
+
+              <div className="card-top">
+                <div className="bank-icon">
+                  <FaUniversity />
+                </div>
+
+                <span className="role">{item.role}</span>
+
+                <h3>{item.name}</h3>
+
+                <p>{item.bank}</p>
               </div>
 
-              <span className="role">{item.role}</span>
+              {/* QR */}
 
-              <h3>{item.name}</h3>
-
-              <p>{item.bank}</p>
-
-              <div className="qr-box">
+              <div className="qr-wrapper">
                 <img src={item.qr} alt={item.name} />
               </div>
 
-              <div className="bank-number">
-                <span>{item.stk}</span>
-                <button onClick={() => copyText(item.stk)}>
+              {/* STK */}
+
+              <div className="bank-box">
+                <div className="bank-number">
+                  <span>{item.stk}</span>
+                </div>
+
+                <button className="copy-btn" onClick={() => copyText(item.stk)}>
                   <FaCopy />
                 </button>
               </div>
+
+              {/* DOWNLOAD */}
 
               <button
                 className="download-btn"
                 onClick={() => downloadQR(item.qr, item.name)}
               >
-                <FaDownload /> Tải QR
+                <FaDownload />
+                Tải mã QR
               </button>
             </motion.div>
           ))}

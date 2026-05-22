@@ -11,10 +11,13 @@ import Wishes from "./components/Wishes/Wishes";
 import QRGift from "./components/QRGift/Gift";
 import Footer from "./components/Footer/Footer.jsx";
 import MusicPlayer from "./components/Music/MusicPlayer";
+import FallingHy from "./components/Hero/FallingHy";
 
 function App() {
   return (
     <div>
+      <FallingHy />
+
       <MusicPlayer />
       <Hero />
       <Countdown />

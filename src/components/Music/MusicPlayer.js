@@ -1,66 +1,124 @@
 import { useRef, useState } from "react";
-import { FaMusic, FaPause } from "react-icons/fa";
-import { HiOutlineArrowNarrowDown } from "react-icons/hi"; // Cần cài react-icons/hi
+import { motion } from "framer-motion";
 import "./MusicPlayer.css";
-
+import phuong1 from "../../assets/phuong-left.png";
+import phuong2 from "../../assets/phuong-right.png";
+import chuhy from "../../assets/Thiết kế chưa có tên.png";
 function MusicPlayer() {
   const audioRef = useRef(null);
-  const [playing, setPlaying] = useState(false);
-  const [isUnlocked, setIsUnlocked] = useState(false);
 
-  const handleStart = async () => {
-    setIsUnlocked(true);
+  const [opened, setOpened] = useState(false);
+  const [closing, setClosing] = useState(false);
+  const [playing, setPlaying] = useState(false);
+
+  const handleOpen = async () => {
+    setClosing(true);
+
     try {
       await audioRef.current.play();
       setPlaying(true);
     } catch (err) {
-      console.log("Autoplay blocked");
+      console.log(err);
     }
+
+    setTimeout(() => {
+      setOpened(true);
+    }, 900);
   };
 
   const toggleMusic = () => {
-    if (playing) audioRef.current.pause();
-    else audioRef.current.play();
+    if (!audioRef.current) return;
+
+    if (playing) {
+      audioRef.current.pause();
+    } else {
+      audioRef.current.play();
+    }
+
     setPlaying(!playing);
   };
 
   return (
     <>
-      {/* Lớp màn che Cinematic */}
-      <div className={`cinematic-overlay ${isUnlocked ? "slide-up" : ""}`}>
-        <div className="hero-content">
-          <div className="title-wrap">
-            <span className="subtitle">The Wedding of</span>
-            <h1 className="main-title">
-              Khánh Hưng
-              <br /> & <br />
-              Trang Trang
-            </h1>
-            <div className="divider"></div>
-          </div>
+      {!opened && (
+        <section
+          className={`pink-invite-screen ${closing ? "cinematic-open" : ""}`}
+        >
+          {/* Glow background */}
+          <div className="bg-blur blur-1"></div>
+          <div className="bg-blur blur-2"></div>
 
-          <div className="unlock-zone" onClick={handleStart}>
-            <div className="circle-btn">
-              <span className="hỷ-icon">囍</span>
+          {/* Floating particles */}
+          <div className="floating-heart heart-1">❤</div>
+          <div className="floating-heart heart-2">❤</div>
+          <div className="floating-heart heart-3">❤</div>
+
+          {/* Main Card */}
+          <motion.div
+            className="invite-card"
+            initial={{ opacity: 0, y: 30, scale: 0.96 }}
+            animate={{ opacity: 1, y: 0, scale: 1 }}
+            transition={{ duration: 1 }}
+          >
+            {/* ảnh trái */}
+            <div className="phoenix-left">
+              <img src={phuong1} alt="" />
             </div>
-            <p className="pulse-text">Chạm để bắt đầu hành trình</p>
-            <HiOutlineArrowNarrowDown className="bounce-arrow" />
-          </div>
-        </div>
 
-        {/* Background mờ phía sau lớp màn */}
-        <div className="blur-bg"></div>
-      </div>
+            {/* ảnh phải */}
+            <div className="phoenix-right">
+              <img src={phuong2} alt="" />
+            </div>
 
+            {/* border line */}
+            <div className="card-inner-border"></div>
+
+            <div className="invite-content">
+              <div className="cicrle-heart ">
+                <img src={chuhy} alt="" />
+              </div>
+
+              <div className="mini-divider"></div>
+
+              <h1 className="couple-name">
+                Khánh Hưng
+                <span>&</span>
+                Trang Trang
+              </h1>
+
+              <p className="invite-date">Chủ Nhật, 10 tháng 01 năm 2027</p>
+
+              <div className="guest-box">Trân trọng kính mời</div>
+
+              <p className="invite-text">
+                Đến chung vui trong ngày trọng đại của chúng mình
+              </p>
+
+              <motion.button
+                className="open-btn"
+                whileHover={{ scale: 1.04 }}
+                whileTap={{ scale: 0.96 }}
+                onClick={handleOpen}
+              >
+                Mở Thiệp
+              </motion.button>
+            </div>
+          </motion.div>
+        </section>
+      )}
+
+      {/* MUSIC */}
       <audio ref={audioRef} loop src="/music/perfect.mp3" />
 
-      {/* Nút nhạc tối giản dạng đĩa quay */}
-      <div
-        className={`vinyl-control ${playing ? "is-spinning" : ""}`}
-        onClick={toggleMusic}
-      >
-        <div className="vinyl-inner">{playing ? <FaMusic /> : <FaPause />}</div>
-      </div>
+      {/* MUSIC CONTROL */}
+      {opened && (
+        <div
+          className={`music-control ${playing ? "spinning" : ""}`}
+          onClick={toggleMusic}
+        >
+          ❤
+        </div>
+      )}
     </>
   );
 }

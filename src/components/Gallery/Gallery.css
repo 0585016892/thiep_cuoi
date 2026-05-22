@@ -1,198 +1,419 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap");
 
-:root {
-  --g-pink: #f48fb1;
-  --g-deep: #d81b60;
-  --g-gold: #c5a880;
-  --g-dark: #2d2d2d;
+/* ====================================== */
+/* MAIN */
+/* ====================================== */
+
+.romantic-gallery {
+  position: relative;
+
+  overflow: hidden;
+
+  padding: 120px 20px;
+
+  background: linear-gradient(180deg, #fffaf8 0%, #fff5f7 50%, #ffffff 100%);
+
+  font-family: "Montserrat", sans-serif;
 }
 
-.luxury-gallery-section {
-  width: 100%;
-  padding: 100px 20px;
-  background-color: #fffbfa;
+/* ====================================== */
+/* FLOATING HEARTS */
+/* ====================================== */
+
+.floating-hearts span {
+  position: absolute;
+
+  color: rgba(216, 139, 161, 0.12);
+
+  font-size: 22px;
+
+  animation: floatingHearts 12s linear infinite;
 }
+
+.floating-hearts span:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-hearts span:nth-child(2) {
+  left: 30%;
+  animation-delay: 3s;
+}
+
+.floating-hearts span:nth-child(3) {
+  left: 65%;
+  animation-delay: 6s;
+}
+
+.floating-hearts span:nth-child(4) {
+  left: 85%;
+  animation-delay: 9s;
+}
+
+@keyframes floatingHearts {
+  0% {
+    transform: translateY(100px) scale(0.5);
+
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-900px) scale(1.5);
+
+    opacity: 0;
+  }
+}
+
+/* ====================================== */
+/* BLUR */
+/* ====================================== */
+
+.gallery-blur {
+  position: absolute;
+
+  border-radius: 50%;
+
+  filter: blur(90px);
+}
+
+.blur1 {
+  width: 280px;
+  height: 280px;
+
+  background: rgba(255, 192, 203, 0.24);
+
+  top: -80px;
+  left: -80px;
+
+  animation: floatingBlur 8s ease-in-out infinite;
+}
+
+.blur2 {
+  width: 320px;
+  height: 320px;
+
+  background: rgba(255, 228, 196, 0.28);
+
+  bottom: -100px;
+  right: -100px;
+
+  animation: floatingBlur 10s ease-in-out infinite reverse;
+}
+
+@keyframes floatingBlur {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+}
+
+/* ====================================== */
+/* CONTAINER */
+/* ====================================== */
 
 .gallery-container {
-  width: 100%;
-  max-width: 1200px;
-  margin: 0 auto;
+  position: relative;
+
+  z-index: 2;
+
+  max-width: 1300px;
+
+  margin: auto;
 }
 
-/* Header */
+/* ====================================== */
+/* HEADER */
+/* ====================================== */
+
 .gallery-header {
   text-align: center;
-  margin-bottom: 60px;
-}
-.gallery-tag {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 5px;
-  color: var(--g-gold);
-  font-weight: 600;
-  display: block;
-}
-.gallery-main-title {
-  font-family: "Cinzel", serif;
-  font-size: 2.6rem;
-  color: var(--g-dark);
-  margin: 10px 0 0;
-}
-.gallery-title-divider {
-  width: 40px;
-  height: 2px;
-  background: var(--g-pink);
-  margin: 15px auto 0;
+
+  margin-bottom: 70px;
 }
 
-/* --- ĐỊNH DẠNG BENTO GRID TRÊN PC --- */
-.luxury-bento-grid {
-  display: grid;
-  grid-template-columns: repeat(12, 1fr);
-  grid-auto-rows: 220px;
-  gap: 24px;
-}
+.gallery-icon {
+  width: 82px;
+  height: 82px;
 
-.bento-item {
-  cursor: pointer; /* Thêm con trỏ click */
-}
+  margin: auto;
 
-/* Chặn ảnh tràn viền khi phóng to */
-.image-overflow-shield {
-  position: relative;
-  width: 100%;
-  height: 100%;
-  overflow: hidden;
-  border-radius: 16px;
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.03);
-}
+  border-radius: 50%;
 
-.gallery-img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  transition: transform 0.8s cubic-bezier(0.25, 1, 0.5, 1);
-  will-change: transform;
-}
+  background: rgba(255, 255, 255, 0.72);
 
-/* Layout Bento Grid */
-.item-style-0 {
-  grid-column: span 4;
-  grid-row: span 2;
-}
-.item-style-1 {
-  grid-column: span 5;
-  grid-row: span 1;
-}
-.item-style-2 {
-  grid-column: span 3;
-  grid-row: span 2;
-}
-.item-style-3 {
-  grid-column: span 5;
-  grid-row: span 2;
-}
-.item-style-4 {
-  grid-column: span 4;
-  grid-row: span 1;
-}
-.item-style-5 {
-  grid-column: span 3;
-  grid-row: span 1;
-}
+  backdrop-filter: blur(10px);
 
-/* Lớp phủ che khi Hover */
-.gallery-premium-overlay {
-  position: absolute;
-  inset: 0;
-  background: rgba(45, 45, 45, 0.15); /* Làm tối nhẹ nhàng hơn */
   display: flex;
   align-items: center;
   justify-content: center;
-  opacity: 0;
-  transition: opacity 0.5s ease;
+
+  color: #d88ba1;
+
+  font-size: 28px;
+
+  box-shadow: 0 12px 35px rgba(216, 139, 161, 0.14);
+
+  animation: heartbeat 2.6s infinite;
 }
 
-/* Hộp kính Glassmorphism xuất hiện giữa tâm khi Hover */
-.overlay-blur-card {
-  background: rgba(255, 255, 255, 0.8);
-  border: 1px solid rgba(255, 255, 255, 0.4);
-  backdrop-filter: blur(8px);
-  -webkit-backdrop-filter: blur(8px);
-  padding: 10px 20px;
-  border-radius: 50px;
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+
+  14% {
+    transform: scale(1.08);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.08);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+}
+
+.gallery-tag {
+  display: block;
+
+  margin-top: 24px;
+
+  font-size: 12px;
+
+  letter-spacing: 4px;
+
+  color: #c89ca9;
+}
+
+.gallery-header h2 {
+  margin-top: 18px;
+
+  font-size: 68px;
+
+  line-height: 1.2;
+
+  font-family: "Great Vibes", cursive;
+
+  font-weight: normal;
+
+  background: linear-gradient(90deg, #b76e79 20%, #f3b3c3 50%, #b76e79 80%);
+
+  background-size: 200px auto;
+
+  -webkit-background-clip: text;
+
+  -webkit-text-fill-color: transparent;
+
+  animation: shimmerText 4s linear infinite;
+}
+
+@keyframes shimmerText {
+  0% {
+    background-position: -200px;
+  }
+
+  100% {
+    background-position: 200px;
+  }
+}
+
+.gallery-divider {
+  width: 80px;
+  height: 1px;
+
+  background: #e8c6cf;
+
+  margin: 24px auto;
+}
+
+.gallery-header p {
+  max-width: 620px;
+
+  margin: auto;
+
+  line-height: 1.9;
+
+  color: #777;
+}
+
+/* ====================================== */
+/* GRID */
+/* ====================================== */
+
+.gallery-grid {
+  display: grid;
+
+  grid-template-columns: repeat(4, 1fr);
+
+  gap: 22px;
+
+  grid-auto-rows: 240px;
+}
+
+/* BENTO */
+
+.item-0 {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.item-3 {
+  grid-column: span 2;
+}
+
+/* ====================================== */
+/* ITEM */
+/* ====================================== */
+
+.gallery-item {
+  cursor: pointer;
+}
+
+.image-wrapper {
+  position: relative;
+
+  width: 100%;
+  height: 100%;
+
+  overflow: hidden;
+
+  border-radius: 34px;
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08);
+}
+
+.image-wrapper img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: cover;
+
+  transition: transform 0.7s ease;
+}
+
+.gallery-item:hover img {
+  transform: scale(1.08);
+}
+
+/* ====================================== */
+/* OVERLAY */
+/* ====================================== */
+
+.gallery-overlay {
+  position: absolute;
+
+  inset: 0;
+
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0.05), rgba(0, 0, 0, 0.45));
+
+  opacity: 0;
+
+  transition: 0.4s ease;
+
   display: flex;
   align-items: center;
-  gap: 8px;
-  transform: translateY(15px);
-  transition: transform 0.5s cubic-bezier(0.25, 1, 0.5, 1);
+  justify-content: center;
 }
 
-.zoom-icon {
-  font-size: 1.1rem;
-  color: var(--g-deep);
-}
-
-.overlay-text {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.7rem;
-  font-weight: 600;
-  letter-spacing: 1px;
-  color: var(--g-dark);
-  text-transform: uppercase;
-}
-
-/* --- HIỆU ỨNG HOVER --- */
-.bento-item:hover .gallery-img {
-  transform: scale(1.07);
-}
-
-.bento-item:hover .gallery-premium-overlay {
+.gallery-item:hover .gallery-overlay {
   opacity: 1;
 }
 
-.bento-item:hover .overlay-blur-card {
-  transform: translateY(0);
+.overlay-content {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  padding: 16px 24px;
+
+  border-radius: 999px;
+
+  background: rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(14px);
+
+  color: white;
+
+  font-size: 14px;
+
+  border: 1px solid rgba(255, 255, 255, 0.2);
 }
 
-/* --- RESPONSIVE CHO TABLET & MOBILE --- */
-@media (max-width: 1024px) {
-  .luxury-bento-grid {
-    grid-template-columns: repeat(6, 1fr);
-    grid-auto-rows: 200px;
-    gap: 16px;
-  }
+/* ====================================== */
+/* HEART */
+/* ====================================== */
+
+.corner-heart {
+  position: absolute;
+
+  top: 18px;
+  right: 18px;
+
+  width: 42px;
+  height: 42px;
+
+  border-radius: 50%;
+
+  background: rgba(255, 255, 255, 0.18);
+
+  backdrop-filter: blur(10px);
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: white;
+
+  font-size: 14px;
 }
+
+/* ====================================== */
+/* MOBILE */
+/* ====================================== */
 
 @media (max-width: 768px) {
-  .gallery-main-title {
-    font-size: 2rem;
+  .romantic-gallery {
+    padding: 90px 16px;
   }
-  .luxury-bento-grid {
-    display: flex;
-    flex-direction: column;
-    gap: 15px;
+
+  .gallery-header h2 {
+    font-size: 48px;
   }
-  .image-overflow-shield {
-    height: 250px;
-    border-radius: 12px;
+
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    grid-auto-rows: 180px;
+
+    gap: 14px;
   }
-  /* Bật lớp phủ hiển thị nhẹ trực tiếp trên mobile */
-  .gallery-premium-overlay {
-    opacity: 1;
-    background: linear-gradient(
-      to top,
-      rgba(0, 0, 0, 0.35) 0%,
-      transparent 40%
-    );
-    align-items: flex-end;
-    justify-content: flex-start;
-    padding: 15px;
+
+  .item-0 {
+    grid-column: span 2;
+    grid-row: span 2;
   }
-  .overlay-blur-card {
-    transform: none;
-    background: rgba(255, 255, 255, 0.92);
-    padding: 6px 12px;
-    border-radius: 6px; /* Bo góc nhẹ trên mobile */
+
+  .item-3 {
+    grid-column: span 2;
+  }
+
+  .image-wrapper {
+    border-radius: 24px;
   }
 }

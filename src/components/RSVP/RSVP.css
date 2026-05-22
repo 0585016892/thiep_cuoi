@@ -1,283 +1,548 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap");
 
-:root {
-  --r-pink: #f48fb1;
-  --r-deep: #d81b60;
-  --r-gold: #c5a880;
-  --r-dark: #2d2d2d;
-  --r-glass: rgba(255, 255, 255, 0.88);
-}
+/* ========================================= */
+/* MAIN */
+/* ========================================= */
 
-.luxury-rsvp-section {
+.rsvp-section {
   position: relative;
-  width: 100%;
-  padding: 100px 20px;
-  background-color: #fffbfa;
   overflow: hidden;
+  padding: 120px 20px;
+  background: linear-gradient(180deg, #fffaf8 0%, #fff5f7 50%, #ffffff 100%);
+
+  font-family: "Montserrat", sans-serif;
 }
 
-/* Đốm sáng nghệ thuật làm nền */
-.rsvp-bg-glow-top {
+/* ========================================= */
+/* FLOATING HEARTS */
+/* ========================================= */
+
+.floating-hearts span {
   position: absolute;
-  width: 400px;
-  height: 400px;
-  background: radial-gradient(
-    circle,
-    rgba(244, 143, 177, 0.12) 0%,
-    transparent 70%
-  );
-  top: -100px;
-  left: -100px;
-  pointer-events: none;
+  color: rgba(216, 139, 161, 0.14);
+  font-size: 24px;
+  animation: floatingHearts 12s linear infinite;
 }
-.rsvp-bg-glow-bottom {
+
+.floating-hearts span:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.floating-hearts span:nth-child(2) {
+  left: 30%;
+  animation-delay: 3s;
+}
+
+.floating-hearts span:nth-child(3) {
+  left: 60%;
+  animation-delay: 6s;
+}
+
+.floating-hearts span:nth-child(4) {
+  left: 85%;
+  animation-delay: 9s;
+}
+
+@keyframes floatingHearts {
+  0% {
+    transform: translateY(100px) scale(0.5);
+    opacity: 0;
+  }
+
+  20% {
+    opacity: 1;
+  }
+
+  100% {
+    transform: translateY(-900px) scale(1.5);
+    opacity: 0;
+  }
+}
+
+/* ========================================= */
+/* BACKGROUND BLUR */
+/* ========================================= */
+
+.bg-blur {
   position: absolute;
-  width: 500px;
-  height: 500px;
-  background: radial-gradient(
-    circle,
-    rgba(197, 168, 128, 0.1) 0%,
-    transparent 70%
-  );
-  bottom: -150px;
-  right: -150px;
-  pointer-events: none;
+  border-radius: 50%;
+  filter: blur(90px);
 }
+
+.blur1 {
+  width: 280px;
+  height: 280px;
+  background: rgba(255, 192, 203, 0.28);
+  top: -60px;
+  left: -60px;
+
+  animation: floatingBlur 8s ease-in-out infinite;
+}
+
+.blur2 {
+  width: 320px;
+  height: 320px;
+  background: rgba(255, 228, 196, 0.3);
+  bottom: -100px;
+  right: -100px;
+
+  animation: floatingBlur 10s ease-in-out infinite reverse;
+}
+
+@keyframes floatingBlur {
+  0% {
+    transform: translateY(0px) translateX(0px);
+  }
+
+  50% {
+    transform: translateY(-20px) translateX(10px);
+  }
+
+  100% {
+    transform: translateY(0px) translateX(0px);
+  }
+}
+
+/* ========================================= */
+/* CONTAINER */
+/* ========================================= */
 
 .rsvp-container {
-  width: 100%;
-  max-width: 650px; /* Bóp nhỏ form lại để hiển thị tập trung cân đối */
-  margin: 0 auto;
   position: relative;
-  z-index: 10;
+  z-index: 2;
+  max-width: 760px;
+  margin: auto;
 }
 
-/* Header */
+/* ========================================= */
+/* HEADER */
+/* ========================================= */
+
 .rsvp-header {
   text-align: center;
-  margin-bottom: 50px;
-}
-.rsvp-main-icon {
-  font-size: 1.5rem;
-  color: var(--r-pink);
-  display: inline-block;
-  margin-bottom: 10px;
-  animation: heartPulse 2s infinite ease-in-out;
-}
-.rsvp-tag {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.75rem;
-  letter-spacing: 4px;
-  color: var(--r-gold);
-  font-weight: 600;
-  display: block;
-}
-.rsvp-main-title {
-  font-family: "Cinzel", serif;
-  font-size: 2.6rem;
-  color: var(--r-dark);
-  margin: 10px 0 0;
-}
-.rsvp-title-divider {
-  width: 40px;
-  height: 2px;
-  background: var(--r-pink);
-  margin: 15px auto;
-}
-.rsvp-subtitle {
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.95rem;
-  color: #666;
-  max-width: 450px;
-  margin: 0 auto;
-  line-height: 1.5;
+  margin-bottom: 60px;
 }
 
-/* Khung Form Kính Glassmorphism */
-.luxury-rsvp-form {
-  background: var(--r-glass);
-  border: 1px solid rgba(244, 143, 177, 0.25);
-  backdrop-filter: blur(15px);
-  -webkit-backdrop-filter: blur(15px);
-  padding: 45px 40px;
-  border-radius: 24px;
-  box-shadow: 0 25px 55px rgba(216, 27, 96, 0.04);
-  will-change: transform, opacity;
-}
+.header-heart {
+  width: 78px;
+  height: 78px;
+  margin: auto;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.72);
 
-.luxury-input-group {
-  margin-bottom: 25px;
-}
-.luxury-input-group:last-of-type {
-  margin-bottom: 35px;
-}
+  backdrop-filter: blur(10px);
 
-.input-label {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.85rem;
-  font-weight: 600;
-  color: var(--r-dark);
-  margin-bottom: 10px;
-  letter-spacing: 0.5px;
-}
-.label-icon {
-  font-size: 0.8rem;
-  color: var(--r-gold);
-}
-
-.input-field-wrapper {
-  position: relative;
-  width: 100%;
-}
-
-/* Định dạng Input, Select, Textarea */
-.luxury-input,
-.luxury-select,
-.luxury-textarea {
-  width: 100%;
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(0, 0, 0, 0.08);
-  border-radius: 12px;
-  padding: 14px 18px;
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.95rem;
-  color: var(--r-dark);
-  outline: none;
-  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-.luxury-textarea {
-  resize: vertical;
-}
-
-/* Hiệu ứng khi nhấp chuột vào ô điền form */
-.luxury-input:focus,
-.luxury-select:focus,
-.luxury-textarea:focus {
-  background: #ffffff;
-  border-color: var(--r-pink);
-  box-shadow: 0 0 0 4px rgba(244, 143, 177, 0.12);
-}
-
-/* Custom lại mũi tên của thẻ Select cho sang */
-.select-arrow::after {
-  content: "▾";
-  font-size: 0.8rem;
-  color: #888;
-  position: absolute;
-  right: 18px;
-  top: 50%;
-  transform: translateY(-50%);
-  pointer-events: none;
-}
-.luxury-select {
-  appearance: none;
-  -webkit-appearance: none;
-  padding-right: 40px;
-  cursor: pointer;
-}
-
-/* Nút Submit Đỉnh Cao */
-.luxury-submit-btn {
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
-  padding: 15px;
-  border: none;
-  border-radius: 50px;
-  background: linear-gradient(135deg, #f48fb1 0%, #d81b60 100%);
-  color: white;
-  font-family: "Montserrat", sans-serif;
-  font-size: 0.9rem;
-  font-weight: 600;
-  letter-spacing: 2px;
-  cursor: pointer;
-  box-shadow: 0 10px 25px rgba(216, 27, 96, 0.2);
-  transition: all 0.3s ease;
-}
-.luxury-submit-btn:hover {
-  box-shadow: 0 12px 30px rgba(216, 27, 96, 0.32);
-}
-.luxury-submit-btn:disabled {
-  background: #ccc;
-  box-shadow: none;
-  cursor: not-allowed;
+
+  color: #d88ba1;
+  font-size: 28px;
+
+  box-shadow: 0 10px 35px rgba(216, 139, 161, 0.15);
+
+  animation: softHeartbeat 2.8s infinite;
 }
 
-.plane-icon {
-  font-size: 0.95rem;
-  transition: transform 0.3s ease;
-}
-
-/* Hiệu ứng rung nhẹ trái tim trên tiêu đề */
-@keyframes heartPulse {
-  0%,
-  100% {
+@keyframes softHeartbeat {
+  0% {
     transform: scale(1);
   }
+
+  14% {
+    transform: scale(1.12);
+  }
+
+  28% {
+    transform: scale(1);
+  }
+
+  42% {
+    transform: scale(1.12);
+  }
+
+  70% {
+    transform: scale(1);
+  }
+}
+
+.header-tag {
+  display: block;
+  margin-top: 24px;
+
+  letter-spacing: 4px;
+  font-size: 12px;
+  color: #c89ca9;
+}
+
+.rsvp-header h2 {
+  margin-top: 18px;
+
+  font-size: 64px;
+  font-family: "Great Vibes", cursive;
+
+  font-weight: normal;
+
+  background: linear-gradient(90deg, #b76e79 20%, #f3b3c3 50%, #b76e79 80%);
+
+  background-size: 200px auto;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shimmerText 4s linear infinite;
+}
+
+@keyframes shimmerText {
+  0% {
+    background-position: -200px;
+  }
+
+  100% {
+    background-position: 200px;
+  }
+}
+
+.header-line {
+  width: 80px;
+  height: 1px;
+  background: #e8c6cf;
+
+  margin: 22px auto;
+}
+
+.rsvp-header p {
+  max-width: 620px;
+  margin: auto;
+
+  color: #777;
+  line-height: 1.9;
+  font-size: 16px;
+}
+
+/* ========================================= */
+/* FORM */
+/* ========================================= */
+
+.luxury-form {
+  background: rgba(255, 255, 255, 0.72);
+
+  backdrop-filter: blur(18px);
+
+  border-radius: 36px;
+
+  padding: 50px;
+
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+
+  border: 1px solid rgba(255, 255, 255, 0.7);
+
+  transition: all 0.5s ease;
+}
+
+.luxury-form:hover {
+  transform: translateY(-5px);
+
+  box-shadow: 0 25px 60px rgba(216, 139, 161, 0.12);
+}
+
+.form-group {
+  margin-bottom: 28px;
+}
+
+.form-group label {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+
+  margin-bottom: 14px;
+
+  color: #555;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.form-group svg {
+  color: #d88ba1;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+
+  border: none;
+  outline: none;
+
+  padding: 18px 22px;
+
+  border-radius: 18px;
+
+  background: rgba(255, 255, 255, 0.82);
+
+  font-size: 15px;
+  color: #444;
+
+  box-shadow: inset 0 0 0 1px rgba(216, 139, 161, 0.12);
+
+  transition: all 0.3s ease;
+
+  font-family: "Montserrat", sans-serif;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  box-shadow:
+    0 0 0 4px rgba(216, 139, 161, 0.12),
+    inset 0 0 0 1px #d88ba1;
+
+  background: white;
+}
+
+.form-group textarea {
+  resize: none;
+}
+
+/* ========================================= */
+/* BUTTON */
+/* ========================================= */
+
+.submit-wrapper {
+  margin-top: 40px;
+}
+
+.submit-btn {
+  width: 100%;
+
+  border: none;
+
+  padding: 18px;
+
+  border-radius: 999px;
+
+  background: linear-gradient(135deg, #d88ba1, #f3b3c3);
+
+  color: white;
+
+  font-size: 15px;
+  font-weight: 600;
+
+  letter-spacing: 1px;
+
+  cursor: pointer;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+
+  transition: all 0.3s ease;
+
+  animation: pulseGlow 2.6s infinite;
+}
+
+@keyframes pulseGlow {
+  0% {
+    box-shadow:
+      0 0 0 0 rgba(216, 139, 161, 0.45),
+      0 12px 35px rgba(216, 139, 161, 0.28);
+  }
+
+  70% {
+    box-shadow:
+      0 0 0 18px rgba(216, 139, 161, 0),
+      0 12px 35px rgba(216, 139, 161, 0.28);
+  }
+
+  100% {
+    box-shadow:
+      0 0 0 0 rgba(216, 139, 161, 0),
+      0 12px 35px rgba(216, 139, 161, 0.28);
+  }
+}
+
+.submit-btn:hover {
+  transform: translateY(-2px);
+}
+
+/* ========================================= */
+/* POPUP */
+/* ========================================= */
+
+.luxury-popup {
+  border-radius: 34px !important;
+  padding: 40px 30px !important;
+}
+
+.loading-popup,
+.success-popup,
+.error-popup {
+  text-align: center;
+}
+
+.loading-popup h2,
+.success-popup h2,
+.error-popup h2 {
+  margin-top: 22px;
+
+  font-size: 38px;
+
+  color: #b76e79;
+
+  font-family: "Cormorant Garamond", serif;
+}
+
+.loading-popup p,
+.success-popup p,
+.error-popup p {
+  margin-top: 16px;
+
+  line-height: 1.9;
+
+  color: #666;
+}
+
+.loading-heart-wrapper {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+}
+
+.heart-loader {
+  width: 20px;
+  height: 20px;
+
+  background: #f3a6bb;
+
+  position: relative;
+
+  transform: rotate(45deg);
+
+  animation: heartbeat 1s infinite;
+}
+
+.heart-loader::before,
+.heart-loader::after {
+  content: "";
+
+  position: absolute;
+
+  width: 20px;
+  height: 20px;
+
+  background: #f3a6bb;
+
+  border-radius: 50%;
+}
+
+.heart-loader::before {
+  top: -10px;
+  left: 0;
+}
+
+.heart-loader::after {
+  left: -10px;
+  top: 0;
+}
+
+.heart-loader:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.heart-loader:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes heartbeat {
+  0%,
+  100% {
+    transform: rotate(45deg) scale(1);
+
+    opacity: 0.7;
+  }
+
   50% {
-    transform: scale(1.15);
+    transform: rotate(45deg) scale(1.3);
+
+    opacity: 1;
   }
 }
 
-/* --- RESPONSIVE CHO MOBILE --- */
+.success-icon,
+.error-icon {
+  font-size: 60px;
+}
+
+.popup-tag {
+  display: block;
+
+  margin-top: 18px;
+
+  letter-spacing: 3px;
+
+  font-size: 11px;
+
+  color: #c89ca9;
+}
+
+.popup-divider {
+  width: 70px;
+  height: 1px;
+
+  background: #e9c5ce;
+
+  margin: 24px auto;
+}
+
+.popup-note {
+  color: #b48b95;
+  font-size: 14px;
+}
+
+.luxury-btn {
+  border-radius: 999px !important;
+
+  padding: 12px 34px !important;
+
+  font-weight: 500 !important;
+
+  box-shadow: 0 10px 25px rgba(216, 139, 161, 0.2);
+}
+
+.dark {
+  background: #2d2d2d !important;
+}
+
+/* ========================================= */
+/* MOBILE */
+/* ========================================= */
+
 @media (max-width: 768px) {
-  .rsvp-main-title {
-    font-size: 2rem;
+  .rsvp-section {
+    padding: 90px 16px;
   }
-  .luxury-rsvp-form {
-    padding: 30px 20px;
-    border-radius: 20px;
+
+  .rsvp-header h2 {
+    font-size: 38px;
   }
-  .luxury-input,
-  .luxury-select,
-  .luxury-textarea {
-    padding: 12px 16px;
-    font-size: 0.9rem;
+
+  .luxury-form {
+    padding: 28px 22px;
+
+    border-radius: 28px;
   }
-}
-/* Tùy biến hộp thông báo SweetAlert2 chuẩn phong cách đám cưới */
-.luxury-swal-popup {
-  border-radius: 20px !important;
-  padding: 30px !important;
-  font-family: "Montserrat", sans-serif !important;
-  border: 1px solid rgba(244, 143, 177, 0.3) !important;
-  box-shadow: 0 20px 50px rgba(216, 27, 96, 0.08) !important;
-}
 
-.luxury-swal-title {
-  font-family: "Montserrat", sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 1.35rem !important;
-  color: #2d2d2d !important;
-  margin-top: 15px !important;
-}
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 16px 18px;
+  }
 
-.luxury-swal-text {
-  font-family: "Montserrat", sans-serif !important;
-  font-size: 0.9rem !important;
-  color: #666 !important;
-  line-height: 1.5 !important;
-}
-
-.luxury-swal-button {
-  font-family: "Montserrat", sans-serif !important;
-  font-weight: 600 !important;
-  font-size: 0.85rem !important;
-  letter-spacing: 1.5px !important;
-  text-transform: uppercase !important;
-  padding: 12px 35px !important;
-  border-radius: 50px !important;
-  box-shadow: 0 5px 15px rgba(244, 143, 177, 0.3) !important;
-  transition: all 0.3s ease !important;
-}
-
-.luxury-swal-button:hover {
-  transform: translateY(-2px) !important;
-  box-shadow: 0 7px 20px rgba(216, 27, 96, 0.3) !important;
+  .loading-popup h2,
+  .success-popup h2,
+  .error-popup h2 {
+    font-size: 30px;
+  }
 }

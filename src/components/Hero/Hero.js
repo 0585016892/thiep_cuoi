@@ -1,75 +1,112 @@
 import "./Hero.css";
 import { motion } from "framer-motion";
 import anhcuoi from "../../assets/anhcuoi.png";
+import { FaHeart } from "react-icons/fa";
+
 function Hero() {
   return (
-    <section className="hero-frosted">
-      {/* Lớp nền ảnh mờ ảo toàn màn hình */}
-      <div className="background-blur-container">
-        <img src={anhcuoi} alt="Background" className="bg-image-blurred" />
-        <div className="pink-gradient-overlay"></div>
+    <section className="luxury-hero">
+      <div className="falling-hy">
+        <span className="hy-item hy-1">囍</span>
+        <span className="hy-item hy-2">囍</span>
+        <span className="hy-item hy-3">囍</span>
+        <span className="hy-item hy-4">囍</span>
+        <span className="hy-item hy-5">囍</span>
+        <span className="hy-item hy-6">囍</span>
+        <span className="hy-item hy-7">囍</span>
+        <span className="hy-item hy-8">囍</span>
       </div>
+      {/* Background */}
+      <img src={anhcuoi} alt="" className="hero-bg" />
 
-      <div className="hero-content-wrapper">
-        <motion.div
-          initial={{ opacity: 0, backdropFilter: "blur(0px)" }}
-          animate={{ opacity: 1, backdropFilter: "blur(20px)" }}
-          transition={{ duration: 1.5 }}
-          className="glass-card"
-        >
-          <motion.div
-            initial={{ y: 20, opacity: 0 }}
-            animate={{ y: 0, opacity: 1 }}
-            transition={{ delay: 0.5, duration: 1 }}
-            className="glass-inner"
-          >
-            <span className="top-label">MỪNG HẠNH PHÚC</span>
+      {/* Overlay */}
+      <div className="hero-overlay"></div>
 
-            <div className="couple-names-glass">
-              <h1 className="name-main">Khánh Hưng</h1>
-              <div className="heart-separator">
-                <div className="h-line"></div>
-                <motion.span
-                  animate={{ scale: [1, 1.2, 1] }}
-                  transition={{ repeat: Infinity, duration: 2 }}
-                >
-                  ❤
-                </motion.span>
-                <div className="h-line"></div>
-              </div>
-              <h1 className="name-main">Trang Trang</h1>
-            </div>
+      {/* Pink Blur */}
+      <div className="pink-blur"></div>
 
-            <div className="date-location-box">
-              <p className="glass-date">20 . 10 . 2024</p>
-              <div className="dot-divider"></div>
-              <p className="glass-location">
-                Thôn Đồng Tâm, xã Vũ Quý, Tỉnh Hưng Yên
-              </p>
-            </div>
-          </motion.div>
-        </motion.div>
-      </div>
-
-      {/* Hiệu ứng hạt bụi bay lơ lửng */}
-      <div className="floating-particles">
-        {[...Array(6)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="particle"
-            animate={{
-              y: [0, -100, 0],
-              x: [0, 50, 0],
-              opacity: [0, 0.5, 0],
-            }}
-            transition={{
-              duration: Math.random() * 5 + 5,
-              repeat: Infinity,
-              delay: i * 2,
-            }}
-          />
+      {/* Floating petals */}
+      <div className="petals">
+        {[...Array(8)].map((_, i) => (
+          <span key={i} className={`petal petal-${i}`}></span>
         ))}
       </div>
+
+      {/* Content */}
+      <motion.div
+        className="hero-content"
+        initial={{ opacity: 0, y: 40 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 1.2 }}
+      >
+        <span className="save-date">NGÀY CHUNG ĐÔI</span>
+
+        <div className="mini-divider">
+          <div className="line"></div>
+
+          <FaHeart className="mini-heart" />
+
+          <div className="line"></div>
+        </div>
+
+        {/* NAMES */}
+        <div className="hero-names">
+          <motion.h1
+            className="hero-name"
+            animate={{
+              y: [0, -10, 0],
+              rotate: [-1, 1, -1],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          >
+            Khánh Hưng
+          </motion.h1>
+
+          <motion.div
+            className="ampersand"
+            animate={{
+              scale: [1, 1.12, 1],
+            }}
+            transition={{
+              duration: 2,
+              repeat: Infinity,
+            }}
+          >
+            &
+          </motion.div>
+
+          <motion.h1
+            className="hero-name second"
+            animate={{
+              y: [0, 10, 0],
+              rotate: [1, -1, 1],
+            }}
+            transition={{
+              duration: 5,
+              repeat: Infinity,
+              ease: "easeInOut",
+              delay: 1,
+            }}
+          >
+            Trang Trang
+          </motion.h1>
+        </div>
+
+        {/* Bottom divider */}
+        <div className="bottom-divider">✦</div>
+
+        {/* Info */}
+        <p className="hero-date">CHỦ NHẬT, 10 THÁNG 01 — 2027</p>
+
+        <p className="hero-location">📍 XÃ VŨ QUÝ, TỈNH HƯNG YÊN</p>
+      </motion.div>
+
+      {/* Fade */}
+      <div className="hero-fade"></div>
     </section>
   );
 }

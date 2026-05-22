@@ -31,14 +31,14 @@
 .static-pink {
   width: 500px;
   height: 500px;
-  background: var(--lux-pink);
+  background: rgba(255, 228, 196, 0.3);
   top: -10%;
   right: -10%;
 }
 .static-cream {
   width: 400px;
   height: 400px;
-  background: #ffe0b2;
+  background: linear-gradient(180deg, #ffffff 0%, #fff6f8 45%, #fffaf8 100%);
   bottom: -5%;
   left: -5%;
 }
