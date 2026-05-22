@@ -1,0 +1,60 @@
+.wishes-section {
+  padding: 80px 20px;
+  background: #fdfafb;
+}
+
+.wishes-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.header-icon {
+  color: #d81b60;
+  font-size: 2rem;
+  margin-bottom: 10px;
+}
+
+/* Vùng chứa giới hạn chiều cao -> Tránh làm trang web quá dài */
+.wishes-grid {
+  max-width: 900px;
+  margin: 0 auto;
+  max-height: 600px; /* GIỚI HẠN CHIỀU CAO */
+  overflow-y: auto; /* Tự động cuộn trong vùng này */
+  padding: 20px;
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 20px;
+  scrollbar-width: thin; /* Đẹp trên Firefox */
+}
+
+/* Tùy chỉnh thanh cuộn cho sang trọng */
+.wishes-grid::-webkit-scrollbar {
+  width: 6px;
+}
+.wishes-grid::-webkit-scrollbar-thumb {
+  background: #f48fb1;
+  border-radius: 10px;
+}
+
+.wish-item {
+  background: white;
+  padding: 25px;
+  border-radius: 15px;
+  border-left: 4px solid #f48fb1; /* Điểm nhấn sang trọng */
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
+}
+
+.message {
+  font-size: 0.95rem;
+  color: #555;
+  margin-bottom: 15px;
+  font-style: italic;
+}
+.user-info {
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: #d81b60;
+}
+.dot {
+  margin: 0 8px;
+  color: #ccc;
+}

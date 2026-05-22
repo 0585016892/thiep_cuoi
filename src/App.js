@@ -1,23 +1,31 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+
+import Hero from "./components/Hero/Hero";
+import WeddingInfo from "./components/WeddingInfo/WeddingInfo.jsx";
+import Countdown from "./components/Countdown/Countdown";
+import LoveStory from "./components/LoveStory/LoveStory";
+import Gallery from "./components/Gallery/Gallery";
+import Timeline from "./components/Timeline/Timeline";
+import RSVP from "./components/RSVP/RSVP";
+import Wishes from "./components/Wishes/Wishes";
+import QRGift from "./components/QRGift/Gift";
+import Footer from "./components/Footer/Footer.jsx";
+import MusicPlayer from "./components/Music/MusicPlayer";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <MusicPlayer />
+      <Hero />
+      <Countdown />
+      <WeddingInfo />
+      <LoveStory />
+      <Gallery />
+      <Timeline />
+      <RSVP />
+      <Wishes />
+      <QRGift />
+      <Footer />
     </div>
   );
 }

@@ -1,0 +1,273 @@
+/* Footer.css */
+@import url("https://fonts.googleapis.com/css2?family=Dancing+Script:wght@600&family=Playfair+Display:ital,wght@0,400;0,600;1,400&family=Quicksand:wght@400;600&display=swap");
+
+:root {
+  --primary-pink: #d81b60;
+  --soft-pink: #f06292;
+  --bg-gradient: linear-gradient(to bottom, #ffffff, #fff2f5, #ffebee);
+  --text-dark: #4a3e41;
+  --text-light: #8c7b7f;
+}
+
+/* Keyframes cho hiệu ứng xuất hiện ban đầu */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.wedding-footer {
+  background: var(--bg-gradient);
+  padding: 80px 24px 30px;
+  text-align: center;
+  color: var(--text-dark);
+  font-family: "Quicksand", sans-serif;
+  overflow: hidden;
+}
+
+/* Thanh chia dòng điệu đà */
+.footer-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 40px;
+  color: var(--soft-pink);
+  font-size: 0.9rem;
+  opacity: 0.7;
+}
+.footer-divider::before,
+.footer-divider::after {
+  content: "";
+  display: block;
+  width: 60px;
+  height: 1px;
+  background: var(--soft-pink);
+  margin: 0 15px;
+}
+
+/* Tên cô dâu chú rể */
+.names-container {
+  animation: fadeInUp 1s ease-out;
+}
+
+.names {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2rem, 5vw, 3rem); /* Responsive font size tự động co giãn */
+  color: var(--primary-pink);
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px rgba(216, 27, 96, 0.1);
+}
+
+.ampersand {
+  color: var(--soft-pink);
+  font-size: 0.8em;
+}
+
+.ring-icon {
+  font-size: 1.5rem;
+  margin-bottom: 25px;
+  display: inline-block;
+  transition: transform 0.5s ease;
+}
+
+.names-container:hover .ring-icon {
+  transform: scale(1.2) rotate(15deg); /* Nhẫn xoay nhẹ khi hover vùng tên */
+}
+
+/* Lời Chúa */
+.wedding-quote {
+  font-family: "Playfair Display", serif;
+  font-style: italic;
+  font-size: clamp(1rem, 2.5vw, 1.25rem);
+  color: var(--text-dark);
+  max-width: 650px;
+  margin: 0 auto 40px;
+  line-height: 1.8;
+  padding: 0 10px;
+  animation: fadeInUp 1.2s ease-out;
+}
+
+.quote-author {
+  display: block;
+  font-family: "Quicksand", sans-serif;
+  font-style: normal;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--soft-pink);
+  margin-top: 10px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
+
+/* Thẻ ngày tháng & địa điểm */
+.wedding-details {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  margin-bottom: 40px;
+  animation: fadeInUp 1.4s ease-out;
+}
+
+.detail-card {
+  background: rgba(255, 255, 255, 0.8);
+  padding: 12px 25px;
+  border-radius: 50px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+  color: #6d4c41;
+  box-shadow: 0 4px 15px rgba(248, 187, 208, 0.2);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(252, 228, 236, 0.6);
+}
+
+.detail-card:hover {
+  transform: translateY(-5px);
+  background: #ffffff;
+  box-shadow: 0 8px 20px rgba(216, 27, 96, 0.15);
+  border-color: var(--soft-pink);
+}
+
+/* Lời mời */
+.thanks-message {
+  font-size: clamp(0.85rem, 2vw, 1rem);
+  letter-spacing: 1.5px;
+  color: var(--text-light);
+  margin-bottom: 40px;
+  text-transform: uppercase;
+  font-weight: 600;
+  padding: 0 15px;
+}
+
+/* Khung Bản đồ */
+.map-wrapper {
+  max-width: 700px;
+  margin: 0 auto 50px;
+  padding: 12px;
+  background: white;
+  border-radius: 24px;
+  box-shadow: 0 15px 40px rgba(248, 187, 208, 0.4);
+  transition:
+    transform 0.4s ease,
+    box-shadow 0.4s ease;
+}
+
+.map-wrapper:hover {
+  transform: scale(1.01); /* Zoom nhẹ rất sang trọng */
+  box-shadow: 0 20px 50px rgba(216, 27, 96, 0.25);
+}
+
+.google-map {
+  width: 100%;
+  height: 380px;
+  border: none;
+  border-radius: 16px;
+  display: block;
+}
+
+/* Bản quyền dưới cùng */
+.footer-bottom {
+  border-top: 1px solid rgba(248, 187, 208, 0.5);
+  padding-top: 25px;
+  font-size: 0.85rem;
+  color: var(--text-light);
+}
+
+/* --- TỐI ƯU RESPONSIVE CHO MOBILE --- */
+@media (max-width: 680px) {
+  .wedding-footer {
+    padding: 60px 16px 20px;
+  }
+
+  .wedding-details {
+    flex-direction: column; /* Xếp dọc trên điện thoại */
+    align-items: center;
+    gap: 12px;
+  }
+
+  .detail-card {
+    width: 100%;
+    max-width: 280px; /* Giới hạn chiều rộng cho đẹp */
+    justify-content: center;
+  }
+
+  .google-map {
+    height: 280px; /* Thu nhỏ chiều cao map trên điện thoại để đỡ choán chỗ */
+  }
+}
+/* Thêm vào Footer.css */
+
+.lucide-icon {
+  color: #f06292;
+  transition: transform 0.3s ease;
+}
+
+.detail-card:hover .lucide-icon {
+  transform: scale(1.2);
+  color: #d81b60;
+}
+
+.quote-section {
+  position: relative;
+  max-width: 600px;
+  margin: 0 auto 30px;
+}
+
+.quote-icon {
+  color: #fce4ec; /* Màu hồng cực nhạt để làm nền */
+  position: absolute;
+  top: -15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 0;
+}
+
+.wedding-quote {
+  position: relative;
+  z-index: 1;
+  font-family: "Playfair Display", serif;
+  font-size: 1.15rem;
+  line-height: 1.8;
+  color: #5d4037;
+}
+
+.sub-title {
+  text-transform: uppercase;
+  letter-spacing: 4px;
+  font-size: 0.75rem;
+  color: #ad8b96;
+  margin-top: -10px;
+  margin-bottom: 30px;
+}
+
+/* Hiệu ứng Heart đập nhẹ ở divider */
+.footer-divider svg {
+  animation: heartbeat 1.5s infinite;
+}
+
+@keyframes heartbeat {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+/* Map wrapper mềm mại hơn */
+.map-wrapper {
+  border: 1px solid #fce4ec;
+  padding: 8px;
+  background: #fff;
+  border-radius: 30px; /* Bo góc cực đại cho giống thiệp hiện đại */
+  box-shadow: 0 20px 40px rgba(248, 187, 208, 0.2);
+}

@@ -1,0 +1,232 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
+:root {
+  --t-pink: #f48fb1;
+  --t-deep: #d81b60;
+  --t-gold: #c5a880;
+  --t-dark: #2d2d2d;
+  --t-glass: rgba(255, 255, 255, 0.9);
+}
+
+.luxury-timeline-section {
+  width: 100%;
+  padding: 100px 20px;
+  background-color: #fffbfa;
+  overflow: hidden;
+}
+
+.timeline-container {
+  width: 100%;
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Header */
+.timeline-header {
+  text-align: center;
+  margin-bottom: 70px;
+}
+.timeline-tag {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 5px;
+  color: var(--t-gold);
+  font-weight: 600;
+  display: block;
+}
+.timeline-main-title {
+  font-family: "Cinzel", serif;
+  font-size: 2.5rem;
+  color: var(--t-dark);
+  margin: 10px 0 0;
+}
+.timeline-title-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--t-pink);
+  margin: 15px auto 0;
+}
+
+/* --- BỐ CỤC TIMELINE TRÊN PC --- */
+.luxury-timeline-wrapper {
+  position: relative;
+  width: 100%;
+  padding: 20px 0;
+}
+
+/* Trục dọc trung tâm chuẩn chỉ */
+.timeline-main-line {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 50%;
+  width: 2px;
+  background: linear-gradient(
+    to bottom,
+    transparent,
+    var(--t-pink) 10%,
+    var(--t-pink) 90%,
+    transparent
+  );
+  transform: translateX(-50%);
+  transform-origin: top;
+  z-index: 1;
+}
+
+.luxury-timeline-item {
+  position: relative;
+  width: 100%;
+  margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+}
+.luxury-timeline-item:last-child {
+  margin-bottom: 0;
+}
+
+/* Điều hướng trái - phải cho các cột PC */
+.pc-left {
+  flex-direction: row;
+}
+.pc-left .luxury-timeline-content {
+  margin-right: auto;
+  text-align: right;
+}
+.pc-left .luxury-map-btn {
+  flex-direction: row-reverse;
+} /* Đảo chiều icon map bên trái cho thuận mắt */
+
+.pc-right {
+  flex-direction: row-reverse;
+}
+.pc-right .luxury-timeline-content {
+  margin-left: auto;
+  text-align: left;
+}
+
+/* Hộp nội dung */
+.luxury-timeline-content {
+  position: relative;
+  width: 43%;
+  background: var(--t-glass);
+  border: 1px solid rgba(244, 143, 177, 0.2);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  padding: 35px;
+  border-radius: 20px;
+  box-shadow: 0 15px 40px rgba(216, 27, 96, 0.02);
+  z-index: 2;
+}
+
+.event-title {
+  font-family: "Montserrat", sans-serif;
+  font-size: 1.3rem;
+  color: var(--t-dark);
+  font-weight: 600;
+  margin: 0 0 10px 0;
+}
+.event-time {
+  font-family: "Cinzel", serif;
+  font-size: 1rem;
+  color: var(--t-deep);
+  font-weight: 600;
+  display: block;
+  margin-bottom: 12px;
+}
+.event-location {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+  color: #555;
+  margin: 0 0 20px 0;
+}
+
+/* Nút Bản Đồ Tinh Tế */
+.luxury-map-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 22px;
+  border-radius: 50px;
+  background: transparent;
+  border: 1px solid var(--t-pink);
+  color: var(--t-deep);
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  transition: all 0.3s ease;
+}
+.luxury-map-btn:hover {
+  background: var(--t-deep);
+  color: white;
+  border-color: var(--t-deep);
+  box-shadow: 0 5px 15px rgba(216, 27, 96, 0.2);
+}
+.btn-icon {
+  font-size: 0.9rem;
+}
+
+/* Vòng tròn ghim giữa trục */
+.luxury-timeline-badge {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  background: white;
+  border: 2px solid var(--t-pink);
+  color: var(--t-deep);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.1rem;
+  z-index: 5;
+  box-shadow: 0 4px 15px rgba(244, 143, 177, 0.15);
+}
+
+/* --- XỬ LÝ KHẮC PHỤC LỖI TRÊN MOBILE (DƯỚI 768PX) --- */
+@media (max-width: 768px) {
+  .timeline-main-title {
+    font-size: 2rem;
+  }
+
+  /* Đưa trục dọc về lề trái cố định 20px */
+  .timeline-main-line {
+    left: 20px;
+    transform: none;
+  }
+
+  /* Ép mọi hộp dòng thời gian dạt hết sang phải đồng đều */
+  .luxury-timeline-item.pc-left,
+  .luxury-timeline-item.pc-right {
+    flex-direction: row-reverse !important;
+    padding-left: 55px;
+    margin-bottom: 35px;
+  }
+
+  /* Định hình lại thẻ chữ lề trái thông thường */
+  .luxury-timeline-item.pc-left .luxury-timeline-content,
+  .luxury-timeline-item.pc-right .luxury-timeline-content {
+    width: 100% !important;
+    text-align: left !important;
+    padding: 25px;
+  }
+
+  .luxury-timeline-item.pc-left .luxury-map-btn {
+    flex-direction: row !important; /* Trả nút map về đúng chiều đọc trái qua phải */
+  }
+
+  /* SỬA LỖI CORE: Ép các nút tròn tâm trục nằm chính xác đè lên đường line lề trái 20px */
+  .luxury-timeline-badge {
+    left: 20px !important;
+    top: 35px !important; /* Neo cố định ở góc trên thẻ thay vì center 50% tránh vỡ layout khi thẻ dài */
+    transform: translate(-50%, 0) !important;
+    width: 36px;
+    height: 36px;
+    font-size: 0.95rem;
+  }
+}

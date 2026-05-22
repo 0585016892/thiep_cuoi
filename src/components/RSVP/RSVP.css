@@ -1,0 +1,283 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@400;600&family=Montserrat:wght@300;400;500;600&display=swap");
+
+:root {
+  --r-pink: #f48fb1;
+  --r-deep: #d81b60;
+  --r-gold: #c5a880;
+  --r-dark: #2d2d2d;
+  --r-glass: rgba(255, 255, 255, 0.88);
+}
+
+.luxury-rsvp-section {
+  position: relative;
+  width: 100%;
+  padding: 100px 20px;
+  background-color: #fffbfa;
+  overflow: hidden;
+}
+
+/* Đốm sáng nghệ thuật làm nền */
+.rsvp-bg-glow-top {
+  position: absolute;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(
+    circle,
+    rgba(244, 143, 177, 0.12) 0%,
+    transparent 70%
+  );
+  top: -100px;
+  left: -100px;
+  pointer-events: none;
+}
+.rsvp-bg-glow-bottom {
+  position: absolute;
+  width: 500px;
+  height: 500px;
+  background: radial-gradient(
+    circle,
+    rgba(197, 168, 128, 0.1) 0%,
+    transparent 70%
+  );
+  bottom: -150px;
+  right: -150px;
+  pointer-events: none;
+}
+
+.rsvp-container {
+  width: 100%;
+  max-width: 650px; /* Bóp nhỏ form lại để hiển thị tập trung cân đối */
+  margin: 0 auto;
+  position: relative;
+  z-index: 10;
+}
+
+/* Header */
+.rsvp-header {
+  text-align: center;
+  margin-bottom: 50px;
+}
+.rsvp-main-icon {
+  font-size: 1.5rem;
+  color: var(--r-pink);
+  display: inline-block;
+  margin-bottom: 10px;
+  animation: heartPulse 2s infinite ease-in-out;
+}
+.rsvp-tag {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.75rem;
+  letter-spacing: 4px;
+  color: var(--r-gold);
+  font-weight: 600;
+  display: block;
+}
+.rsvp-main-title {
+  font-family: "Cinzel", serif;
+  font-size: 2.6rem;
+  color: var(--r-dark);
+  margin: 10px 0 0;
+}
+.rsvp-title-divider {
+  width: 40px;
+  height: 2px;
+  background: var(--r-pink);
+  margin: 15px auto;
+}
+.rsvp-subtitle {
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+  color: #666;
+  max-width: 450px;
+  margin: 0 auto;
+  line-height: 1.5;
+}
+
+/* Khung Form Kính Glassmorphism */
+.luxury-rsvp-form {
+  background: var(--r-glass);
+  border: 1px solid rgba(244, 143, 177, 0.25);
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  padding: 45px 40px;
+  border-radius: 24px;
+  box-shadow: 0 25px 55px rgba(216, 27, 96, 0.04);
+  will-change: transform, opacity;
+}
+
+.luxury-input-group {
+  margin-bottom: 25px;
+}
+.luxury-input-group:last-of-type {
+  margin-bottom: 35px;
+}
+
+.input-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--r-dark);
+  margin-bottom: 10px;
+  letter-spacing: 0.5px;
+}
+.label-icon {
+  font-size: 0.8rem;
+  color: var(--r-gold);
+}
+
+.input-field-wrapper {
+  position: relative;
+  width: 100%;
+}
+
+/* Định dạng Input, Select, Textarea */
+.luxury-input,
+.luxury-select,
+.luxury-textarea {
+  width: 100%;
+  background: rgba(255, 255, 255, 0.7);
+  border: 1px solid rgba(0, 0, 0, 0.08);
+  border-radius: 12px;
+  padding: 14px 18px;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.95rem;
+  color: var(--r-dark);
+  outline: none;
+  transition: all 0.3s cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+.luxury-textarea {
+  resize: vertical;
+}
+
+/* Hiệu ứng khi nhấp chuột vào ô điền form */
+.luxury-input:focus,
+.luxury-select:focus,
+.luxury-textarea:focus {
+  background: #ffffff;
+  border-color: var(--r-pink);
+  box-shadow: 0 0 0 4px rgba(244, 143, 177, 0.12);
+}
+
+/* Custom lại mũi tên của thẻ Select cho sang */
+.select-arrow::after {
+  content: "▾";
+  font-size: 0.8rem;
+  color: #888;
+  position: absolute;
+  right: 18px;
+  top: 50%;
+  transform: translateY(-50%);
+  pointer-events: none;
+}
+.luxury-select {
+  appearance: none;
+  -webkit-appearance: none;
+  padding-right: 40px;
+  cursor: pointer;
+}
+
+/* Nút Submit Đỉnh Cao */
+.luxury-submit-btn {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 15px;
+  border: none;
+  border-radius: 50px;
+  background: linear-gradient(135deg, #f48fb1 0%, #d81b60 100%);
+  color: white;
+  font-family: "Montserrat", sans-serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(216, 27, 96, 0.2);
+  transition: all 0.3s ease;
+}
+.luxury-submit-btn:hover {
+  box-shadow: 0 12px 30px rgba(216, 27, 96, 0.32);
+}
+.luxury-submit-btn:disabled {
+  background: #ccc;
+  box-shadow: none;
+  cursor: not-allowed;
+}
+
+.plane-icon {
+  font-size: 0.95rem;
+  transition: transform 0.3s ease;
+}
+
+/* Hiệu ứng rung nhẹ trái tim trên tiêu đề */
+@keyframes heartPulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.15);
+  }
+}
+
+/* --- RESPONSIVE CHO MOBILE --- */
+@media (max-width: 768px) {
+  .rsvp-main-title {
+    font-size: 2rem;
+  }
+  .luxury-rsvp-form {
+    padding: 30px 20px;
+    border-radius: 20px;
+  }
+  .luxury-input,
+  .luxury-select,
+  .luxury-textarea {
+    padding: 12px 16px;
+    font-size: 0.9rem;
+  }
+}
+/* Tùy biến hộp thông báo SweetAlert2 chuẩn phong cách đám cưới */
+.luxury-swal-popup {
+  border-radius: 20px !important;
+  padding: 30px !important;
+  font-family: "Montserrat", sans-serif !important;
+  border: 1px solid rgba(244, 143, 177, 0.3) !important;
+  box-shadow: 0 20px 50px rgba(216, 27, 96, 0.08) !important;
+}
+
+.luxury-swal-title {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 1.35rem !important;
+  color: #2d2d2d !important;
+  margin-top: 15px !important;
+}
+
+.luxury-swal-text {
+  font-family: "Montserrat", sans-serif !important;
+  font-size: 0.9rem !important;
+  color: #666 !important;
+  line-height: 1.5 !important;
+}
+
+.luxury-swal-button {
+  font-family: "Montserrat", sans-serif !important;
+  font-weight: 600 !important;
+  font-size: 0.85rem !important;
+  letter-spacing: 1.5px !important;
+  text-transform: uppercase !important;
+  padding: 12px 35px !important;
+  border-radius: 50px !important;
+  box-shadow: 0 5px 15px rgba(244, 143, 177, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.luxury-swal-button:hover {
+  transform: translateY(-2px) !important;
+  box-shadow: 0 7px 20px rgba(216, 27, 96, 0.3) !important;
+}

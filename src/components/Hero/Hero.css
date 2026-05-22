@@ -1,0 +1,179 @@
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;500&family=Dancing+Script:wght@700&display=swap");
+
+.hero-frosted {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+  background: #000; /* Nền tối để ảnh mờ nổi bật hơn */
+}
+
+/* Background layer */
+.background-blur-container {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
+
+.bg-image-blurred {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* GIẢM BLUR: Từ 15px xuống 4px để ảnh rõ nét hơn */
+  filter: blur(4px) brightness(0.9);
+  transform: scale(1.05); /* Giảm scale vì blur ít hơn không lo lộ mép */
+  transition: filter 0.5s ease;
+}
+
+.pink-gradient-overlay {
+  position: absolute;
+  inset: 0;
+  /* ĐIỀU CHỈNH GRADIENT: 
+     - Thay rgba(0,0,0,0.3) bằng màu hồng rất nhạt hoặc trong suốt hoàn toàn 
+     - Tăng điểm dừng để vùng trung tâm rộng hơn */
+  background: radial-gradient(
+    circle at center,
+    rgba(252, 228, 236, 0.2) 0%,
+    rgba(255, 250, 255, 0.1) 60%,
+    rgba(0, 0, 0, 0.2) 100%
+  );
+}
+/* Glassmorphism Card */
+.hero-content-wrapper {
+  position: relative;
+  z-index: 10;
+  width: 85%;
+  max-width: 450px;
+}
+
+.glass-card {
+  /* Tăng độ trong suốt của thẻ kính để nhìn xuyên qua ảnh tốt hơn */
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 30px;
+  padding: 40px 20px;
+  backdrop-filter: blur(8px); /* Giảm blur của thẻ kính để trong trẻo hơn */
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.1);
+}
+
+/* Typography */
+.glass-inner {
+  text-align: center;
+}
+
+.top-label {
+  font-family: "Quicksand", sans-serif;
+  letter-spacing: 5px;
+  font-size: 0.7rem;
+  color: rgba(255, 255, 255, 0.8);
+  text-transform: uppercase;
+}
+
+.couple-names-glass {
+  margin: 30px 0;
+}
+
+.name-main {
+  font-family: "Dancing Script", cursive;
+  font-size: clamp(2.5rem, 10vw, 4rem);
+  color: #fff;
+  text-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  margin: 0;
+}
+
+.heart-separator {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 10px 0;
+  color: #f06292;
+}
+
+.h-line {
+  width: 40px;
+  height: 1px;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.date-location-box {
+  margin-top: 30px;
+}
+
+.glass-date {
+  font-family: "Quicksand", sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  color: #fff;
+  letter-spacing: 3px;
+  margin: 0;
+}
+
+.dot-divider {
+  width: 4px;
+  height: 4px;
+  background: #f06292;
+  border-radius: 50%;
+  margin: 10px auto;
+}
+
+.glass-location {
+  font-family: "Quicksand", sans-serif;
+  font-size: 0.75rem;
+  color: rgba(255, 255, 255, 0.7);
+  letter-spacing: 2px;
+}
+
+/* Hạt bay trang trí */
+.floating-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+/* Các hạt bụi sáng cho sáng hơn chút để nổi bật trên nền rõ */
+.particle {
+  position: absolute;
+  width: 5px;
+  height: 5px;
+  background: #ffffff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #fce4ec;
+  opacity: 0.8;
+}
+
+/* Đặt vị trí ngẫu nhiên cho các hạt */
+.particle:nth-child(1) {
+  top: 20%;
+  left: 10%;
+}
+.particle:nth-child(2) {
+  top: 60%;
+  left: 80%;
+}
+.particle:nth-child(3) {
+  top: 10%;
+  left: 70%;
+}
+.particle:nth-child(4) {
+  top: 80%;
+  left: 20%;
+}
+.particle:nth-child(5) {
+  top: 40%;
+  left: 50%;
+}
+
+/* Tối ưu Mobile */
+@media (max-width: 480px) {
+  .glass-card {
+    padding: 30px 15px;
+  }
+  .name-main {
+    font-size: 2.8rem;
+  }
+}
