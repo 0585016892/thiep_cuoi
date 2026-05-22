@@ -4,28 +4,27 @@ import {
   Container,
   Title,
   Text,
-  SimpleGrid,
   Card,
   Group,
   Avatar,
   Badge,
-  Button,
   Stack,
 } from "@mantine/core";
-import "./Wishes.css";
-import { IconHeart, IconCheck, IconGlassFull } from "@tabler/icons-react";
 
 import { motion } from "framer-motion";
 
+import { IconHeart } from "@tabler/icons-react";
+
+import "./Wishes.css";
+
 function Wishes() {
   const [wishes, setWishes] = useState([]);
-  const [visible, setVisible] = useState(9);
 
   useEffect(() => {
     const callbackName = "handleWishesData";
 
     window[callbackName] = (data) => {
-      setWishes(data.filter((w) => w.message && w.name).reverse());
+      setWishes(data.filter((w) => w.message && w.name));
     };
 
     const script = document.createElement("script");
@@ -34,115 +33,98 @@ function Wishes() {
 
     document.body.appendChild(script);
 
-    return () => document.body.removeChild(script);
+    return () => {
+      document.body.removeChild(script);
+    };
   }, []);
-  console.log(wishes);
 
   return (
-    <div
-      style={{
-        background: "#faf7f2",
-        padding: "100px 20px",
-      }}
-    >
-      <Container size="lg">
+    <section className="wishes-section">
+      {/* blur background */}
+      <div className="blur blur-1"></div>
+      <div className="blur blur-2"></div>
+
+      <Container size="xl">
         {/* Header */}
-        <Stack align="center" mb={60}>
-          <Title order={1} className="wishes-title_h2">
+        <Stack align="center" mb={70}>
+          <span className="wish-tag">Wedding Wishes</span>
+
+          <Title order={1} className="wishes-title">
             Sổ Lưu Bút
           </Title>
 
-          <Text c="dimmed" ta="center" maw={600}>
+          <Text c="dimmed" ta="center" maw={650} className="wish-subtitle">
             Những lời chúc chân thành sẽ trở thành kỷ niệm đẹp nhất của chúng
             mình 🤍
           </Text>
         </Stack>
 
-        {/* List */}
-        <SimpleGrid cols={{ base: 1, sm: 2, lg: 3 }} spacing="lg">
-          {wishes.slice(0, visible).map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, y: 15 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.3 }}
-            >
-              <Card
-                radius="xl"
-                shadow="sm"
-                padding="lg"
-                withBorder
-                style={{
-                  height: "100%",
-                  background: "rgba(255,255,255,0.85)",
-                  backdropFilter: "blur(10px)",
-                }}
-              >
-                <Group mb="md">
-                  <Avatar radius="xl" color="pink" variant="light">
-                    {item.name?.charAt(0)?.toUpperCase()}
-                  </Avatar>
+        {/* marquee row 1 */}
+        <div className="marquee">
+          <div className="marquee-track">
+            {[...wishes, ...wishes].map((item, index) => (
+              <WishCard item={item} index={index} />
+            ))}
+          </div>
+        </div>
 
-                  <div>
-                    <Text fw={600}>{item.name}</Text>
-
-                    <Badge
-                      mt={4}
-                      radius="sm"
-                      color={item.attend === "Tham dự" ? "green" : "yellow"}
-                      leftSection={
-                        item.attend === "Tham dự" ? (
-                          <IconCheck size={12} />
-                        ) : (
-                          <IconGlassFull size={12} />
-                        )
-                      }
-                    >
-                      {item.attend === "Có tham dự"
-                        ? "Sẽ tham dự"
-                        : "Gửi lời chúc"}
-                    </Badge>
-                  </div>
-                </Group>
-
-                <Text
-                  size="sm"
-                  c="dimmed"
-                  style={{
-                    lineHeight: 1.8,
-                  }}
-                >
-                  <IconHeart
-                    size={14}
-                    style={{
-                      display: "inline",
-                      marginRight: 8,
-                      color: "#ff6b81",
-                    }}
-                  />
-                  {item.message}
-                </Text>
-              </Card>
-            </motion.div>
-          ))}
-        </SimpleGrid>
-
-        {/* Load more */}
-        {visible < wishes.length && (
-          <Group justify="center" mt={50}>
-            <Button
-              radius="xl"
-              size="md"
-              color="dark"
-              onClick={() => setVisible((v) => v + 9)}
-            >
-              Xem thêm
-            </Button>
-          </Group>
-        )}
+        {/* marquee row 2 */}
+        <div className="marquee reverse">
+          <div className="marquee-track">
+            {[...wishes, ...wishes].map((item, index) => (
+              <WishCard item={item} index={index} />
+            ))}
+          </div>
+        </div>
       </Container>
-    </div>
+    </section>
+  );
+}
+
+function WishCard({ item, index }) {
+  return (
+    <motion.div
+      key={index}
+      whileHover={{
+        y: -8,
+        rotate: 0,
+        scale: 1.02,
+      }}
+      transition={{ duration: 0.25 }}
+      className={`wish-wrapper rotate-${(index % 4) + 1}`}
+    >
+      <Card className="wish-card" radius="32px" shadow="sm">
+        {/* top */}
+        <Group mb="lg">
+          <Avatar radius="xl" color="pink" variant="light" size={52}>
+            {item.name?.charAt(0)?.toUpperCase()}
+          </Avatar>
+
+          <div>
+            <Text fw={700} size="sm">
+              {item.name}
+            </Text>
+
+            <Badge
+              mt={5}
+              radius="xl"
+              size="sm"
+              variant="light"
+              color={item.attend === "Có tham dự" ? "green" : "pink"}
+            >
+              {item.attend === "Có tham dự" ? "Sẽ tham dự" : "Gửi lời chúc"}
+            </Badge>
+          </div>
+        </Group>
+
+        {/* message */}
+        <Text className="wish-message">
+          <IconHeart size={16} className="heart-icon" />
+
+          {item.message}
+        </Text>
+      </Card>
+    </motion.div>
   );
 }
 
