@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 import "./MusicPlayer.css";
 import phuong1 from "../../assets/phuong-left.png";
 import phuong2 from "../../assets/phuong-right.png";
-import chuhy from "../../assets/Thiết kế chưa có tên.png";
+import chuhy from "../../assets/chuhy.png";
 function MusicPlayer() {
   const audioRef = useRef(null);
 
