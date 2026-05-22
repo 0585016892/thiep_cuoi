@@ -6,7 +6,6 @@ import {
   FaGlassCheers,
   FaMapMarkerAlt,
   FaChurch,
-  FaRing,
 } from "react-icons/fa";
 
 import "./Timeline.css";
