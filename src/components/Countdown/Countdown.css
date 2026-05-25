@@ -371,26 +371,146 @@
 
 @media (max-width: 768px) {
   .romantic-countdown {
-    padding: 90px 16px;
+    padding: 70px 14px;
+  }
+
+  /* HEADER */
+  .countdown-header {
+    margin-bottom: 40px;
+  }
+
+  .countdown-heart {
+    width: 62px;
+    height: 62px;
+
+    font-size: 22px;
+  }
+
+  .countdown-tag {
+    margin-top: 18px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
   }
 
   .countdown-header h2 {
-    font-size: 48px;
+    margin-top: 14px;
+
+    font-size: 38px;
+
+    line-height: 1.3;
   }
 
+  .countdown-divider {
+    width: 60px;
+
+    margin: 18px auto;
+  }
+
+  .countdown-header p {
+    font-size: 14px;
+
+    line-height: 1.7;
+
+    padding: 0 4px;
+  }
+
+  /* GRID */
   .countdown-grid {
     grid-template-columns: repeat(2, 1fr);
 
-    gap: 16px;
+    gap: 12px;
   }
 
+  /* CARD */
   .countdown-card {
-    padding: 30px 16px;
+    padding: 24px 10px;
 
-    border-radius: 26px;
+    border-radius: 22px;
+
+    box-shadow: 0 10px 28px rgba(0, 0, 0, 0.04);
   }
 
   .count-number {
-    font-size: 52px;
+    font-size: 42px;
+
+    line-height: 1;
+  }
+
+  .count-label {
+    margin-top: 12px;
+
+    font-size: 10px;
+
+    letter-spacing: 2px;
+  }
+
+  .bottom-line {
+    width: 40px;
+
+    margin-top: 16px;
+  }
+
+  /* FOOTER */
+  .countdown-footer {
+    margin-top: 40px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+
+    padding: 0 10px;
+  }
+
+  /* BLUR nhỏ lại */
+  .blur1 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .blur2 {
+    width: 220px;
+    height: 220px;
+  }
+
+  /* HEARTS */
+  .floating-hearts span {
+    font-size: 16px;
+  }
+}
+
+/* MOBILE NHỎ */
+@media (max-width: 480px) {
+  .romantic-countdown {
+    padding: 60px 12px;
+  }
+
+  .countdown-header h2 {
+    font-size: 32px;
+  }
+
+  .countdown-grid {
+    gap: 10px;
+  }
+
+  .countdown-card {
+    padding: 20px 8px;
+
+    border-radius: 18px;
+  }
+
+  .count-number {
+    font-size: 36px;
+  }
+
+  .count-label {
+    font-size: 9px;
+
+    letter-spacing: 1.5px;
+  }
+
+  .countdown-footer {
+    font-size: 12px;
   }
 }

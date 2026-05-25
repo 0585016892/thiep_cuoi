@@ -428,45 +428,249 @@
 /* ======================================= */
 /* MOBILE */
 /* ======================================= */
+/* ======================================= */
+/* RESPONSIVE */
+/* ======================================= */
 
 @media (max-width: 768px) {
   .romantic-timeline {
-    padding: 90px 16px;
+    padding: 70px 14px;
   }
 
+  .timeline-container {
+    max-width: 100%;
+  }
+
+  /* HEADER */
+  .timeline-header {
+    margin-bottom: 50px;
+  }
+
+  .timeline-tag {
+    font-size: 10px;
+
+    letter-spacing: 3px;
+  }
+
+  /* GIỮ FONT ĐẸP */
   .timeline-header h2 {
-    font-size: 46px;
+    margin-top: 14px;
+
+    font-size: clamp(38px, 10vw, 58px);
+
+    line-height: 1.2;
   }
 
+  .timeline-line {
+    width: 60px;
+
+    margin: 18px auto;
+  }
+
+  .timeline-header p {
+    max-width: 100%;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    padding: 0 4px;
+  }
+
+  /* CENTER LINE */
   .center-line {
-    left: 36px;
+    left: 28px;
+
+    width: 1px;
   }
 
+  /* ITEM */
   .timeline-item {
     width: 100%;
 
-    padding-left: 90px !important;
+    left: 0 !important;
+
+    padding-left: 70px !important;
     padding-right: 0 !important;
 
-    left: 0 !important;
+    margin-bottom: 42px;
   }
 
+  /* ICON */
   .timeline-icon {
     left: 0 !important;
 
-    width: 68px;
-    height: 68px;
+    top: 20px;
 
-    font-size: 22px;
+    width: 54px;
+    height: 54px;
+
+    font-size: 18px;
+
+    box-shadow: 0 10px 24px rgba(216, 139, 161, 0.18);
   }
 
+  /* CARD */
   .timeline-card {
-    padding: 28px 24px;
+    padding: 22px 18px;
 
-    border-radius: 28px;
+    border-radius: 22px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  .timeline-card:hover {
+    transform: none;
+  }
+
+  /* CONTENT */
+  .event-time {
+    padding: 6px 14px;
+
+    font-size: 10px;
+
+    letter-spacing: 1px;
+  }
+
+  /* GIỮ FONT H3 */
+  .timeline-card h3 {
+    margin-top: 16px;
+
+    font-size: clamp(26px, 7vw, 40px);
+
+    line-height: 1.25;
+  }
+
+  .event-desc {
+    margin-top: 12px;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+  }
+
+  .event-location {
+    margin-top: 16px;
+
+    gap: 8px;
+
+    font-size: 13px;
+
+    line-height: 1.7;
+  }
+
+  /* BUTTON */
+  .map-btn {
+    margin-top: 20px;
+
+    padding: 11px 18px;
+
+    gap: 8px;
+
+    font-size: 12px;
+  }
+
+  /* BLUR */
+  .blur1 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .blur2 {
+    width: 220px;
+    height: 220px;
+  }
+
+  /* FLOAT HEART */
+  .floating-hearts span {
+    font-size: 16px;
+  }
+}
+
+/* ======================================= */
+/* MOBILE NHỎ */
+/* ======================================= */
+
+@media (max-width: 480px) {
+  .romantic-timeline {
+    padding: 55px 10px;
+  }
+
+  .timeline-header {
+    margin-bottom: 42px;
+  }
+
+  .timeline-tag {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+  .timeline-header h2 {
+    font-size: clamp(32px, 11vw, 48px);
+  }
+
+  .timeline-header p {
+    font-size: 12.5px;
+  }
+
+  /* LINE */
+  .center-line {
+    left: 24px;
+  }
+
+  /* ITEM */
+  .timeline-item {
+    padding-left: 60px !important;
+
+    margin-bottom: 36px;
+  }
+
+  /* ICON */
+  .timeline-icon {
+    width: 46px;
+    height: 46px;
+
+    font-size: 15px;
+  }
+
+  /* CARD */
+  .timeline-card {
+    padding: 18px 14px;
+
+    border-radius: 18px;
   }
 
   .timeline-card h3 {
-    font-size: 30px;
+    font-size: clamp(24px, 8vw, 34px);
+  }
+
+  .event-desc {
+    font-size: 12.5px;
+  }
+
+  .event-location {
+    font-size: 12px;
+  }
+
+  .map-btn {
+    width: 100%;
+
+    justify-content: center;
+
+    padding: 12px 16px;
+
+    font-size: 11px;
+  }
+
+  /* BLUR */
+  .blur1 {
+    width: 140px;
+    height: 140px;
+  }
+
+  .blur2 {
+    width: 160px;
+    height: 160px;
   }
 }

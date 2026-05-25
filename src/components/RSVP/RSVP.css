@@ -519,30 +519,300 @@
 /* MOBILE */
 /* ========================================= */
 
+/* ========================================= */
+/* RESPONSIVE */
+/* ========================================= */
+
 @media (max-width: 768px) {
   .rsvp-section {
-    padding: 90px 16px;
+    padding: 70px 14px;
   }
 
+  .rsvp-container {
+    max-width: 100%;
+  }
+
+  /* HEADER */
+  .rsvp-header {
+    margin-bottom: 42px;
+  }
+
+  .header-heart {
+    width: 62px;
+    height: 62px;
+
+    font-size: 22px;
+  }
+
+  .header-tag {
+    margin-top: 16px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+  }
+
+  /* GIỮ FONT ĐẸP */
   .rsvp-header h2 {
-    font-size: 38px;
+    margin-top: 14px;
+
+    font-size: clamp(38px, 10vw, 56px);
+
+    line-height: 1.2;
   }
 
-  .luxury-form {
-    padding: 28px 22px;
+  .header-line {
+    width: 60px;
 
-    border-radius: 28px;
+    margin: 18px auto;
+  }
+
+  .rsvp-header p {
+    max-width: 100%;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    padding: 0 4px;
+  }
+
+  /* FORM */
+  .luxury-form {
+    padding: 24px 18px;
+
+    border-radius: 24px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  .luxury-form:hover {
+    transform: none;
+  }
+
+  .form-group {
+    margin-bottom: 20px;
+  }
+
+  .form-group label {
+    gap: 8px;
+
+    margin-bottom: 10px;
+
+    font-size: 13px;
   }
 
   .form-group input,
   .form-group select,
   .form-group textarea {
-    padding: 16px 18px;
+    padding: 14px 16px;
+
+    border-radius: 16px;
+
+    font-size: 13px;
+  }
+
+  .form-group textarea {
+    min-height: 120px;
+  }
+
+  /* BUTTON */
+  .submit-wrapper {
+    margin-top: 28px;
+  }
+
+  .submit-btn {
+    padding: 14px 16px;
+
+    gap: 10px;
+
+    font-size: 13px;
+  }
+
+  /* POPUP */
+  .luxury-popup {
+    border-radius: 24px !important;
+
+    padding: 28px 18px !important;
   }
 
   .loading-popup h2,
   .success-popup h2,
   .error-popup h2 {
-    font-size: 30px;
+    margin-top: 18px;
+
+    font-size: clamp(28px, 7vw, 40px);
+
+    line-height: 1.2;
+  }
+
+  .loading-popup p,
+  .success-popup p,
+  .error-popup p {
+    margin-top: 12px;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+  }
+
+  .success-icon,
+  .error-icon {
+    font-size: 48px;
+  }
+
+  .popup-tag {
+    margin-top: 14px;
+
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+  .popup-divider {
+    width: 55px;
+
+    margin: 18px auto;
+  }
+
+  .popup-note {
+    font-size: 12px;
+
+    line-height: 1.7;
+  }
+
+  .luxury-btn {
+    padding: 10px 24px !important;
+
+    font-size: 13px !important;
+  }
+
+  /* BLUR */
+  .blur1 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .blur2 {
+    width: 220px;
+    height: 220px;
+  }
+
+  /* FLOAT HEART */
+  .floating-hearts span {
+    font-size: 16px;
+  }
+}
+
+/* ========================================= */
+/* MOBILE NHỎ */
+/* ========================================= */
+
+@media (max-width: 480px) {
+  .rsvp-section {
+    padding: 55px 10px;
+  }
+
+  .rsvp-header {
+    margin-bottom: 36px;
+  }
+
+  .header-heart {
+    width: 56px;
+    height: 56px;
+
+    font-size: 18px;
+  }
+
+  .header-tag {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+  .rsvp-header h2 {
+    font-size: clamp(32px, 11vw, 48px);
+  }
+
+  .rsvp-header p {
+    font-size: 12.5px;
+  }
+
+  /* FORM */
+  .luxury-form {
+    padding: 20px 14px;
+
+    border-radius: 20px;
+  }
+
+  .form-group {
+    margin-bottom: 18px;
+  }
+
+  .form-group label {
+    font-size: 12px;
+  }
+
+  .form-group input,
+  .form-group select,
+  .form-group textarea {
+    padding: 13px 14px;
+
+    border-radius: 14px;
+
+    font-size: 12.5px;
+  }
+
+  .submit-btn {
+    padding: 13px 14px;
+
+    font-size: 12px;
+  }
+
+  /* POPUP */
+  .luxury-popup {
+    border-radius: 20px !important;
+
+    padding: 22px 14px !important;
+  }
+
+  .loading-popup h2,
+  .success-popup h2,
+  .error-popup h2 {
+    font-size: clamp(24px, 8vw, 34px);
+  }
+
+  .loading-popup p,
+  .success-popup p,
+  .error-popup p {
+    font-size: 12.5px;
+  }
+
+  .success-icon,
+  .error-icon {
+    font-size: 42px;
+  }
+
+  .popup-note {
+    font-size: 11px;
+  }
+
+  .luxury-btn {
+    width: 100%;
+
+    padding: 12px 14px !important;
+
+    font-size: 12px !important;
+  }
+
+  /* BLUR */
+  .blur1 {
+    width: 140px;
+    height: 140px;
+  }
+
+  .blur2 {
+    width: 160px;
+    height: 160px;
   }
 }

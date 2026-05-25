@@ -1,4 +1,4 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Be+Vietnam+Pro:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap");
 
 * {
   box-sizing: border-box;
@@ -31,7 +31,7 @@ body {
 .blur {
   position: absolute;
   border-radius: 999px;
-  filter: blur(100px);
+  filter: blur(200px);
   z-index: 0;
 }
 
@@ -65,11 +65,21 @@ body {
 }
 
 .wishes-title {
-  font-size: 72px !important;
-  line-height: 1 !important;
-  font-family: "Cormorant Garamond", serif;
-  color: #c9184a;
-  font-weight: 600;
+  margin-top: 18px;
+
+  font-size: 64px;
+  font-family: "Great Vibes", cursive;
+
+  font-weight: normal;
+
+  background: linear-gradient(90deg, #b76e79 20%, #f3b3c3 50%, #b76e79 80%);
+
+  background-size: 200px auto;
+
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  animation: shimmerText 4s linear infinite;
 }
 
 .wish-subtitle {
@@ -180,27 +190,171 @@ body {
 
 /* mobile */
 
+/* ====================================== */
+/* RESPONSIVE */
+/* ====================================== */
+
 @media (max-width: 768px) {
   .wishes-section {
-    padding: 90px 0;
+    padding: 70px 0;
   }
 
+  /* BLUR */
+  .blur-1 {
+    width: 180px;
+    height: 180px;
+
+    left: -60px;
+    top: -40px;
+  }
+
+  .blur-2 {
+    width: 180px;
+    height: 180px;
+
+    right: -60px;
+    bottom: -40px;
+  }
+
+  /* HEADER */
+  .wish-tag {
+    padding: 8px 14px;
+
+    font-size: 11px;
+  }
+
+  /* GIỮ FONT */
   .wishes-title {
-    font-size: 52px !important;
+    font-size: clamp(42px, 11vw, 64px) !important;
+
+    line-height: 1.1 !important;
   }
 
-  .wish-card {
-    width: 270px;
-    min-height: 190px;
-    padding: 22px;
+  .wish-subtitle {
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    padding: 0 14px;
+  }
+
+  /* MARQUEE */
+  .marquee {
+    margin-bottom: 18px;
   }
 
   .marquee-track {
-    gap: 18px;
-    animation-duration: 28s;
+    gap: 14px;
+
+    animation-duration: 24s;
   }
 
+  /* CARD */
+  .wish-wrapper {
+    padding: 6px 0;
+  }
+
+  .wish-card {
+    width: 250px;
+
+    min-height: 175px;
+
+    padding: 18px;
+
+    border-radius: 22px !important;
+
+    box-shadow:
+      0 8px 22px rgba(255, 182, 193, 0.08),
+      inset 0 1px 0 rgba(255, 255, 255, 0.35);
+  }
+
+  .wish-card:hover {
+    transform: none !important;
+  }
+
+  /* TEXT */
   .wish-message {
+    padding-left: 22px;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+  }
+
+  .heart-icon {
+    top: 4px;
+
     font-size: 14px;
+  }
+}
+
+/* ====================================== */
+/* MOBILE NHỎ */
+/* ====================================== */
+
+@media (max-width: 480px) {
+  .wishes-section {
+    padding: 55px 0;
+  }
+
+  /* HEADER */
+  .wish-tag {
+    padding: 7px 12px;
+
+    font-size: 10px;
+  }
+
+  .wishes-title {
+    font-size: clamp(36px, 12vw, 54px) !important;
+  }
+
+  .wish-subtitle {
+    font-size: 12px;
+
+    line-height: 1.75;
+
+    padding: 0 10px;
+  }
+
+  /* MARQUEE */
+  .marquee {
+    margin-bottom: 14px;
+  }
+
+  .marquee-track {
+    gap: 10px;
+
+    animation-duration: 20s;
+  }
+
+  /* CARD */
+  .wish-card {
+    width: 220px;
+
+    min-height: 160px;
+
+    padding: 16px;
+
+    border-radius: 18px !important;
+  }
+
+  /* TEXT */
+  .wish-message {
+    padding-left: 20px;
+
+    font-size: 12px;
+
+    line-height: 1.75;
+  }
+
+  .heart-icon {
+    font-size: 12px;
+  }
+
+  /* BLUR */
+  .blur-1,
+  .blur-2 {
+    width: 120px;
+    height: 120px;
   }
 }

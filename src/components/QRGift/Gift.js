@@ -1,12 +1,6 @@
 import "./Gift.css";
 import { motion } from "framer-motion";
-import {
-  FaCopy,
-  FaDownload,
-  FaHeart,
-  FaUniversity,
-  FaStar,
-} from "react-icons/fa";
+import { FaCopy, FaDownload, FaHeart, FaStar } from "react-icons/fa";
 import Swal from "sweetalert2";
 
 function Gift() {
@@ -198,10 +192,6 @@ function Gift() {
               {/* TOP */}
 
               <div className="card-top">
-                <div className="bank-icon">
-                  <FaUniversity />
-                </div>
-
                 <span className="role">{item.role}</span>
 
                 <h3>{item.name}</h3>

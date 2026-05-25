@@ -387,21 +387,172 @@
 /* MOBILE */
 /* ====================================== */
 
+/* ====================================== */
+/* RESPONSIVE */
+/* ====================================== */
+
 @media (max-width: 768px) {
   .romantic-gallery {
-    padding: 90px 16px;
+    padding: 70px 14px;
   }
 
+  .gallery-container {
+    max-width: 100%;
+  }
+
+  /* HEADER */
+  .gallery-header {
+    margin-bottom: 42px;
+  }
+
+  .gallery-icon {
+    width: 62px;
+    height: 62px;
+
+    font-size: 22px;
+  }
+
+  .gallery-tag {
+    margin-top: 16px;
+
+    font-size: 10px;
+
+    letter-spacing: 3px;
+  }
+
+  /* GIỮ FONT ĐẸP */
   .gallery-header h2 {
-    font-size: 48px;
+    margin-top: 14px;
+
+    font-size: clamp(38px, 10vw, 56px);
+
+    line-height: 1.2;
   }
 
+  .gallery-divider {
+    width: 60px;
+
+    margin: 18px auto;
+  }
+
+  .gallery-header p {
+    max-width: 100%;
+
+    font-size: 13px;
+
+    line-height: 1.8;
+
+    padding: 0 4px;
+  }
+
+  /* GRID */
   .gallery-grid {
     grid-template-columns: repeat(2, 1fr);
 
-    grid-auto-rows: 180px;
+    grid-auto-rows: 150px;
 
-    gap: 14px;
+    gap: 10px;
+  }
+
+  /* BENTO */
+  .item-0 {
+    grid-column: span 2;
+    grid-row: span 2;
+  }
+
+  .item-3 {
+    grid-column: span 2;
+  }
+
+  /* CARD */
+  .image-wrapper {
+    border-radius: 20px;
+
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+  }
+
+  /* OVERLAY */
+  .overlay-content {
+    gap: 8px;
+
+    padding: 10px 16px;
+
+    font-size: 12px;
+
+    border-radius: 999px;
+  }
+
+  /* HEART */
+  .corner-heart {
+    top: 12px;
+    right: 12px;
+
+    width: 34px;
+    height: 34px;
+
+    font-size: 12px;
+  }
+
+  /* BLUR */
+  .blur1 {
+    width: 180px;
+    height: 180px;
+  }
+
+  .blur2 {
+    width: 220px;
+    height: 220px;
+  }
+
+  /* FLOAT HEART */
+  .floating-hearts span {
+    font-size: 16px;
+  }
+}
+
+/* ====================================== */
+/* MOBILE NHỎ */
+/* ====================================== */
+
+@media (max-width: 480px) {
+  .romantic-gallery {
+    padding: 55px 10px;
+  }
+
+  .gallery-header {
+    margin-bottom: 36px;
+  }
+
+  .gallery-icon {
+    width: 56px;
+    height: 56px;
+
+    font-size: 18px;
+  }
+
+  .gallery-tag {
+    font-size: 9px;
+
+    letter-spacing: 2px;
+  }
+
+  .gallery-header h2 {
+    font-size: clamp(32px, 11vw, 48px);
+  }
+
+  .gallery-header p {
+    font-size: 12.5px;
+
+    line-height: 1.75;
+  }
+
+  /* GRID */
+  .gallery-grid {
+    grid-template-columns: repeat(2, 1fr);
+
+    grid-auto-rows: 120px;
+
+    gap: 8px;
   }
 
   .item-0 {
@@ -413,7 +564,34 @@
     grid-column: span 2;
   }
 
+  /* IMAGE */
   .image-wrapper {
-    border-radius: 24px;
+    border-radius: 16px;
+  }
+
+  /* OVERLAY */
+  .overlay-content {
+    padding: 8px 14px;
+
+    font-size: 11px;
+  }
+
+  /* HEART */
+  .corner-heart {
+    width: 30px;
+    height: 30px;
+
+    font-size: 10px;
+  }
+
+  /* BLUR */
+  .blur1 {
+    width: 140px;
+    height: 140px;
+  }
+
+  .blur2 {
+    width: 160px;
+    height: 160px;
   }
 }

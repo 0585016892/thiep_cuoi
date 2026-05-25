@@ -20,14 +20,14 @@ function App() {
 
       <MusicPlayer />
       <Hero />
-      <Countdown />
       <WeddingInfo />
-      <LoveStory />
       <Gallery />
       <Timeline />
+      <Countdown />
       <RSVP />
-      <Wishes />
       <QRGift />
+      <LoveStory />
+      <Wishes />
       <Footer />
     </div>
   );

@@ -7,25 +7,15 @@
 .luxury-gift-section {
   position: relative;
   overflow: hidden;
-
-  padding: 120px 20px;
-
+  padding: 90px 16px;
   background: linear-gradient(180deg, #fffaf8 0%, #fff5f7 50%, #ffffff 100%);
-
   font-family: "Montserrat", sans-serif;
 }
 
-/* ========================================= */
-/* FLOATING HEARTS */
-/* ========================================= */
-
 .floating-hearts span {
   position: absolute;
-
-  color: rgba(216, 139, 161, 0.14);
-
-  font-size: 22px;
-
+  color: rgba(216, 139, 161, 0.12);
+  font-size: 18px;
   animation: floatingHearts 12s linear infinite;
 }
 
@@ -60,7 +50,7 @@
   }
 
   100% {
-    transform: translateY(-900px) scale(1.5);
+    transform: translateY(-900px) scale(1.4);
     opacity: 0;
   }
 }
@@ -73,43 +63,38 @@
   position: absolute;
   border-radius: 50%;
   filter: blur(90px);
+  z-index: 0;
 }
 
 .blur1 {
-  width: 280px;
-  height: 280px;
-
-  background: rgba(255, 192, 203, 0.28);
-
-  top: -60px;
-  left: -60px;
-
+  width: 240px;
+  height: 240px;
+  background: rgba(255, 192, 203, 0.22);
+  top: -80px;
+  left: -80px;
   animation: floatingBlur 8s ease-in-out infinite;
 }
 
 .blur2 {
-  width: 320px;
-  height: 320px;
-
-  background: rgba(255, 228, 196, 0.3);
-
+  width: 260px;
+  height: 260px;
+  background: rgba(255, 228, 196, 0.26);
   bottom: -100px;
   right: -100px;
-
   animation: floatingBlur 10s ease-in-out infinite reverse;
 }
 
 @keyframes floatingBlur {
   0% {
-    transform: translateY(0px) translateX(0px);
+    transform: translate(0, 0);
   }
 
   50% {
-    transform: translateY(-20px) translateX(10px);
+    transform: translate(12px, -18px);
   }
 
   100% {
-    transform: translateY(0px) translateX(0px);
+    transform: translate(0, 0);
   }
 }
 
@@ -120,9 +105,8 @@
 .gift-container {
   position: relative;
   z-index: 2;
-
-  max-width: 1200px;
-
+  width: 100%;
+  max-width: 1080px;
   margin: auto;
 }
 
@@ -132,20 +116,15 @@
 
 .gift-header {
   text-align: center;
-
-  margin-bottom: 70px;
+  margin-bottom: 50px;
 }
 
 .gift-icon {
-  width: 78px;
-  height: 78px;
-
+  width: 64px;
+  height: 64px;
   margin: auto;
-
   border-radius: 50%;
-
-  background: rgba(255, 255, 255, 0.72);
-
+  background: rgba(255, 255, 255, 0.78);
   backdrop-filter: blur(10px);
 
   display: flex;
@@ -153,12 +132,11 @@
   justify-content: center;
 
   color: #d88ba1;
+  font-size: 22px;
 
-  font-size: 28px;
+  box-shadow: 0 10px 28px rgba(216, 139, 161, 0.12);
 
-  box-shadow: 0 10px 35px rgba(216, 139, 161, 0.15);
-
-  animation: heartbeat 2.5s infinite;
+  animation: heartbeat 2.6s infinite;
 }
 
 @keyframes heartbeat {
@@ -166,16 +144,16 @@
     transform: scale(1);
   }
 
-  14% {
-    transform: scale(1.12);
+  15% {
+    transform: scale(1.08);
   }
 
-  28% {
+  30% {
     transform: scale(1);
   }
 
-  42% {
-    transform: scale(1.12);
+  45% {
+    transform: scale(1.08);
   }
 
   70% {
@@ -185,27 +163,26 @@
 
 .gift-tag {
   display: block;
+  margin-top: 18px;
 
-  margin-top: 24px;
-
-  letter-spacing: 4px;
-
-  font-size: 12px;
+  letter-spacing: 3px;
+  font-size: 11px;
+  font-weight: 500;
 
   color: #c89ca9;
 }
 
 .gift-header h2 {
-  margin-top: 18px;
+  margin-top: 14px;
 
-  font-size: 64px;
+  font-size: clamp(42px, 6vw, 64px);
+
+  line-height: 1.1;
 
   font-family: "Great Vibes", cursive;
-
-  font-weight: normal;
+  font-weight: 400;
 
   background: linear-gradient(90deg, #b76e79 20%, #f3b3c3 50%, #b76e79 80%);
-
   background-size: 200px auto;
 
   -webkit-background-clip: text;
@@ -215,52 +192,50 @@
 }
 
 @keyframes shimmerText {
-  0% {
+  from {
     background-position: -200px;
   }
 
-  100% {
+  to {
     background-position: 200px;
   }
 }
 
 .gift-line {
-  width: 80px;
+  width: 65px;
   height: 1px;
-
   background: #e8c6cf;
-
-  margin: 22px auto;
+  margin: 18px auto;
 }
 
 .gift-header p {
-  max-width: 650px;
-
+  max-width: 560px;
   margin: auto;
 
   color: #777;
 
-  line-height: 1.9;
-
-  font-size: 16px;
+  line-height: 1.8;
+  font-size: 14px;
 }
 
 .gift-note {
-  margin-top: 25px;
+  margin-top: 22px;
 
   display: inline-flex;
   align-items: center;
-  gap: 10px;
+  gap: 8px;
 
-  padding: 12px 20px;
+  padding: 10px 18px;
 
   border-radius: 999px;
 
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.75);
 
   color: #b76e79;
 
-  box-shadow: 0 8px 25px rgba(216, 139, 161, 0.08);
+  font-size: 13px;
+
+  box-shadow: 0 8px 24px rgba(216, 139, 161, 0.08);
 }
 
 /* ========================================= */
@@ -269,10 +244,8 @@
 
 .gift-grid {
   display: grid;
-
-  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-
-  gap: 30px;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 22px;
 }
 
 /* ========================================= */
@@ -281,26 +254,27 @@
 
 .gift-card {
   position: relative;
-
   overflow: hidden;
 
-  border-radius: 36px;
+  border-radius: 28px;
 
-  padding: 35px 28px;
+  padding: 28px 22px;
 
-  background: rgba(255, 255, 255, 0.72);
+  background: rgba(255, 255, 255, 0.76);
 
-  backdrop-filter: blur(18px);
+  backdrop-filter: blur(16px);
 
   border: 1px solid rgba(255, 255, 255, 0.7);
 
-  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
 
-  transition: all 0.5s ease;
+  transition: all 0.35s ease;
 }
 
 .gift-card:hover {
-  box-shadow: 0 25px 60px rgba(216, 139, 161, 0.14);
+  transform: translateY(-4px);
+
+  box-shadow: 0 20px 45px rgba(216, 139, 161, 0.12);
 }
 
 /* ========================================= */
@@ -312,8 +286,8 @@
 }
 
 .bank-icon {
-  width: 72px;
-  height: 72px;
+  width: 62px;
+  height: 62px;
 
   margin: auto;
 
@@ -327,27 +301,27 @@
 
   color: white;
 
-  font-size: 24px;
+  font-size: 20px;
 
-  box-shadow: 0 10px 30px rgba(216, 139, 161, 0.22);
+  box-shadow: 0 10px 24px rgba(216, 139, 161, 0.2);
 }
 
 .role {
   display: block;
 
-  margin-top: 20px;
+  margin-top: 18px;
 
-  font-size: 13px;
-
+  font-size: 11px;
   letter-spacing: 3px;
 
   color: #c89ca9;
 }
 
 .card-top h3 {
-  margin-top: 14px;
+  margin-top: 12px;
 
-  font-size: 34px;
+  font-size: 28px;
+  line-height: 1.2;
 
   font-family: "Cormorant Garamond", serif;
 
@@ -355,9 +329,11 @@
 }
 
 .card-top p {
-  margin-top: 8px;
+  margin-top: 6px;
 
   color: #777;
+
+  font-size: 14px;
 }
 
 /* ========================================= */
@@ -365,28 +341,28 @@
 /* ========================================= */
 
 .qr-wrapper {
-  margin-top: 28px;
+  margin-top: 24px;
 
   display: flex;
   justify-content: center;
 }
 
 .qr-wrapper img {
-  width: 220px;
+  width: 190px;
 
-  border-radius: 24px;
+  border-radius: 20px;
 
   background: white;
 
-  padding: 14px;
+  padding: 12px;
 
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.06);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
 
-  transition: all 0.4s ease;
+  transition: all 0.35s ease;
 }
 
 .gift-card:hover .qr-wrapper img {
-  transform: scale(1.04);
+  transform: scale(1.03);
 }
 
 /* ========================================= */
@@ -394,24 +370,25 @@
 /* ========================================= */
 
 .bank-box {
-  margin-top: 28px;
+  margin-top: 22px;
 
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 
 .bank-number {
   flex: 1;
 
-  padding: 16px 18px;
+  padding: 14px 16px;
 
-  border-radius: 18px;
+  border-radius: 16px;
 
-  background: rgba(255, 255, 255, 0.78);
+  background: rgba(255, 255, 255, 0.82);
 
   box-shadow: inset 0 0 0 1px rgba(216, 139, 161, 0.1);
 
+  font-size: 14px;
   font-weight: 600;
 
   color: #444;
@@ -420,12 +397,12 @@
 }
 
 .copy-btn {
-  width: 54px;
-  height: 54px;
+  width: 50px;
+  height: 50px;
 
   border: none;
 
-  border-radius: 18px;
+  border-radius: 16px;
 
   background: linear-gradient(135deg, #d88ba1, #f3b3c3);
 
@@ -433,15 +410,15 @@
 
   cursor: pointer;
 
-  font-size: 16px;
+  font-size: 15px;
 
-  box-shadow: 0 10px 25px rgba(216, 139, 161, 0.22);
+  box-shadow: 0 10px 24px rgba(216, 139, 161, 0.18);
 
   transition: all 0.3s ease;
 }
 
 .copy-btn:hover {
-  transform: scale(1.06);
+  transform: scale(1.05);
 }
 
 /* ========================================= */
@@ -451,11 +428,11 @@
 .download-btn {
   width: 100%;
 
-  margin-top: 20px;
+  margin-top: 18px;
 
   border: none;
 
-  padding: 16px;
+  padding: 14px;
 
   border-radius: 999px;
 
@@ -463,6 +440,7 @@
 
   color: white;
 
+  font-size: 14px;
   font-weight: 600;
 
   display: flex;
@@ -472,35 +450,13 @@
 
   cursor: pointer;
 
-  box-shadow: 0 12px 30px rgba(216, 139, 161, 0.24);
+  box-shadow: 0 10px 24px rgba(216, 139, 161, 0.22);
 
   transition: all 0.3s ease;
-
-  animation: pulseGlow 2.5s infinite;
 }
 
 .download-btn:hover {
   transform: translateY(-2px);
-}
-
-@keyframes pulseGlow {
-  0% {
-    box-shadow:
-      0 0 0 0 rgba(216, 139, 161, 0.4),
-      0 12px 30px rgba(216, 139, 161, 0.24);
-  }
-
-  70% {
-    box-shadow:
-      0 0 0 18px rgba(216, 139, 161, 0),
-      0 12px 30px rgba(216, 139, 161, 0.24);
-  }
-
-  100% {
-    box-shadow:
-      0 0 0 0 rgba(216, 139, 161, 0),
-      0 12px 30px rgba(216, 139, 161, 0.24);
-  }
 }
 
 /* ========================================= */
@@ -508,9 +464,8 @@
 /* ========================================= */
 
 .gift-swal-popup {
-  border-radius: 32px !important;
-
-  padding: 35px 25px !important;
+  border-radius: 28px !important;
+  padding: 28px 22px !important;
 }
 
 .gift-popup {
@@ -518,13 +473,13 @@
 }
 
 .gift-popup-icon {
-  font-size: 54px;
+  font-size: 48px;
 }
 
 .gift-popup h2 {
-  margin-top: 18px;
+  margin-top: 16px;
 
-  font-size: 34px;
+  font-size: 30px;
 
   color: #b76e79;
 
@@ -532,37 +487,147 @@
 }
 
 .gift-popup p {
-  margin-top: 12px;
+  margin-top: 10px;
 
   color: #666;
 
   line-height: 1.8;
+
+  font-size: 14px;
 }
 
 /* ========================================= */
 /* MOBILE */
 /* ========================================= */
-
 @media (max-width: 768px) {
   .luxury-gift-section {
-    padding: 90px 16px;
+    padding: 75px 14px;
+  }
+
+  .gift-header {
+    margin-bottom: 38px;
   }
 
   .gift-header h2 {
-    font-size: 46px;
+    font-size: 40px;
+  }
+
+  .gift-header p {
+    font-size: 13px;
+    line-height: 1.75;
+  }
+
+  /* 2 CARD CÙNG HÀNG */
+  .gift-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 12px;
+    align-items: stretch;
   }
 
   .gift-card {
-    padding: 28px 22px;
+    padding: 18px 12px;
+    border-radius: 22px;
+  }
 
-    border-radius: 28px;
+  .bank-icon {
+    width: 48px;
+    height: 48px;
+    font-size: 16px;
+  }
+
+  .role {
+    margin-top: 12px;
+    font-size: 9px;
+    letter-spacing: 2px;
   }
 
   .card-top h3 {
-    font-size: 28px;
+    font-size: 19px;
+    margin-top: 8px;
+  }
+
+  .card-top p {
+    font-size: 11px;
+    line-height: 1.5;
+  }
+
+  /* QR NHỎ LẠI */
+  .qr-wrapper {
+    margin-top: 16px;
   }
 
   .qr-wrapper img {
-    width: 190px;
+    width: 115px;
+    padding: 8px;
+    border-radius: 14px;
+  }
+
+  .bank-box {
+    margin-top: 14px;
+    gap: 6px;
+  }
+
+  .bank-number {
+    padding: 10px 8px;
+    font-size: 10px;
+    border-radius: 12px;
+
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .copy-btn {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    font-size: 12px;
+    flex-shrink: 0;
+  }
+
+  .download-btn {
+    margin-top: 14px;
+
+    padding: 11px;
+    font-size: 11px;
+    gap: 6px;
+
+    border-radius: 14px;
+  }
+
+  .gift-popup h2 {
+    font-size: 24px;
+  }
+
+  .gift-popup p {
+    font-size: 13px;
+  }
+}
+
+/* MOBILE NHỎ */
+@media (max-width: 480px) {
+  .gift-grid {
+    gap: 10px;
+  }
+
+  .gift-card {
+    padding: 16px 10px;
+  }
+
+  .qr-wrapper img {
+    width: 100px;
+  }
+
+  .card-top h3 {
+    font-size: 17px;
+  }
+
+  .bank-number {
+    font-size: 9px;
+    padding: 9px 6px;
+  }
+
+  .download-btn {
+    font-size: 10px;
+    padding: 10px;
   }
 }

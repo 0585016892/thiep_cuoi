@@ -295,25 +295,76 @@
 }
 
 /* Responsive mượt mà cho Mobile */
+/* ====================================== */
+/* TABLET */
+/* ====================================== */
+
 @media (max-width: 768px) {
-  .luxury-card {
-    padding: 50px 20px;
-  }
-  .inner-frame-line {
-    inset: 10px;
-  }
-  .luxury-title {
-    font-size: 2.3rem;
+  .wedding-luxury-section {
+    min-height: auto;
+
+    padding: 50px 14px;
   }
 
+  /* CARD */
+  .luxury-card {
+    padding: 38px 18px;
+
+    border-radius: 20px;
+
+    backdrop-filter: blur(10px);
+
+    box-shadow: 0 20px 50px rgba(216, 27, 96, 0.06);
+  }
+
+  .inner-frame-line {
+    inset: 10px;
+
+    border-radius: 12px;
+  }
+
+  /* HEADER */
+  .luxury-header {
+    margin-bottom: 35px;
+  }
+
+  .gold-tag {
+    font-size: 0.58rem;
+
+    letter-spacing: 4px;
+
+    margin-bottom: 10px;
+  }
+
+  .luxury-title {
+    font-size: 2rem;
+
+    line-height: 1.35;
+  }
+
+  .luxury-badge-date {
+    margin-top: 8px;
+
+    font-size: 0.65rem;
+
+    letter-spacing: 2px;
+  }
+
+  /* PARENTS */
   .luxury-parents-grid {
     flex-direction: column;
-    gap: 30px;
+
+    gap: 22px;
+
+    margin-bottom: 40px;
   }
+
   .center-vertical-line {
-    width: 60px;
+    width: 55px;
     height: 1px;
+
     margin: 0 auto;
+
     background: linear-gradient(
       to right,
       transparent,
@@ -322,33 +373,221 @@
     );
   }
 
+  .side-label {
+    font-size: 0.58rem;
+
+    letter-spacing: 2px;
+
+    margin-bottom: 10px;
+  }
+
+  .parent-names {
+    font-size: 0.92rem;
+
+    line-height: 1.7;
+  }
+
+  .parent-address {
+    font-size: 0.68rem;
+
+    line-height: 1.6;
+  }
+
+  /* COUPLE */
   .luxury-couple-wrapper {
     flex-direction: column;
-    gap: 10px;
-    margin: 40px 0;
+
+    gap: 14px;
+
+    margin: 35px 0;
   }
+
   .luxury-name {
-    font-size: 3.5rem;
+    font-size: 3rem;
+
+    line-height: 1.1;
   }
+
+  .luxury-role {
+    font-size: 0.55rem;
+
+    letter-spacing: 2px;
+
+    margin-top: 4px;
+  }
+
+  /* RINGS */
   .luxury-center-rings {
-    height: 40px;
+    width: 60px;
+    height: 60px;
+  }
+
+  .luxury-ring-icon {
+    font-size: 1.9rem;
+  }
+
+  .ring-pulse-bg {
+    width: 38px;
+    height: 38px;
+  }
+
+  /* TIME */
+  .location-announce {
+    font-size: 0.65rem;
+
+    letter-spacing: 2px;
+
+    line-height: 1.8;
+  }
+
+  .time-accent-display {
+    font-size: 1rem;
+
+    margin: 10px 0 24px;
+
+    letter-spacing: 1px;
+
+    line-height: 1.7;
+  }
+
+  /* CALENDAR */
+  .editorial-calendar {
+    gap: 12px;
+
+    padding: 14px 0;
+
+    max-width: 100%;
+  }
+
+  .day-text {
+    width: 75px;
+
+    font-size: 0.72rem;
+
+    letter-spacing: 2px;
+
+    text-align: right;
+  }
+
+  .main-number {
+    font-size: 2.6rem;
+  }
+
+  .month-year {
+    width: 75px;
+
+    align-items: flex-start;
+  }
+
+  .m-text {
+    font-size: 0.68rem;
+
+    letter-spacing: 1px;
+  }
+
+  .y-text {
+    font-size: 0.8rem;
+
+    letter-spacing: 2px;
+  }
+
+  /* LUNAR */
+  .lunar-glass-pill {
+    margin-top: 20px;
+
+    padding: 7px 16px;
+
+    font-size: 0.68rem;
+
+    border-radius: 30px;
+
+    line-height: 1.6;
+  }
+
+  /* BLUR nhỏ lại */
+  .static-pink {
+    width: 240px;
+    height: 240px;
+  }
+
+  .static-cream {
+    width: 220px;
+    height: 220px;
+  }
+}
+
+/* ====================================== */
+/* MOBILE NHỎ */
+/* ====================================== */
+
+@media (max-width: 480px) {
+  .wedding-luxury-section {
+    padding: 40px 10px;
+  }
+
+  .luxury-card {
+    padding: 30px 14px;
+
+    border-radius: 18px;
+  }
+
+  .inner-frame-line {
+    inset: 8px;
+  }
+
+  .luxury-title {
+    font-size: 1.7rem;
+  }
+
+  .luxury-name {
+    font-size: 2.4rem;
+  }
+
+  .luxury-badge-date {
+    font-size: 0.58rem;
+  }
+
+  .parent-names {
+    font-size: 0.84rem;
+  }
+
+  .parent-address {
+    font-size: 0.64rem;
   }
 
   .editorial-calendar {
-    gap: 15px;
-    padding: 15px 0;
+    gap: 8px;
   }
-  .day-text,
-  .month-year {
-    width: auto;
-    text-align: center;
-    align-items: center;
-    font-size: 0.85rem;
+
+  .day-text {
+    width: 60px;
+
+    font-size: 0.62rem;
   }
+
   .main-number {
-    font-size: 3rem;
+    font-size: 2.1rem;
   }
+
+  .month-year {
+    width: 60px;
+  }
+
+  .m-text {
+    font-size: 0.58rem;
+  }
+
   .y-text {
-    font-size: 0.9rem;
+    font-size: 0.7rem;
+  }
+
+  .time-accent-display {
+    font-size: 0.88rem;
+  }
+
+  .lunar-glass-pill {
+    font-size: 0.62rem;
+
+    padding: 6px 14px;
   }
 }
