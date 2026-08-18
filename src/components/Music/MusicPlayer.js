@@ -1,24 +1,76 @@
-import { useRef, useState } from "react";
-import { motion } from "framer-motion";
+import { useEffect, useRef, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import "./MusicPlayer.css";
-import phuong1 from "../../assets/phuong-left.png";
-import phuong2 from "../../assets/phuong-right.png";
-import chuhy from "../../assets/chuhy.png";
+
+// Assets
+import leafLeft from "../../assets/phuong-left.png";
+import leafRight from "../../assets/phuong-right.png";
+
+import { layKhach } from "../../api/guestApi";
+
+// Danh sách nhạc phát nối tiếp
+const PLAYLIST = ["/music/vaycuoi.mp3", "/music/perfect.mp3"];
+
 function MusicPlayer() {
   const audioRef = useRef(null);
 
   const [opened, setOpened] = useState(false);
-  const [closing, setClosing] = useState(false);
   const [playing, setPlaying] = useState(false);
+  const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
+
+  const [tenKhach, setTenKhach] = useState("");
+  const [dangTaiKhach, setDangTaiKhach] = useState(false);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const guestId = params.get("guest");
+
+    if (!guestId) {
+      return;
+    }
+
+    setDangTaiKhach(true);
+
+    layKhach(guestId)
+      .then((data) => {
+        if (data && data.thanhCong && data.khach) {
+          setTenKhach(data.khach.hoTen || "");
+        }
+      })
+      .catch((error) => {
+        console.error("Lỗi lấy khách mời:", error);
+      })
+      .finally(() => {
+        setDangTaiKhach(false);
+      });
+  }, []);
+
+  // Xử lý khi kết thúc 1 bài -> Tự động sang bài tiếp theo
+  const handleEnded = () => {
+    const nextIndex = (currentTrackIndex + 1) % PLAYLIST.length;
+    setCurrentTrackIndex(nextIndex);
+  };
+
+  // Phát nhạc khi đổi bài
+  useEffect(() => {
+    if (playing && audioRef.current) {
+      audioRef.current.play().catch((err) => {
+        console.log("Lỗi tự động phát bài tiếp theo:", err);
+      });
+    }
+  }, [currentTrackIndex, playing]);
 
   const handleOpen = async () => {
-    setClosing(true);
+    // Nếu đang tải khách thì ngăn không cho mở
+    if (dangTaiKhach) return;
 
     try {
-      await audioRef.current.play();
-      setPlaying(true);
+      if (audioRef.current) {
+        await audioRef.current.play();
+        setPlaying(true);
+      }
     } catch (err) {
-      console.log(err);
+      console.log("Không thể tự động phát nhạc:", err);
     }
 
     setTimeout(() => {
@@ -28,95 +80,142 @@ function MusicPlayer() {
 
   const toggleMusic = () => {
     if (!audioRef.current) return;
-
     if (playing) {
       audioRef.current.pause();
+      setPlaying(false);
     } else {
       audioRef.current.play();
+      setPlaying(true);
     }
-
-    setPlaying(!playing);
   };
 
   return (
     <>
-      {!opened && (
-        <section
-          className={`pink-invite-screen ${closing ? "cinematic-open" : ""}`}
-        >
-          {/* Glow background */}
-          <div className="bg-blur blur-1"></div>
-          <div className="bg-blur blur-2"></div>
-
-          {/* Floating particles */}
-          <div className="floating-heart heart-1">❤</div>
-          <div className="floating-heart heart-2">❤</div>
-          <div className="floating-heart heart-3">❤</div>
-
-          {/* Main Card */}
-          <motion.div
-            className="invite-card"
-            initial={{ opacity: 0, y: 30, scale: 0.96 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
+      <AnimatePresence>
+        {!opened && (
+          <motion.section
+            className="invite-screen"
+            initial={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
             transition={{ duration: 1 }}
           >
-            {/* ảnh trái */}
-            <div className="phoenix-left">
-              <img src={phuong1} alt="" />
-            </div>
+            {/* Background pattern/overlay */}
+            <div className="bg-overlay"></div>
 
-            {/* ảnh phải */}
-            <div className="phoenix-right">
-              <img src={phuong2} alt="" />
-            </div>
-
-            {/* border line */}
-            <div className="card-inner-border"></div>
-
-            <div className="invite-content">
-              <div className="cicrle-heart ">
-                <img src={chuhy} alt="" />
+            {/* Main Card Container */}
+            <motion.div
+              className="invitation-card"
+              initial={{
+                opacity: 0,
+                y: 50,
+                scale: 0.9,
+              }}
+              animate={{
+                opacity: 1,
+                y: 0,
+                scale: 1,
+              }}
+              transition={{
+                duration: 1.2,
+                ease: [0.22, 1, 0.36, 1],
+              }}
+            >
+              {/* Decorative elements */}
+              <div className="leaf-decor left">
+                <img src={leafLeft} alt="" />
+              </div>
+              <div className="leaf-decor right">
+                <img src={leafRight} alt="" />
               </div>
 
-              <div className="mini-divider"></div>
+              {/* Inner border */}
+              <div className="card-border"></div>
 
-              <h1 className="couple-name">
-                Khánh Hưng
-                <span>&</span>
-                Trang Trang
-              </h1>
+              {/* Content */}
+              <div className="card-content">
+                <p className="save-the-date">SAVE THE DATE</p>
 
-              <p className="invite-date">Chủ Nhật, 10 tháng 01 năm 2027</p>
+                <h1 className="couple-name">
+                  <div className="name-block">
+                    <span className="first-name">Khánh Hưng</span>
+                  </div>
+                  <span className="ampersand">&</span>
+                  <div className="name-block">
+                    <span className="first-name">Trang Trang</span>
+                  </div>
+                </h1>
 
-              <div className="guest-box">Trân trọng kính mời</div>
+                {/* Guest Box */}
+                <div className="guest-section">
+                  {dangTaiKhach ? (
+                    <span className="loading-guest">
+                      Đang chuẩn bị thiệp...
+                    </span>
+                  ) : tenKhach ? (
+                    <>
+                      <p className="invite-label">Trân trọng kính mời</p>
+                      <h3 className="guest-name-display">{tenKhach}</h3>
+                    </>
+                  ) : (
+                    <p className="invite-label">Trân trọng kính mời</p>
+                  )}
+                </div>
 
-              <p className="invite-text">
-                Đến chung vui trong ngày trọng đại của chúng mình
-              </p>
+                <p className="invitation-text">
+                  Đến dự bữa tiệc thân mật mừng ngày chung đôi của chúng mình
+                </p>
 
-              <motion.button
-                className="open-btn"
-                whileHover={{ scale: 1.04 }}
-                whileTap={{ scale: 0.96 }}
-                onClick={handleOpen}
-              >
-                Mở Thiệp
-              </motion.button>
-            </div>
-          </motion.div>
-        </section>
-      )}
+                <div className="date-time">
+                  <p>10 / 01 / 2027</p>
+                  <span className="dot"></span>
+                  <p>CHỦ NHẬT</p>
+                </div>
 
-      {/* MUSIC */}
-      <audio ref={audioRef} loop src="/music/perfect.mp3" />
+                {/* Open Button (Khóa khi chưa load xong tên khách) */}
+                <motion.button
+                  className={`open-button ${dangTaiKhach ? "disabled" : ""}`}
+                  disabled={dangTaiKhach}
+                  whileHover={
+                    !dangTaiKhach
+                      ? {
+                          scale: 1.05,
+                          backgroundColor: "#f5f1e6",
+                          color: "#2c5f50",
+                        }
+                      : {}
+                  }
+                  whileTap={!dangTaiKhach ? { scale: 0.95 } : {}}
+                  onClick={handleOpen}
+                  style={
+                    dangTaiKhach ? { opacity: 0.6, cursor: "not-allowed" } : {}
+                  }
+                >
+                  <span className="btn-text">
+                    {dangTaiKhach ? "Đang Tải Thiệp..." : "Mở Thiệp"}
+                  </span>
+                  <span className="btn-icon">❤</span>
+                </motion.button>
+              </div>
+            </motion.div>
+          </motion.section>
+        )}
+      </AnimatePresence>
 
-      {/* MUSIC CONTROL */}
+      {/* Single Audio Element */}
+      <audio
+        ref={audioRef}
+        src={PLAYLIST[currentTrackIndex]}
+        onEnded={handleEnded}
+      />
+
       {opened && (
         <div
-          className={`music-control ${playing ? "spinning" : ""}`}
+          className={`music-toggle-btn ${playing ? "playing" : ""}`}
           onClick={toggleMusic}
         >
-          ❤
+          <div className="bar"></div>
+          <div className="bar"></div>
+          <div className="bar"></div>
         </div>
       )}
     </>

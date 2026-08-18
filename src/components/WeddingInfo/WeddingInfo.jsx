@@ -1,118 +1,112 @@
 import React from "react";
 import { motion } from "framer-motion";
-import { GiBigDiamondRing } from "react-icons/gi";
+import { FaMapMarkerAlt, FaCalendarAlt, FaClock } from "react-icons/fa";
+import { GiRing } from "react-icons/gi";
 import "./WeddingInfo.css";
 
 const WeddingInfo = () => {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: { staggerChildren: 0.15, delayChildren: 0.2 },
-    },
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.8, ease: [0.25, 1, 0.5, 1] },
-    },
-  };
-
   return (
-    <div className="wedding-luxury-section">
-      {/* Các khối màu mờ tạo chiều sâu background */}
-      <div className="luxury-blur-glow static-pink"></div>
-      <div className="luxury-blur-glow static-cream"></div>
+    <section className="wedding-arch-section">
+      {/* Họa tiết lá nhạt làm nền */}
+      <div className="bg-leaf-pattern"></div>
 
       <motion.div
-        className="luxury-card"
-        variants={containerVariants}
-        initial="hidden"
-        whileInView="visible"
-        viewport={{ once: true, margin: "-100px" }}
+        className="arch-card-container"
+        initial={{ opacity: 0, y: 35 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, margin: "-50px" }}
+        transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       >
-        {/* Đường line khung mảnh nghệ thuật */}
-        <div className="inner-frame-line"></div>
+        {/* Khung viền vòm trang trí */}
+        <div className="arch-inner-border"></div>
 
-        {/* --- KHỐI TIÊU ĐỀ --- */}
-        <motion.div variants={itemVariants} className="luxury-header">
-          <span className="gold-tag">THE WEDDING INVITATION</span>
-          <h2 className="luxury-title">Lễ Thành Hôn</h2>
-          <div className="luxury-badge-date">January — 2027</div>
-        </motion.div>
-
-        {/* --- KHỐI ĐẠI DIỆN HAI BÊN (Bố cục gọn gàng hơn) --- */}
-        <div className="luxury-parents-grid">
-          <motion.div variants={itemVariants} className="parent-column">
-            <span className="side-label">Họ Nhà Trai</span>
-            <p className="parent-names">
-              Ông Bà: <strong>Trần Khánh Duy</strong>
-            </p>
-            <p className="parent-names">
-              <strong>Nguyễn Thị Thịnh</strong>
-            </p>
-            <span className="parent-address">
-              📍 Thôn Phụng Thượng, xã Vũ Quý, tỉnh Hưng Yên
-            </span>
-          </motion.div>
-
-          <div className="center-vertical-line"></div>
-
-          <motion.div variants={itemVariants} className="parent-column">
-            <span className="side-label">Họ Nhà Gái</span>
-            <p className="parent-names">
-              Ông Bà: <strong>Nguyễn Ngọc Ánh</strong>
-            </p>
-            <p className="parent-names">
-              <strong>Đoàn Thị Thìn</strong>
-            </p>
-            <span className="parent-address">
-              📍 Thôn Đông, xã Kiến Xương, tỉnh Hưng Yên
-            </span>
-          </motion.div>
+        {/* --- HEADER --- */}
+        <div className="arch-header">
+          <span className="sub-title-tag">SAVE OUR DATE</span>
+          <h2 className="main-title">Trân Trọng Báo Tin</h2>
+          <div className="header-divider">
+            <span className="line"></span>
+            <span className="leaf-symbol">🌿</span>
+            <span className="line"></span>
+          </div>
         </div>
 
-        {/* --- KHỐI TÊN NHÂN VẬT CHÍNH (Tạo bứt phá thị giác) --- */}
-        <motion.div variants={itemVariants} className="luxury-couple-wrapper">
-          <div className="luxury-name-block">
-            <h3 className="luxury-name groom">Khánh Hưng</h3>
-            <span className="luxury-role">TRƯỞNG NAM</span>
+        {/* --- KHỐI THÔNG TIN HAI HỌ --- */}
+        <div className="families-container">
+          <div className="family-box groom-family">
+            <span className="family-title">HỌ NHÀ TRAI</span>
+            <p className="parents-name">
+              Ông: <strong>Trần Khánh Duy</strong>
+            </p>
+            <p className="parents-name">
+              Bà: <strong>Nguyễn Thị Thịnh</strong>
+            </p>
+            <p className="family-location">
+              <FaMapMarkerAlt className="mini-icon" /> Thôn Phụng Thượng, xã Vũ
+              Quý, tỉnh Hưng Yên
+            </p>
           </div>
 
-          <div className="luxury-center-rings">
-            <div className="ring-pulse-bg"></div>
-            <GiBigDiamondRing className="luxury-ring-icon" />
+          <div className="family-center-icon">
+            <GiRing className="wedding-ring-icon" />
           </div>
 
-          <div className="luxury-name-block">
-            <h3 className="luxury-name bride">Trang Trang</h3>
-            <span className="luxury-role">ÚT NỮ</span>
+          <div className="family-box bride-family">
+            <span className="family-title">HỌ NHÀ GÁI</span>
+            <p className="parents-name">
+              Ông: <strong>Nguyễn Ngọc Ánh</strong>
+            </p>
+            <p className="parents-name">
+              Bà: <strong>Đoàn Thị Thìn</strong>
+            </p>
+            <p className="family-location">
+              <FaMapMarkerAlt className="mini-icon" /> Thôn Đông, xã Kiến Xương,
+              tỉnh Hưng Yên
+            </p>
           </div>
-        </motion.div>
+        </div>
 
-        {/* --- KHỐI THỜI GIAN (Phong cách thiết kế Thụy Sĩ) --- */}
-        <motion.div variants={itemVariants} className="luxury-time-block">
-          <p className="location-announce">CỬ HÀNH TẠI TƯ GIA ĐẠI GIA ĐÌNH</p>
-          <div className="time-accent-display">VÀO LÚC 09 GIỜ 00 PHÚT SÁNG</div>
+        {/* --- TÊN CÔ DÂU CHÚ RỂ --- */}
+        <div className="hero-couple-names">
+          <div className="person-block">
+            <span className="person-role">TRƯỞNG NAM</span>
+            <h3 className="person-name">Khánh Hưng</h3>
+          </div>
 
-          <div className="editorial-calendar">
-            <div className="cal-element day-text">CHỦ NHẬT</div>
-            <div className="cal-element main-number">10</div>
-            <div className="cal-element month-year">
-              <span className="m-text">THÁNG 01</span>
-              <span className="y-text">2027</span>
+          <span className="couple-ampersand">&</span>
+
+          <div className="person-block">
+            <span className="person-role">ÚT NỮ</span>
+            <h3 className="person-name">Trang Trang</h3>
+          </div>
+        </div>
+
+        {/* --- THỜI GIAN & ĐỊA ĐIỂM CỬ HÀNH --- */}
+        <div className="event-details-card">
+          <p className="venue-header">LỄ THÀNH HÔN CỬ HÀNH TẠI TƯ GIA</p>
+
+          <div className="event-time-badge">
+            <FaClock className="time-icon" />
+            <span>09:00 SÁNG</span>
+          </div>
+
+          {/* Khung ngày tháng dạng Lịch tối giản */}
+          <div className="minimal-date-display">
+            <div className="date-col text-col">CHỦ NHẬT</div>
+            <div className="date-col number-col">27</div>
+            <div className="date-col text-col">
+              <span>THÁNG 12</span>
+              <span className="year-sub">2026</span>
             </div>
           </div>
 
-          <div className="lunar-glass-pill">
-            <span>Tức ngày 3 tháng 12 năm Bính Ngọ</span>
+          <div className="lunar-pill">
+            <FaCalendarAlt className="lunar-icon" />
+            <span>Tức ngày 19/11/2026 (Âm lịch Bính Ngọ)</span>
           </div>
-        </motion.div>
+        </div>
       </motion.div>
-    </div>
+    </section>
   );
 };
 

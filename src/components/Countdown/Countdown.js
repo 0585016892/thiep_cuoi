@@ -1,13 +1,10 @@
 import React, { useEffect, useState, useCallback } from "react";
-
 import { motion } from "framer-motion";
-
-import { FaHeart } from "react-icons/fa";
-
 import "./Countdown.css";
 
 function Countdown() {
-  const weddingDate = "2027-01-10T00:00:00";
+  // Cập nhật đúng ngày cử hành hôn lễ: 27/12/2026
+  const weddingDate = "2026-12-27T09:00:00";
 
   const calculateTimeLeft = useCallback(() => {
     const difference = +new Date(weddingDate) - +new Date();
@@ -22,11 +19,8 @@ function Countdown() {
     if (difference > 0) {
       timeLeft = {
         days: Math.floor(difference / (1000 * 60 * 60 * 24)),
-
         hours: Math.floor((difference / (1000 * 60 * 60)) % 24),
-
         minutes: Math.floor((difference / 1000 / 60) % 60),
-
         seconds: Math.floor((difference / 1000) % 60),
       };
     }
@@ -47,136 +41,74 @@ function Countdown() {
   const formatNumber = (num) => String(num).padStart(2, "0");
 
   const timeUnits = [
-    {
-      label: "NGÀY",
-      value: timeLeft.days,
-    },
-
-    {
-      label: "GIỜ",
-      value: timeLeft.hours,
-    },
-
-    {
-      label: "PHÚT",
-      value: timeLeft.minutes,
-    },
-
-    {
-      label: "GIÂY",
-      value: timeLeft.seconds,
-    },
+    { label: "NGÀY", value: timeLeft.days },
+    { label: "GIỜ", value: timeLeft.hours },
+    { label: "PHÚT", value: timeLeft.minutes },
+    { label: "GIÂY", value: timeLeft.seconds },
   ];
 
   return (
-    <section className="romantic-countdown">
-      {/* FLOATING HEARTS */}
+    <section className="sage-countdown-section">
+      {/* Background Soft Glows */}
+      <div className="countdown-glow glow-left"></div>
+      <div className="countdown-glow glow-right"></div>
 
-      <div className="floating-hearts">
-        <span>❤</span>
-        <span>❤</span>
-        <span>❤</span>
-        <span>❤</span>
-      </div>
-
-      {/* BLUR */}
-
-      <div className="countdown-blur blur1"></div>
-      <div className="countdown-blur blur2"></div>
-
-      <div className="countdown-container">
-        {/* HEADER */}
-
+      <div className="countdown-content-wrapper">
+        {/* HEADER SECTION */}
         <motion.div
-          className="countdown-header"
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.8,
-          }}
+          className="editorial-countdown-header"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="countdown-heart">
-            <FaHeart />
+          <div className="countdown-badge">
+            <span className="dot"></span>
+            <span>COUNTDOWN TO OUR DAY</span>
+            <span className="dot"></span>
           </div>
 
-          <span className="countdown-tag">SAVE THE DATE</span>
+          <h2 className="countdown-title">Đếm Ngược Ngày Chung Đôi</h2>
 
-          <h2>Đếm Ngược Ngày Chung Đôi</h2>
+          <div className="header-leaf-divider">
+            <span className="line"></span>
+            <span className="leaf">🌿</span>
+            <span className="line"></span>
+          </div>
 
-          <div className="countdown-divider"></div>
-
-          <p>
-            Chúng mình đang háo hức từng ngày để được gặp bạn trong khoảnh khắc
-            hạnh phúc nhất 🤍
+          <p className="countdown-subtitle">
+            Khánh Hưng & Trang Trang đang háo hức từng ngày để cùng bạn sẻ chia
+            khoảnh khắc hạnh phúc nhất 🤍
           </p>
         </motion.div>
 
-        {/* COUNTDOWN */}
-
+        {/* COUNTDOWN GRID */}
         <div className="countdown-grid">
           {timeUnits.map((item, index) => (
             <motion.div
               key={index}
-              className="countdown-card"
-              initial={{
-                opacity: 0,
-                y: 40,
-                scale: 0.95,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-              }}
-              viewport={{
-                once: true,
-              }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.12,
-              }}
-              whileHover={{
-                y: -8,
-              }}
+              className="time-card"
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.8, delay: index * 0.1 }}
+              whileHover={{ y: -6 }}
             >
-              {/* GLOW */}
+              <div className="card-inner">
+                {/* NUMBER ANIMATION */}
+                <motion.div
+                  key={item.value}
+                  initial={{ scale: 0.85, opacity: 0.5 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.3 }}
+                  className="time-number"
+                >
+                  {formatNumber(item.value)}
+                </motion.div>
 
-              <div className="card-glow"></div>
-
-              {/* NUMBER */}
-
-              <motion.div
-                key={item.value}
-                initial={{
-                  scale: 0.8,
-                  opacity: 0.4,
-                }}
-                animate={{
-                  scale: 1,
-                  opacity: 1,
-                }}
-                transition={{
-                  duration: 0.4,
-                }}
-                className="count-number"
-              >
-                {formatNumber(item.value)}
-              </motion.div>
-
-              {/* LABEL */}
-
-              <span className="count-label">{item.label}</span>
-
-              {/* DECOR */}
-
-              <div className="bottom-line"></div>
+                {/* LABEL */}
+                <span className="time-label">{item.label}</span>
+              </div>
             </motion.div>
           ))}
         </div>

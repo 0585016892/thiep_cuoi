@@ -1,15 +1,8 @@
 import React, { useState } from "react";
-
 import { motion } from "framer-motion";
-
-import { FiZoomIn, FiHeart } from "react-icons/fi";
-
-import { FaHeart } from "react-icons/fa";
-
+import { FiZoomIn } from "react-icons/fi";
 import Lightbox from "yet-another-react-lightbox";
-
 import "yet-another-react-lightbox/styles.css";
-
 import "./Gallery.css";
 
 function Gallery() {
@@ -18,128 +11,94 @@ function Gallery() {
   const images = [
     {
       src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1974&auto=format&fit=crop",
+      title: "Khoảnh Khắc Đáng Nhớ",
     },
-
     {
       src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1974&auto=format&fit=crop",
+      title: "Hành Trình Yêu Thương",
     },
-
     {
       src: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1974&auto=format&fit=crop",
+      title: "Ngày Chung Đôi",
     },
-
     {
       src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1974&auto=format&fit=crop",
+      title: "Nụ Cười An Yên",
     },
-
     {
       src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1974&auto=format&fit=crop",
+      title: "Bên Nhau Bình Yên",
     },
-
     {
       src: "https://images.unsplash.com/photo-1513278974582-3e1b4a4fa21d?q=80&w=1974&auto=format&fit=crop",
+      title: "Trọn Vẹn Ước Mơ",
     },
   ];
 
   return (
-    <section className="romantic-gallery">
-      {/* FLOATING HEARTS */}
+    <section className="sage-gallery-section">
+      {/* Background Soft Glow */}
+      <div className="gallery-blur-glow blur-left"></div>
+      <div className="gallery-blur-glow blur-right"></div>
 
-      <div className="floating-hearts">
-        <span>❤</span>
-        <span>❤</span>
-        <span>❤</span>
-        <span>❤</span>
-      </div>
-
-      {/* BLUR */}
-
-      <div className="gallery-blur blur1"></div>
-      <div className="gallery-blur blur2"></div>
-
-      <div className="gallery-container">
-        {/* HEADER */}
-
+      <div className="gallery-content-wrapper">
+        {/* HEADER SECTION */}
         <motion.div
-          className="gallery-header"
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.8,
-          }}
+          className="editorial-gallery-header"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="gallery-icon">
-            <FiHeart />
+          <div className="gallery-badge">
+            <span className="dot"></span>
+            <span>SWEET MEMORIES</span>
+            <span className="dot"></span>
           </div>
 
-          <span className="gallery-tag">OUR MEMORIES</span>
+          <h2 className="gallery-title">Khoảnh Khắc Hạnh Phúc</h2>
 
-          <h2>Khoảnh Khắc Hạnh Phúc</h2>
+          <div className="header-leaf-divider">
+            <span className="line"></span>
+            <span className="leaf">🌿</span>
+            <span className="line"></span>
+          </div>
 
-          <div className="gallery-divider"></div>
-
-          <p>
-            Những khoảnh khắc đẹp nhất của chúng mình được lưu giữ bằng tất cả
-            yêu thương 🤍
+          <p className="gallery-subtitle">
+            Những góc ảnh lưu giữ tình yêu nhẹ nhàng, bình yên và trọn vẹn nhất
+            của chúng mình 🤍
           </p>
         </motion.div>
 
-        {/* GRID */}
-
-        <div className="gallery-grid">
+        {/* EDITORIAL MASONRY GRID */}
+        <div className="gallery-masonry-grid">
           {images.map((img, i) => (
             <motion.div
               key={i}
-              className={`gallery-item item-${i}`}
-              initial={{
-                opacity: 0,
-                y: 40,
-                scale: 0.96,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                scale: 1,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.8,
-                delay: i * 0.08,
-              }}
-              whileHover={{
-                y: -10,
-              }}
+              className={`gallery-card card-layout-${i}`}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.8, delay: i * 0.1 }}
+              whileHover={{ y: -6 }}
               onClick={() => setIndex(i)}
             >
-              <div className="image-wrapper">
-                <img src={img.src} alt={`Gallery ${i}`} />
+              <div className="image-frame">
+                <img src={img.src} alt={img.title} loading="lazy" />
 
-                {/* OVERLAY */}
-
-                <div className="gallery-overlay">
-                  <motion.div
-                    className="overlay-content"
-                    whileHover={{
-                      scale: 1.05,
-                    }}
-                  >
-                    <FiZoomIn />
-
-                    <span>Xem ảnh</span>
-                  </motion.div>
+                {/* OVERLAY ON HOVER */}
+                <div className="card-overlay">
+                  <div className="overlay-info">
+                    <span className="view-btn">
+                      <FiZoomIn className="zoom-icon" /> Phóng to
+                    </span>
+                    <p className="image-caption">{img.title}</p>
+                  </div>
                 </div>
 
-                {/* HEART */}
-
-                <div className="corner-heart">
-                  <FaHeart />
+                {/* Corner Tag Decor */}
+                <div className="frame-corner-tag">
+                  <span>0{i + 1}</span>
                 </div>
               </div>
             </motion.div>
@@ -147,8 +106,7 @@ function Gallery() {
         </div>
       </div>
 
-      {/* LIGHTBOX */}
-
+      {/* LIGHTBOX POPUP */}
       <Lightbox
         open={index >= 0}
         close={() => setIndex(-1)}
@@ -156,21 +114,17 @@ function Gallery() {
         slides={images}
         styles={{
           container: {
-            background: "rgba(255,250,252,0.96)",
-
-            backdropFilter: "blur(18px)",
+            background: "rgba(248, 250, 247, 0.96)",
+            backdropFilter: "blur(20px)",
           },
-
           button: {
-            color: "#b76e79",
+            color: "#6b7c67",
           },
-
           navigationPrev: {
-            color: "#d88ba1",
+            color: "#242c24",
           },
-
           navigationNext: {
-            color: "#d88ba1",
+            color: "#242c24",
           },
         }}
       />

@@ -1,633 +1,362 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap");
 
-/* ========================================= */
-/* MAIN */
-/* ========================================= */
+:root {
+  --gift-sage: #6b7c67;
+  --gift-sage-soft: #eef2ed;
+  --gift-sage-border: #cbd5c9;
+  --gift-dark: #242c24;
+  --gift-gold: #c2a15f;
+  --gift-cream: #fdfcf9;
+}
 
-.luxury-gift-section {
+.sage-gift-section {
   position: relative;
+  width: 100%;
+  padding: 100px 20px;
+  background-color: var(--gift-cream);
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--gift-dark);
   overflow: hidden;
-  padding: 90px 16px;
-  background: linear-gradient(180deg, #fffaf8 0%, #fff5f7 50%, #ffffff 100%);
-  font-family: "Montserrat", sans-serif;
 }
 
-.floating-hearts span {
+/* Background Soft Glows */
+.gift-glow {
   position: absolute;
-  color: rgba(216, 139, 161, 0.12);
-  font-size: 18px;
-  animation: floatingHearts 12s linear infinite;
-}
-
-.floating-hearts span:nth-child(1) {
-  left: 10%;
-  animation-delay: 0s;
-}
-
-.floating-hearts span:nth-child(2) {
-  left: 35%;
-  animation-delay: 3s;
-}
-
-.floating-hearts span:nth-child(3) {
-  left: 65%;
-  animation-delay: 6s;
-}
-
-.floating-hearts span:nth-child(4) {
-  left: 85%;
-  animation-delay: 9s;
-}
-
-@keyframes floatingHearts {
-  0% {
-    transform: translateY(100px) scale(0.5);
-    opacity: 0;
-  }
-
-  20% {
-    opacity: 1;
-  }
-
-  100% {
-    transform: translateY(-900px) scale(1.4);
-    opacity: 0;
-  }
-}
-
-/* ========================================= */
-/* BLUR */
-/* ========================================= */
-
-.blur {
-  position: absolute;
+  width: 400px;
+  height: 400px;
   border-radius: 50%;
-  filter: blur(90px);
-  z-index: 0;
+  background: radial-gradient(
+    circle,
+    rgba(107, 124, 103, 0.12) 0%,
+    rgba(255, 255, 255, 0) 70%
+  );
+  pointer-events: none;
 }
 
-.blur1 {
-  width: 240px;
-  height: 240px;
-  background: rgba(255, 192, 203, 0.22);
-  top: -80px;
-  left: -80px;
-  animation: floatingBlur 8s ease-in-out infinite;
+.glow-left {
+  top: 15%;
+  left: -100px;
 }
 
-.blur2 {
-  width: 260px;
-  height: 260px;
-  background: rgba(255, 228, 196, 0.26);
-  bottom: -100px;
+.glow-right {
+  bottom: 10%;
   right: -100px;
-  animation: floatingBlur 10s ease-in-out infinite reverse;
 }
 
-@keyframes floatingBlur {
-  0% {
-    transform: translate(0, 0);
-  }
-
-  50% {
-    transform: translate(12px, -18px);
-  }
-
-  100% {
-    transform: translate(0, 0);
-  }
-}
-
-/* ========================================= */
-/* CONTAINER */
-/* ========================================= */
-
-.gift-container {
+.gift-content-wrapper {
+  max-width: 860px;
+  margin: 0 auto;
   position: relative;
   z-index: 2;
-  width: 100%;
-  max-width: 1080px;
-  margin: auto;
 }
 
-/* ========================================= */
-/* HEADER */
-/* ========================================= */
-
-.gift-header {
+/* HEADER STYLES */
+.editorial-gift-header {
   text-align: center;
-  margin-bottom: 50px;
+  max-width: 620px;
+  margin: 0 auto 55px;
 }
 
-.gift-icon {
-  width: 64px;
-  height: 64px;
-  margin: auto;
-  border-radius: 50%;
-  background: rgba(255, 255, 255, 0.78);
-  backdrop-filter: blur(10px);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: #d88ba1;
-  font-size: 22px;
-
-  box-shadow: 0 10px 28px rgba(216, 139, 161, 0.12);
-
-  animation: heartbeat 2.6s infinite;
-}
-
-@keyframes heartbeat {
-  0% {
-    transform: scale(1);
-  }
-
-  15% {
-    transform: scale(1.08);
-  }
-
-  30% {
-    transform: scale(1);
-  }
-
-  45% {
-    transform: scale(1.08);
-  }
-
-  70% {
-    transform: scale(1);
-  }
-}
-
-.gift-tag {
-  display: block;
-  margin-top: 18px;
-
-  letter-spacing: 3px;
-  font-size: 11px;
-  font-weight: 500;
-
-  color: #c89ca9;
-}
-
-.gift-header h2 {
-  margin-top: 14px;
-
-  font-size: clamp(42px, 6vw, 64px);
-
-  line-height: 1.1;
-
-  font-family: "Great Vibes", cursive;
-  font-weight: 400;
-
-  background: linear-gradient(90deg, #b76e79 20%, #f3b3c3 50%, #b76e79 80%);
-  background-size: 200px auto;
-
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-
-  animation: shimmerText 4s linear infinite;
-}
-
-@keyframes shimmerText {
-  from {
-    background-position: -200px;
-  }
-
-  to {
-    background-position: 200px;
-  }
-}
-
-.gift-line {
-  width: 65px;
-  height: 1px;
-  background: #e8c6cf;
-  margin: 18px auto;
-}
-
-.gift-header p {
-  max-width: 560px;
-  margin: auto;
-
-  color: #777;
-
-  line-height: 1.8;
-  font-size: 14px;
-}
-
-.gift-note {
-  margin-top: 22px;
-
+.gift-badge {
   display: inline-flex;
   align-items: center;
   gap: 8px;
-
-  padding: 10px 18px;
-
-  border-radius: 999px;
-
-  background: rgba(255, 255, 255, 0.75);
-
-  color: #b76e79;
-
-  font-size: 13px;
-
-  box-shadow: 0 8px 24px rgba(216, 139, 161, 0.08);
-}
-
-/* ========================================= */
-/* GRID */
-/* ========================================= */
-
-.gift-grid {
-  display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
-  gap: 22px;
-}
-
-/* ========================================= */
-/* CARD */
-/* ========================================= */
-
-.gift-card {
-  position: relative;
-  overflow: hidden;
-
-  border-radius: 28px;
-
-  padding: 28px 22px;
-
-  background: rgba(255, 255, 255, 0.76);
-
-  backdrop-filter: blur(16px);
-
-  border: 1px solid rgba(255, 255, 255, 0.7);
-
-  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.05);
-
-  transition: all 0.35s ease;
-}
-
-.gift-card:hover {
-  transform: translateY(-4px);
-
-  box-shadow: 0 20px 45px rgba(216, 139, 161, 0.12);
-}
-
-/* ========================================= */
-/* TOP */
-/* ========================================= */
-
-.card-top {
-  text-align: center;
-}
-
-.bank-icon {
-  width: 62px;
-  height: 62px;
-
-  margin: auto;
-
-  border-radius: 50%;
-
-  background: linear-gradient(135deg, #f7c6d0, #eab4c4);
-
-  display: flex;
-  align-items: center;
-  justify-content: center;
-
-  color: white;
-
-  font-size: 20px;
-
-  box-shadow: 0 10px 24px rgba(216, 139, 161, 0.2);
-}
-
-.role {
-  display: block;
-
-  margin-top: 18px;
-
-  font-size: 11px;
+  font-family: "Cinzel", serif;
+  font-size: 0.8rem;
   letter-spacing: 3px;
-
-  color: #c89ca9;
+  color: var(--gift-sage);
+  font-weight: 600;
+  margin-bottom: 8px;
 }
 
-.card-top h3 {
-  margin-top: 12px;
-
-  font-size: 28px;
-  line-height: 1.2;
-
-  font-family: "Cormorant Garamond", serif;
-
-  color: #b76e79;
+.gift-badge .dot {
+  width: 4px;
+  height: 4px;
+  background-color: var(--gift-sage);
+  border-radius: 50%;
 }
 
-.card-top p {
-  margin-top: 6px;
-
-  color: #777;
-
-  font-size: 14px;
+.gift-title {
+  font-family: "Playfair Display", serif;
+  font-size: 2.6rem;
+  font-weight: 600;
+  color: var(--gift-dark);
+  margin: 0;
 }
 
-/* ========================================= */
-/* QR */
-/* ========================================= */
-
-.qr-wrapper {
-  margin-top: 24px;
-
-  display: flex;
-  justify-content: center;
-}
-
-.qr-wrapper img {
-  width: 190px;
-
-  border-radius: 20px;
-
-  background: white;
-
-  padding: 12px;
-
-  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.06);
-
-  transition: all 0.35s ease;
-}
-
-.gift-card:hover .qr-wrapper img {
-  transform: scale(1.03);
-}
-
-/* ========================================= */
-/* BANK */
-/* ========================================= */
-
-.bank-box {
-  margin-top: 22px;
-
+.header-leaf-divider {
   display: flex;
   align-items: center;
-  gap: 10px;
+  justify-content: center;
+  gap: 15px;
+  margin: 15px 0;
 }
 
-.bank-number {
-  flex: 1;
-
-  padding: 14px 16px;
-
-  border-radius: 16px;
-
-  background: rgba(255, 255, 255, 0.82);
-
-  box-shadow: inset 0 0 0 1px rgba(216, 139, 161, 0.1);
-
-  font-size: 14px;
-  font-weight: 600;
-
-  color: #444;
-
-  text-align: center;
-}
-
-.copy-btn {
+.header-leaf-divider .line {
+  height: 1px;
   width: 50px;
-  height: 50px;
-
-  border: none;
-
-  border-radius: 16px;
-
-  background: linear-gradient(135deg, #d88ba1, #f3b3c3);
-
-  color: white;
-
-  cursor: pointer;
-
-  font-size: 15px;
-
-  box-shadow: 0 10px 24px rgba(216, 139, 161, 0.18);
-
-  transition: all 0.3s ease;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--gift-sage-border),
+    transparent
+  );
 }
 
-.copy-btn:hover {
-  transform: scale(1.05);
+.header-leaf-divider .leaf {
+  font-size: 0.9rem;
+  color: var(--gift-sage);
 }
 
-/* ========================================= */
-/* DOWNLOAD */
-/* ========================================= */
+.gift-subtitle {
+  font-size: 0.95rem;
+  color: #556054;
+  line-height: 1.6;
+  margin: 0;
+}
 
-.download-btn {
-  width: 100%;
+/* CARDS GRID */
+.gift-cards-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+}
 
-  margin-top: 18px;
+.editorial-gift-card {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(16px);
+  border: 1px solid var(--gift-sage-border);
+  border-radius: 28px;
+  padding: 35px 28px;
+  text-align: center;
+  box-shadow: 0 15px 35px rgba(36, 44, 36, 0.05);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition:
+    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+    box-shadow 0.4s ease;
+}
 
-  border: none;
+.editorial-gift-card:hover {
+  box-shadow: 0 20px 45px rgba(36, 44, 36, 0.1);
+  border-color: var(--gift-sage);
+}
 
-  padding: 14px;
+/* CARD HEADER */
+.card-top-header {
+  margin-bottom: 20px;
+}
 
-  border-radius: 999px;
+.role-tag {
+  font-family: "Cinzel", serif;
+  font-size: 0.75rem;
+  letter-spacing: 2px;
+  color: var(--gift-sage);
+  font-weight: 700;
+  display: block;
+  margin-bottom: 4px;
+}
 
-  background: linear-gradient(135deg, #d88ba1, #f3b3c3);
-
-  color: white;
-
-  font-size: 14px;
+.person-name {
+  font-family: "Playfair Display", serif;
+  font-size: 1.8rem;
+  color: var(--gift-dark);
+  margin: 0 0 2px;
   font-weight: 600;
+}
 
+.bank-name {
+  font-size: 0.82rem;
+  color: #666;
+  letter-spacing: 1px;
+  font-weight: 500;
+}
+
+/* QR IMAGE */
+.qr-image-frame {
+  position: relative;
+  width: 100%;
+  max-width: 220px;
+  background: white;
+  padding: 12px;
+  border-radius: 20px;
+  border: 1px solid var(--gift-sage-border);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.03);
+  margin-bottom: 22px;
+}
+
+.qr-image-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border-radius: 12px;
+}
+
+.qr-watermark {
   display: flex;
   align-items: center;
   justify-content: center;
-  gap: 10px;
+  gap: 4px;
+  font-size: 0.7rem;
+  color: #888;
+  margin-top: 8px;
+  font-weight: 500;
+}
 
+/* BANK INFO BOX */
+.bank-info-box {
+  width: 100%;
+  background: var(--gift-sage-soft);
+  border: 1px solid rgba(107, 124, 103, 0.2);
+  border-radius: 16px;
+  padding: 10px 14px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.stk-display {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.stk-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #666;
+}
+
+.stk-value {
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  color: var(--gift-dark);
+  letter-spacing: 0.5px;
+}
+
+.copy-chip-btn {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  background: white;
+  color: var(--gift-sage);
+  border: 1px solid var(--gift-sage-border);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.78rem;
+  font-weight: 600;
   cursor: pointer;
+  transition: all 0.25s ease;
+}
 
-  box-shadow: 0 10px 24px rgba(216, 139, 161, 0.22);
+.copy-chip-btn:hover {
+  background: var(--gift-sage);
+  color: white;
+  border-color: var(--gift-sage);
+}
 
+/* DOWNLOAD BUTTON */
+.download-qr-btn {
+  width: 100%;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 12px 20px;
+  background: transparent;
+  color: var(--gift-sage);
+  border: 1px solid var(--gift-sage);
+  border-radius: 30px;
+  font-family: "Cinzel", serif;
+  font-size: 0.8rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  cursor: pointer;
   transition: all 0.3s ease;
 }
 
-.download-btn:hover {
-  transform: translateY(-2px);
+.download-qr-btn:hover {
+  background: var(--gift-sage);
+  color: white;
 }
 
-/* ========================================= */
-/* POPUP */
-/* ========================================= */
-
-.gift-swal-popup {
-  border-radius: 28px !important;
-  padding: 28px 22px !important;
+/* ===================================================
+   SWEETALERT2 CUSTOM POPUP STYLES (SAGE THEME)
+   =================================================== */
+.editorial-sage-popup {
+  border-radius: 24px !important;
+  border: 1px solid var(--gift-sage-border) !important;
+  padding: 28px 20px !important;
+  box-shadow: 0 20px 50px rgba(36, 44, 36, 0.12) !important;
 }
 
-.gift-popup {
+.sage-popup-wrapper {
   text-align: center;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--gift-dark);
 }
 
-.gift-popup-icon {
-  font-size: 48px;
+.success-icon-badge,
+.error-icon-badge {
+  font-size: 2.2rem;
+  width: 60px;
+  height: 60px;
+  margin: 0 auto 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 50%;
+  background: var(--gift-sage-soft);
+  border: 1px solid var(--gift-sage-border);
 }
 
-.gift-popup h2 {
-  margin-top: 16px;
-
-  font-size: 30px;
-
-  color: #b76e79;
-
-  font-family: "Cormorant Garamond", serif;
+.popup-heading {
+  font-family: "Playfair Display", serif;
+  font-size: 1.6rem;
+  color: var(--gift-dark);
+  margin: 5px 0 8px;
+  font-weight: 600;
 }
 
-.gift-popup p {
-  margin-top: 10px;
-
-  color: #666;
-
-  line-height: 1.8;
-
-  font-size: 14px;
+.popup-subtext {
+  font-size: 0.88rem;
+  color: #556054;
+  line-height: 1.5;
+  margin: 0;
 }
 
-/* ========================================= */
-/* MOBILE */
-/* ========================================= */
+/* POPUP BUTTON */
+.sage-popup-btn {
+  background-color: var(--gift-sage) !important;
+  color: white !important;
+  font-family: "Cinzel", serif !important;
+  font-size: 0.82rem !important;
+  font-weight: 700 !important;
+  padding: 8px 24px !important;
+  border-radius: 30px !important;
+  border: none !important;
+}
+
+.sage-popup-btn.error-btn {
+  background-color: var(--gift-dark) !important;
+}
+
+/* RESPONSIVE */
 @media (max-width: 768px) {
-  .luxury-gift-section {
-    padding: 75px 14px;
+  .gift-cards-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
   }
 
-  .gift-header {
-    margin-bottom: 38px;
+  .gift-title {
+    font-size: 2.1rem;
   }
 
-  .gift-header h2 {
-    font-size: 40px;
-  }
-
-  .gift-header p {
-    font-size: 13px;
-    line-height: 1.75;
-  }
-
-  /* 2 CARD CÙNG HÀNG */
-  .gift-grid {
-    grid-template-columns: repeat(2, 1fr);
-    gap: 12px;
-    align-items: stretch;
-  }
-
-  .gift-card {
-    padding: 18px 12px;
-    border-radius: 22px;
-  }
-
-  .bank-icon {
-    width: 48px;
-    height: 48px;
-    font-size: 16px;
-  }
-
-  .role {
-    margin-top: 12px;
-    font-size: 9px;
-    letter-spacing: 2px;
-  }
-
-  .card-top h3 {
-    font-size: 19px;
-    margin-top: 8px;
-  }
-
-  .card-top p {
-    font-size: 11px;
-    line-height: 1.5;
-  }
-
-  /* QR NHỎ LẠI */
-  .qr-wrapper {
-    margin-top: 16px;
-  }
-
-  .qr-wrapper img {
-    width: 115px;
-    padding: 8px;
-    border-radius: 14px;
-  }
-
-  .bank-box {
-    margin-top: 14px;
-    gap: 6px;
-  }
-
-  .bank-number {
-    padding: 10px 8px;
-    font-size: 10px;
-    border-radius: 12px;
-
-    overflow: hidden;
-    text-overflow: ellipsis;
-  }
-
-  .copy-btn {
-    width: 38px;
-    height: 38px;
-    border-radius: 12px;
-    font-size: 12px;
-    flex-shrink: 0;
-  }
-
-  .download-btn {
-    margin-top: 14px;
-
-    padding: 11px;
-    font-size: 11px;
-    gap: 6px;
-
-    border-radius: 14px;
-  }
-
-  .gift-popup h2 {
-    font-size: 24px;
-  }
-
-  .gift-popup p {
-    font-size: 13px;
-  }
-}
-
-/* MOBILE NHỎ */
-@media (max-width: 480px) {
-  .gift-grid {
-    gap: 10px;
-  }
-
-  .gift-card {
-    padding: 16px 10px;
-  }
-
-  .qr-wrapper img {
-    width: 100px;
-  }
-
-  .card-top h3 {
-    font-size: 17px;
-  }
-
-  .bank-number {
-    font-size: 9px;
-    padding: 9px 6px;
-  }
-
-  .download-btn {
-    font-size: 10px;
-    padding: 10px;
+  .editorial-gift-card {
+    padding: 30px 20px;
   }
 }

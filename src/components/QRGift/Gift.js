@@ -1,230 +1,188 @@
-import "./Gift.css";
+import React from "react";
 import { motion } from "framer-motion";
-import { FaCopy, FaDownload, FaHeart, FaStar } from "react-icons/fa";
+import { FaCopy, FaDownload, FaQrcode } from "react-icons/fa";
 import Swal from "sweetalert2";
+import "./Gift.css";
 
 function Gift() {
   // =========================
-  // COPY
+  // COPY STK HANDLER
   // =========================
-
-  const copyText = (text) => {
+  const copyText = (text, name) => {
     navigator.clipboard.writeText(text);
 
     Swal.fire({
       html: `
-        <div class="gift-popup">
-          <div class="gift-popup-icon">💖</div>
-
-          <h2>Đã sao chép!</h2>
-
-          <p>
-            Số tài khoản đã được lưu vào clipboard
+        <div class="sage-popup-wrapper">
+          <div class="success-icon-badge">✨</div>
+          <h2 class="popup-heading">Đã Sao Chép!</h2>
+          <p class="popup-subtext">
+            Số tài khoản của <strong>${name}</strong> đã được lưu vào bộ nhớ tạm.
           </p>
         </div>
       `,
       showConfirmButton: false,
       timer: 1600,
-      background: "#fffaf8",
+      background: "#fdfcf9",
       customClass: {
-        popup: "gift-swal-popup",
+        popup: "editorial-sage-popup",
       },
     });
   };
 
   // =========================
-  // DOWNLOAD QR
+  // DOWNLOAD QR HANDLER
   // =========================
-
   const downloadQR = async (url, name) => {
     try {
       const res = await fetch(url);
-
       const blob = await res.blob();
-
       const blobUrl = window.URL.createObjectURL(blob);
-
       const link = document.createElement("a");
 
       link.href = blobUrl;
       link.download = `QR_MungCuoi_${name}.png`;
-
       document.body.appendChild(link);
-
       link.click();
-
       document.body.removeChild(link);
 
       Swal.fire({
         html: `
-          <div class="gift-popup">
-            <div class="gift-popup-icon">✨</div>
-
-            <h2>Tải thành công!</h2>
-
-            <p>
-              QR của ${name} đã được lưu
+          <div class="sage-popup-wrapper">
+            <div class="success-icon-badge">🌿</div>
+            <h2 class="popup-heading">Tải QR Thành Công!</h2>
+            <p class="popup-subtext">
+              Mã QR mừng cưới của <strong>${name}</strong> đã được tải về máy.
             </p>
           </div>
         `,
         showConfirmButton: false,
         timer: 1600,
-        background: "#fffaf8",
+        background: "#fdfcf9",
         customClass: {
-          popup: "gift-swal-popup",
+          popup: "editorial-sage-popup",
         },
       });
     } catch {
       Swal.fire({
         html: `
-          <div class="gift-popup">
-            <div class="gift-popup-icon">😢</div>
-
-            <h2>Có lỗi xảy ra</h2>
-
-            <p>
-              Không thể tải QR lúc này
-            </p>
+          <div class="sage-popup-wrapper">
+            <div class="error-icon-badge">🍃</div>
+            <h2 class="popup-heading">Có lỗi xảy ra</h2>
+            <p class="popup-subtext">Chưa thể tải mã QR lúc này. Bạn vui lòng thử lại nhé!</p>
           </div>
         `,
-        background: "#fffaf8",
-        confirmButtonColor: "#d88ba1",
+        background: "#fdfcf9",
+        confirmButtonText: "Đóng",
+        customClass: {
+          popup: "editorial-sage-popup",
+          confirmButton: "sage-popup-btn error-btn",
+        },
       });
     }
   };
 
-  // =========================
   // DATA
-  // =========================
-
   const data = [
     {
-      role: "Chú Rể",
+      role: "CHÚ RỂ",
       name: "Khánh Hưng",
-      bank: "MB Bank",
+      bank: "MB BANK",
       stk: "200318076666",
       qr: "https://img.vietqr.io/image/MB-200318076666-compact2.png?addInfo=MungCuoiKhanhHung",
     },
-
     {
-      role: "Cô Dâu",
+      role: "CÔ DÂU",
       name: "Trang Trang",
-      bank: "MB Bank",
+      bank: "MB BANK",
       stk: "0364023640",
       qr: "https://img.vietqr.io/image/MB-0364023640-compact2.png?addInfo=MungCuoiTrangTrang",
     },
   ];
 
   return (
-    <section className="luxury-gift-section">
-      {/* FLOATING HEARTS */}
+    <section className="sage-gift-section">
+      {/* Background Soft Glows */}
+      <div className="gift-glow glow-left"></div>
+      <div className="gift-glow glow-right"></div>
 
-      <div className="floating-hearts">
-        <span>❤</span>
-        <span>❤</span>
-        <span>❤</span>
-        <span>❤</span>
-      </div>
-
-      {/* BLUR BACKGROUND */}
-
-      <div className="blur blur1"></div>
-      <div className="blur blur2"></div>
-
-      <div className="gift-container">
-        {/* HEADER */}
-
+      <div className="gift-content-wrapper">
+        {/* HEADER SECTION */}
         <motion.div
-          className="gift-header"
-          initial={{ opacity: 0, y: 40 }}
+          className="editorial-gift-header"
+          initial={{ opacity: 0, y: 30 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <div className="gift-icon">
-            <FaHeart />
+          <div className="gift-badge">
+            <span className="dot"></span>
+            <span>WEDDING GIFT</span>
+            <span className="dot"></span>
           </div>
 
-          <span className="gift-tag">WEDDING GIFT</span>
+          <h2 className="gift-title">Hộp Mừng Cưới</h2>
 
-          <h2>Mừng Cưới</h2>
+          <div className="header-leaf-divider">
+            <span className="line"></span>
+            <span className="leaf">🌿</span>
+            <span className="line"></span>
+          </div>
 
-          <div className="gift-line"></div>
-
-          <p>
-            Cảm ơn bạn đã đến chung vui và gửi những lời chúc tốt đẹp nhất đến
-            chúng mình 💗
+          <p className="gift-subtitle">
+            Sự hiện diện và tình cảm quý báu của bạn là món quà ý nghĩa nhất
+            dành cho Khánh Hưng & Trang Trang 🤍
           </p>
-
-          <div className="gift-note">
-            <FaStar />
-
-            <span>
-              Tình cảm của bạn là món quà quý giá nhất dành cho chúng mình 🤍
-            </span>
-          </div>
         </motion.div>
 
-        {/* CARDS */}
-
-        <div className="gift-grid">
+        {/* CARDS GRID */}
+        <div className="gift-cards-grid">
           {data.map((item, index) => (
             <motion.div
-              className="gift-card"
+              className="editorial-gift-card"
               key={index}
-              initial={{
-                opacity: 0,
-                y: 50,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.7,
-                delay: index * 0.2,
-              }}
-              whileHover={{
-                y: -10,
-              }}
+              initial={{ opacity: 0, y: 35 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-30px" }}
+              transition={{ duration: 0.8, delay: index * 0.15 }}
+              whileHover={{ y: -6 }}
             >
-              {/* TOP */}
-
-              <div className="card-top">
-                <span className="role">{item.role}</span>
-
-                <h3>{item.name}</h3>
-
-                <p>{item.bank}</p>
+              {/* TOP HEADER */}
+              <div className="card-top-header">
+                <span className="role-tag">{item.role}</span>
+                <h3 className="person-name">{item.name}</h3>
+                <span className="bank-name">{item.bank}</span>
               </div>
 
-              {/* QR */}
-
-              <div className="qr-wrapper">
-                <img src={item.qr} alt={item.name} />
-              </div>
-
-              {/* STK */}
-
-              <div className="bank-box">
-                <div className="bank-number">
-                  <span>{item.stk}</span>
+              {/* QR IMAGE FRAME */}
+              <div className="qr-image-frame">
+                <img src={item.qr} alt={`Mã QR ${item.name}`} loading="lazy" />
+                <div className="qr-watermark">
+                  <FaQrcode /> VietQR
                 </div>
+              </div>
 
-                <button className="copy-btn" onClick={() => copyText(item.stk)}>
-                  <FaCopy />
+              {/* STK BOX */}
+              <div className="bank-info-box">
+                <div className="stk-display">
+                  <span className="stk-label">STK:</span>
+                  <span className="stk-value">{item.stk}</span>
+                </div>
+                <button
+                  className="copy-chip-btn"
+                  onClick={() => copyText(item.stk, item.name)}
+                  title="Sao chép số tài khoản"
+                >
+                  <FaCopy /> <span>Sao chép</span>
                 </button>
               </div>
 
-              {/* DOWNLOAD */}
-
+              {/* DOWNLOAD BUTTON */}
               <button
-                className="download-btn"
+                className="download-qr-btn"
                 onClick={() => downloadQR(item.qr, item.name)}
               >
-                <FaDownload />
-                Tải mã QR
+                <FaDownload className="btn-icon" /> Tải Mã QR
               </button>
             </motion.div>
           ))}

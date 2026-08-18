@@ -1,13 +1,12 @@
 import React from "react";
 import { motion } from "framer-motion";
-
 import {
   FaHeart,
   FaGlassCheers,
   FaMapMarkerAlt,
   FaChurch,
+  FaCalendarCheck,
 } from "react-icons/fa";
-
 import "./Timeline.css";
 
 function Timeline() {
@@ -19,152 +18,109 @@ function Timeline() {
       location: "Tại tư gia nhà gái",
       map: "https://maps.app.goo.gl/Wf1Fopbw9sWoW8Ab7",
       description:
-        "Ngày hai gia đình chính thức gặp gỡ, cùng trò chuyện và mở đầu cho hành trình nên duyên của Khánh Hưng & Trang Trang.",
+        "Ngày hai gia đình chính thức gặp gỡ, trao gửi câu chuyện thân tình và khởi đầu cho chặng đường nên duyên của Khánh Hưng & Trang Trang.",
     },
-
     {
-      icon: <FaHeart />,
+      icon: <FaCalendarCheck />,
       title: "Lễ Ăn Hỏi",
-      time: "08:00 AM • 18.01.2027",
+      time: "08:00 AM • 26.12.2026",
       location: "Tại tư gia nhà gái",
       map: "https://maps.app.goo.gl/Wf1Fopbw9sWoW8Ab7",
       description:
-        "Những sính lễ được trao gửi cùng lời thưa chuyện chân thành, đánh dấu ngày đôi bên chính thức hẹn ước trăm năm.",
+        "Những mâm sính lễ được trao gửi cùng lời thưa chuyện chân thành, đính ước tình yêu trăm năm trước hai họ.",
     },
-
     {
       icon: <FaChurch />,
       title: "Thánh Lễ Hôn Phối",
-      time: "09:00 AM • 20.01.2027",
+      time: "09:00 AM • 27.12.2026",
       location: "Nhà thờ giáo xứ Đồng Quan",
       map: "https://maps.app.goo.gl/qgz9At8wYAMLviVA8",
       description:
-        "Khoảnh khắc thiêng liêng khi Khánh Hưng & Trang Trang cùng nắm tay nhau tuyên hứa trước Chúa và gia đình hai bên.",
+        "Khoảnh khắc thiêng liêng khi đôi bạn trẻ cùng nắm tay trao lời nguyện hứa thủy chung trước Thiên Chúa và gia đình.",
     },
-
     {
       icon: <FaGlassCheers />,
       title: "Lễ Thành Hôn & Tiệc Cưới",
-      time: "11:00 AM • 20.01.2027",
+      time: "11:00 AM • 27.12.2026",
       location: "Tại tư gia nhà trai",
       map: "https://maps.app.goo.gl/p7adbek3JrYSdqJM9",
       description:
-        "Một bữa tiệc ấm cúng để cùng nâng ly chúc mừng, lưu giữ những tiếng cười và khoảnh khắc hạnh phúc bên người thân, bạn bè.",
+        "Bữa tiệc ấm cúng cùng chung vui, nâng ly chúc mừng và lưu giữ những nụ cười trọn vẹn bên người thân, bạn bè.",
     },
   ];
 
   return (
-    <section className="romantic-timeline">
-      {/* FLOATING HEARTS */}
-
-      <div className="floating-hearts">
-        <span>❤</span>
-        <span>❤</span>
-        <span>❤</span>
-        <span>❤</span>
-      </div>
-
-      {/* BLUR BACKGROUND */}
-
-      <div className="blur blur1"></div>
-      <div className="blur blur2"></div>
+    <section className="sage-timeline-section">
+      {/* Background Soft Glow */}
+      <div className="timeline-glow glow-1"></div>
+      <div className="timeline-glow glow-2"></div>
 
       <div className="timeline-container">
-        {/* HEADER */}
-
+        {/* HEADER SECTION */}
         <motion.div
-          className="timeline-header"
-          initial={{
-            opacity: 0,
-            y: 30,
-          }}
-          whileInView={{
-            opacity: 1,
-            y: 0,
-          }}
-          viewport={{ once: true }}
-          transition={{
-            duration: 0.8,
-          }}
+          className="editorial-timeline-header"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true, margin: "-50px" }}
+          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
         >
-          <span className="timeline-tag">WEDDING TIMELINE</span>
+          <div className="timeline-badge">
+            <span className="dot"></span>
+            <span>WEDDING TIMELINE</span>
+            <span className="dot"></span>
+          </div>
 
-          <h2>Lịch Trình Sự Kiện</h2>
+          <h2 className="timeline-title">Lịch Trình Sự Kiện</h2>
 
-          <div className="timeline-line"></div>
+          <div className="header-leaf-divider">
+            <span className="line"></span>
+            <span className="leaf">🌿</span>
+            <span className="line"></span>
+          </div>
 
-          <p>
-            Hành trình yêu thương sẽ được viết tiếp bằng những khoảnh khắc đáng
-            nhớ nhất 🤍
+          <p className="timeline-subtitle">
+            Hành trình tình yêu được đánh dấu bằng những cột mốc đáng nhớ nhất
+            🤍
           </p>
         </motion.div>
 
-        {/* TIMELINE */}
-
+        {/* TIMELINE MAIN BODY */}
         <div className="timeline-wrapper">
-          {/* CENTER LINE */}
-
+          {/* TRỤC ĐƯỜNG NỐI TRUNG TÂM */}
           <motion.div
-            className="center-line"
-            initial={{
-              scaleY: 0,
-            }}
-            whileInView={{
-              scaleY: 1,
-            }}
+            className="editorial-center-line"
+            initial={{ scaleY: 0 }}
+            whileInView={{ scaleY: 1 }}
             viewport={{ once: true }}
-            transition={{
-              duration: 1.4,
-              ease: "easeInOut",
-            }}
+            transition={{ duration: 1.2, ease: "easeInOut" }}
           />
 
           {timelineData.map((item, index) => (
             <motion.div
-              className={`timeline-item ${index % 2 === 0 ? "left" : "right"}`}
+              className={`timeline-item ${index % 2 === 0 ? "left-item" : "right-item"}`}
               key={index}
-              initial={{
-                opacity: 0,
-                y: 60,
-              }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-              }}
-              viewport={{ once: true }}
-              transition={{
-                duration: 0.8,
-                delay: index * 0.2,
-              }}
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: "-40px" }}
+              transition={{ duration: 0.8, delay: index * 0.15 }}
             >
-              {/* ICON */}
+              {/* NODE ICON Ở GIỮA */}
+              <div className="node-icon-wrapper">
+                <span className="node-icon">{item.icon}</span>
+              </div>
 
+              {/* CARD NỘI DUNG SỰ KIỆN */}
               <motion.div
-                className="timeline-icon"
-                whileHover={{
-                  scale: 1.1,
-                }}
+                className="event-card"
+                whileHover={{ y: -6 }}
+                transition={{ duration: 0.3 }}
               >
-                {item.icon}
-              </motion.div>
+                <div className="event-time-tag">{item.time}</div>
+                <h3 className="event-title">{item.title}</h3>
+                <p className="event-description">{item.description}</p>
 
-              {/* CARD */}
-
-              <motion.div
-                className="timeline-card"
-                whileHover={{
-                  y: -8,
-                }}
-              >
-                <span className="event-time">{item.time}</span>
-
-                <h3>{item.title}</h3>
-
-                <p className="event-desc">{item.description}</p>
-
-                <div className="event-location">
-                  <FaMapMarkerAlt />
-
+                <div className="event-location-info">
+                  <FaMapMarkerAlt className="loc-icon" />
                   <span>{item.location}</span>
                 </div>
 
@@ -172,10 +128,9 @@ function Timeline() {
                   href={item.map}
                   target="_blank"
                   rel="noreferrer"
-                  className="map-btn"
+                  className="map-link-btn"
                 >
-                  <FaMapMarkerAlt />
-                  Xem bản đồ
+                  <FaMapMarkerAlt /> Chỉ đường Google Maps
                 </a>
               </motion.div>
             </motion.div>

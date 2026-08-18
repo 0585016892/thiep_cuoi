@@ -1,0 +1,213 @@
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Plus+Jakarta+Sans:wght@500;600;700&display=swap");
+
+:root {
+  --nav-sage: #6b7c67;
+  --nav-border: #cbd5c9;
+  --nav-dark: #242c24;
+  --nav-bg: rgba(253, 252, 249, 0.88);
+}
+
+/* DESKTOP FLOATING NAVBAR - CỐ ĐỊNH Ở GÓC PHẢI */
+.desktop-floating-nav {
+  position: fixed;
+  bottom: 80px; /* Hoặc điều chỉnh vị trí theo chiều dọc bạn muốn */
+  right: 25px; /* Neo hẳn sang bên phải màn hình */
+  z-index: 999;
+  width: auto;
+  max-width: 90vw;
+}
+
+.nav-glass-bar {
+  background: var(--nav-bg);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--nav-border);
+  padding: 6px 10px;
+  border-radius: 40px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 10px 30px rgba(36, 44, 36, 0.1);
+  transition: all 0.3s ease;
+}
+
+.nav-logo {
+  display: flex;
+  align-items: center;
+  gap: 3px;
+  font-family: "Cinzel", serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+  color: var(--nav-sage);
+  cursor: pointer;
+  padding: 0 10px 0 6px;
+  border-right: 1px solid var(--nav-border);
+  white-space: nowrap;
+}
+
+.nav-logo .heart {
+  color: #c86b6b;
+  font-size: 0.75rem;
+}
+
+/* CONTAINER ĐỨNG CHỨA CÁC BUTTON - TRÀN SANG BÊN TRÁI */
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+  white-space: nowrap;
+}
+
+.nav-link-btn {
+  position: relative;
+  border: none;
+  background: transparent;
+  padding: 8px 14px;
+  border-radius: 20px;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #556054;
+  cursor: pointer;
+  transition: color 0.25s ease;
+  z-index: 1;
+  white-space: nowrap;
+}
+
+.nav-link-btn:hover {
+  color: var(--nav-sage);
+}
+
+.nav-link-btn.active {
+  color: #ffffff;
+}
+
+.active-pill-bg {
+  position: absolute;
+  inset: 0;
+  background: var(--nav-sage);
+  border-radius: 20px;
+  z-index: -1;
+  box-shadow: 0 4px 12px rgba(107, 124, 103, 0.3);
+}
+
+/* NÚT TOGGLE MỞ/ĐÓNG TRÊN PC */
+.desktop-toggle-btn {
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  border: 1px solid var(--nav-border);
+  background: rgba(107, 124, 103, 0.12);
+  color: var(--nav-sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.desktop-toggle-btn:hover {
+  background: var(--nav-sage);
+  color: #ffffff;
+  transform: scale(1.08);
+}
+
+/* MOBILE TRIGGER & MENU */
+.mobile-nav-trigger {
+  display: none;
+  position: fixed;
+  top: 18px;
+  right: 20px;
+  z-index: 1000;
+}
+
+.mobile-toggle-btn {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--nav-border);
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  color: var(--nav-sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+.mobile-nav-menu {
+  display: none;
+  position: fixed;
+  top: 72px;
+  right: 20px;
+  z-index: 999;
+  width: 220px;
+  background: rgba(253, 252, 249, 0.95);
+  backdrop-filter: blur(20px);
+  border: 1px solid var(--nav-border);
+  border-radius: 24px;
+  padding: 12px;
+  box-shadow: 0 16px 35px rgba(0, 0, 0, 0.12);
+}
+
+.mobile-menu-inner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-menu-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 10px 14px;
+  border: none;
+  background: transparent;
+  border-radius: 14px;
+  font-size: 0.88rem;
+  font-weight: 600;
+  color: #556054;
+  cursor: pointer;
+  text-align: left;
+}
+
+.mobile-menu-item.active {
+  background: var(--nav-sage);
+  color: #ffffff;
+}
+
+/* SCROLL TO TOP BUTTON */
+.scroll-top-btn {
+  position: fixed;
+  bottom: 25px;
+  right: 25px;
+  z-index: 998;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  border: 1px solid var(--nav-border);
+  background: var(--nav-bg);
+  backdrop-filter: blur(12px);
+  color: var(--nav-sage);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+  cursor: pointer;
+}
+
+/* RESPONSIVE */
+@media (max-width: 960px) {
+  .desktop-floating-nav {
+    display: none;
+  }
+
+  .mobile-nav-trigger,
+  .mobile-nav-menu {
+    display: block;
+  }
+}

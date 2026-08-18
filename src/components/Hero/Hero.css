@@ -1,405 +1,301 @@
-@import url("https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500;600&family=Great+Vibes&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400&family=Great+Vibes&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap");
 
-/* ================= HERO ================= */
+:root {
+  --sage-main: #7a8b7b;
+  --sage-soft: #e8eee9;
+  --sage-dark: #2d382e;
+  --cream-bg: #faf8f5;
+  --gold-accent: #d4af37;
+  --text-primary: #1e241f;
+  --text-muted: #5e6b60;
+}
 
-.luxury-hero {
+.editorial-hero {
   position: relative;
   width: 100%;
-  height: 100vh;
-  overflow: hidden;
-
-  background: #000;
-}
-
-/* ================= BG ================= */
-
-.hero-bg {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-
-  animation: bgZoom 18s ease-in-out infinite alternate;
-}
-
-@keyframes bgZoom {
-  from {
-    transform: scale(1);
-  }
-
-  to {
-    transform: scale(1.08);
-  }
-}
-
-/* ================= OVERLAY ================= */
-
-.hero-overlay {
-  position: absolute;
-  inset: 0;
-
-  background:
-    linear-gradient(to right, rgba(85, 40, 55, 0.58), rgba(0, 0, 0, 0.18)),
-    linear-gradient(to bottom, rgba(255, 220, 230, 0.08), rgba(0, 0, 0, 0.22));
-}
-
-/* ================= BLUR ================= */
-
-.pink-blur {
-  position: absolute;
-
-  left: -10%;
-  bottom: -10%;
-
-  width: 700px;
-  height: 700px;
-
-  background: radial-gradient(
-    circle,
-    rgba(255, 200, 220, 0.45),
-    transparent 70%
-  );
-
-  filter: blur(50px);
-
-  z-index: 1;
-}
-
-/* ================= CONTENT ================= */
-
-.hero-content {
-  position: absolute;
-
-  top: 13%;
-  left: 7%;
-
-  transform: translate(-50%, -50%);
-
-  z-index: 5;
-
-  text-align: center;
-}
-
-/* ================= SAVE DATE ================= */
-
-.save-date {
-  color: #ffd6e3;
-
-  font-size: 15px;
-
-  letter-spacing: 8px;
-
-  font-family: "Cormorant Garamond", serif;
-}
-
-/* ================= DIVIDER ================= */
-
-.mini-divider {
+  min-height: 100vh;
+  background-color: var(--cream-bg);
   display: flex;
   align-items: center;
   justify-content: center;
-
-  gap: 12px;
-
-  margin: 24px 0;
+  padding: 80px 20px 40px;
+  overflow: hidden;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: var(--text-primary);
 }
 
-.mini-divider .line {
-  width: 70px;
-  height: 1px;
-
-  background: rgba(255, 220, 230, 0.6);
+/* Background Blur Effecct */
+.hero-blur-bg {
+  position: absolute;
+  inset: -20px;
+  z-index: 1;
+  opacity: 0.15;
+  filter: blur(30px);
+  pointer-events: none;
 }
 
-.mini-heart {
-  color: #ffbfd2;
-
-  font-size: 14px;
+.hero-blur-bg img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
 
-/* ================= NAMES ================= */
-
-.hero-names {
-  display: flex;
-  flex-direction: column;
+/* Bố cục chính 2 cột */
+.hero-main-layout {
+  position: relative;
+  z-index: 2;
+  max-width: 1200px;
+  width: 100%;
+  display: grid;
+  grid-template-columns: 1.1fr 0.9fr;
+  gap: 50px;
   align-items: center;
 }
 
-.hero-name {
+/* CỘT TRÁI */
+.hero-text-side {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.editorial-tag {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Cinzel", serif;
+  font-size: 0.85rem;
+  letter-spacing: 4px;
+  color: var(--sage-main);
+  font-weight: 600;
+  margin-bottom: 15px;
+}
+
+.editorial-tag .dot {
+  width: 6px;
+  height: 6px;
+  background-color: var(--sage-main);
+  border-radius: 50%;
+}
+
+/* Tên xếp tầng phá cách */
+.names-creative {
+  position: relative;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+.groom-name {
+  font-family: "Cinzel", serif;
+  font-size: clamp(2.5rem, 5vw, 4.2rem);
+  font-weight: 700;
+  color: var(--sage-dark);
+  line-height: 1.1;
+  letter-spacing: 1px;
+}
+
+.bride-name {
   font-family: "Great Vibes", cursive;
-
-  font-size: 140px;
-
-  font-weight: normal;
-
-  line-height: 0.95;
-
-  color: #ffb3c8;
-
-  text-shadow:
-    0 0 12px rgba(255, 190, 210, 0.5),
-    0 0 30px rgba(255, 170, 190, 0.35);
-}
-
-.hero-name.second {
+  font-size: clamp(3.2rem, 6vw, 5.5rem);
+  color: var(--sage-main);
+  font-weight: 400;
+  margin-left: 40px;
   margin-top: -10px;
-
-  color: #ffc5d6;
+  line-height: 1;
 }
 
-/* ================= & ================= */
-
-.ampersand {
-  font-family: "Cormorant Garamond", serif;
-
-  font-size: 70px;
-
-  margin: 8px 0;
-
-  color: #ffd9e6;
-}
-
-/* ================= BOTTOM ================= */
-
-.bottom-divider {
-  margin-top: 26px;
-
-  color: #ffd8e4;
-
-  font-size: 18px;
-}
-
-/* ================= INFO ================= */
-
-.hero-date,
-.hero-location {
-  margin-top: 16px;
-
-  color: #fff2f6;
-
-  font-size: 18px;
-
-  letter-spacing: 3px;
-
-  font-family: "Cormorant Garamond", serif;
-}
-
-/* ================= PETALS ================= */
-
-.petal {
+.ampersand-badge {
   position: absolute;
-
-  width: 14px;
-  height: 14px;
-
-  background: rgba(255, 210, 225, 0.8);
-
-  border-radius: 50% 0 50% 50%;
-
-  filter: blur(1px);
-
-  animation: floatPetal linear infinite;
+  top: 68%;
+  left: -6px;
+  transform: translateY(-50%);
+  background: rgba(255, 255, 255, 0.9);
+  border: 1px solid var(--sage-soft);
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: "Great Vibes", cursive;
+  font-size: 1.8rem;
+  color: var(--gold-accent);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05);
 }
 
-@keyframes floatPetal {
-  from {
-    transform: translateY(-100px) rotate(0deg);
-    opacity: 0;
-  }
-
-  20% {
-    opacity: 1;
-  }
-
-  to {
-    transform: translateY(110vh) rotate(360deg);
-    opacity: 0;
-  }
+.wedding-quote {
+  font-family: "Cormorant Garamond", serif;
+  font-style: italic;
+  font-size: 1.25rem;
+  color: var(--text-muted);
+  margin-bottom: 25px;
 }
 
-.petal-0 {
-  left: 5%;
-  animation-duration: 12s;
+/* Chips ngày & địa điểm */
+.info-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 12px;
+  margin-bottom: 30px;
 }
 
-.petal-1 {
-  left: 15%;
-  animation-duration: 10s;
+.chip {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background: white;
+  padding: 10px 18px;
+  border-radius: 30px;
+  font-size: 0.88rem;
+  font-weight: 500;
+  color: var(--sage-dark);
+  border: 1px solid rgba(122, 139, 123, 0.2);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.03);
 }
 
-.petal-2 {
-  left: 35%;
-  animation-duration: 14s;
+.chip-icon {
+  color: var(--sage-main);
 }
 
-.petal-3 {
-  left: 60%;
-  animation-duration: 13s;
+/* Đồng hồ đếm ngược */
+.countdown-container {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  background: white;
+  padding: 18px 25px;
+  border-radius: 16px;
+  border: 1px solid var(--sage-soft);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
 }
 
-.petal-4 {
-  left: 75%;
-  animation-duration: 11s;
+.time-block {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 45px;
 }
 
-.petal-5 {
-  left: 90%;
-  animation-duration: 15s;
+.time-block .number {
+  font-family: "Cinzel", serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--sage-dark);
 }
 
-.petal-6 {
+.time-block .label {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.colon {
+  font-family: "Cinzel", serif;
+  font-size: 1.2rem;
+  color: var(--sage-main);
+  margin-top: -12px;
+}
+
+/* CỘT PHẢI: Frame Arch */
+.hero-image-side {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.arch-frame {
+  position: relative;
+  width: 100%;
+  max-width: 420px;
+  height: 560px;
+  border-radius: 210px 210px 20px 20px; /* Khung vòm nghệ thuật */
+  overflow: hidden;
+  box-shadow: 0 20px 40px rgba(45, 56, 46, 0.15);
+}
+
+.photo-main {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  cursor: pointer;
+}
+
+.frame-border {
+  position: absolute;
+  inset: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.6);
+  border-radius: 200px 200px 12px 12px;
+  pointer-events: none;
+}
+
+.save-date-badge {
+  position: absolute;
+  bottom: 25px;
   left: 50%;
-  animation-duration: 12s;
+  transform: translateX(-50%);
+  background: rgba(255, 255, 255, 0.88);
+  backdrop-filter: blur(8px);
+  padding: 8px 20px;
+  border-radius: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-family: "Cinzel", serif;
+  font-size: 0.8rem;
+  letter-spacing: 2px;
+  color: var(--sage-dark);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.08);
+  white-space: nowrap;
 }
 
-.petal-7 {
-  left: 25%;
-  animation-duration: 16s;
+.badge-heart {
+  color: #d97777;
+  font-size: 0.75rem;
 }
 
-/* ================= FADE ================= */
-
-.hero-fade {
+/* Bottom Fade */
+.bottom-wave-fade {
   position: absolute;
   bottom: 0;
-
+  left: 0;
   width: 100%;
-  height: 180px;
-
-  background: linear-gradient(to top, #fff, transparent);
-}
-
-/* ================= MOBILE ================= */
-
-@media (max-width: 768px) {
-  .hero-content {
-    left: 5%;
-    top: 20%;
-    width: 90%;
-  }
-
-  .hero-name {
-    font-size: 65px;
-  }
-
-  .ampersand {
-    font-size: 40px;
-  }
-
-  .hero-date,
-  .hero-location {
-    font-size: 13px;
-    font-weight: 700;
-    letter-spacing: 2px;
-  }
-
-  .save-date {
-    font-size: 11px;
-
-    letter-spacing: 5px;
-  }
-}
-/* ================= CHỮ HỶ RƠI ================= */
-
-.falling-hy {
-  position: absolute;
-  inset: 0;
-  overflow: hidden;
-  pointer-events: none;
+  height: 60px;
+  background: linear-gradient(to top, #ffffff, transparent);
   z-index: 3;
 }
 
-.hy-item {
-  position: absolute;
-  top: -80px;
-
-  color: rgba(255, 210, 225, 0.75);
-
-  font-size: 26px;
-
-  font-family: serif;
-
-  animation: hyFall linear infinite;
-
-  text-shadow:
-    0 0 10px rgba(255, 200, 220, 0.5),
-    0 0 20px rgba(255, 180, 200, 0.25);
-}
-
-/* random vị trí */
-.hy-1 {
-  left: 5%;
-  animation-duration: 10s;
-  animation-delay: 0s;
-}
-
-.hy-2 {
-  left: 15%;
-  animation-duration: 13s;
-  animation-delay: 2s;
-}
-
-.hy-3 {
-  left: 28%;
-  animation-duration: 11s;
-  animation-delay: 1s;
-}
-
-.hy-4 {
-  left: 40%;
-  animation-duration: 15s;
-  animation-delay: 4s;
-}
-
-.hy-5 {
-  left: 55%;
-  animation-duration: 12s;
-  animation-delay: 2s;
-}
-
-.hy-6 {
-  left: 68%;
-  animation-duration: 14s;
-  animation-delay: 1s;
-}
-
-.hy-7 {
-  left: 80%;
-  animation-duration: 10s;
-  animation-delay: 3s;
-}
-
-.hy-8 {
-  left: 92%;
-  animation-duration: 16s;
-  animation-delay: 0s;
-}
-
-/* animation rơi */
-@keyframes hyFall {
-  0% {
-    transform: translateY(-120px) rotate(0deg) scale(0.8);
-
-    opacity: 0;
+/* Responsive */
+@media (max-width: 992px) {
+  .hero-main-layout {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    text-align: center;
   }
 
-  10% {
-    opacity: 0.9;
+  .hero-text-side {
+    align-items: center;
   }
 
-  50% {
-    transform: translateY(50vh) rotate(180deg) translateX(20px) scale(1);
+  .bride-name {
+    margin-top: 40px;
+    margin-left: 0;
   }
 
-  100% {
-    transform: translateY(110vh) rotate(360deg) translateX(-20px) scale(0.9);
-
-    opacity: 0;
+  .ampersand-badge {
+    left: 50%;
+    transform: translate(-50%, -100%);
   }
-}
 
-/* mobile */
-@media (max-width: 768px) {
-  .hy-item {
-    font-size: 18px;
+  .info-chips {
+    justify-content: center;
+  }
+
+  .arch-frame {
+    max-width: 360px;
+    height: 480px;
   }
 }
