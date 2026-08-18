@@ -166,7 +166,7 @@ function MusicPlayer() {
                 </p>
 
                 <div className="date-time">
-                  <p>10 / 01 / 2027</p>
+                  <p>27 / 12 / 2026</p>
                   <span className="dot"></span>
                   <p>CHỦ NHẬT</p>
                 </div>

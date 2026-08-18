@@ -14,7 +14,7 @@ import QRGift from "./components/QRGift/Gift";
 import Footer from "./components/Footer/Footer.jsx";
 import MusicPlayer from "./components/Music/MusicPlayer";
 import FallingHy from "./components/Hero/FallingHy";
-
+import RsvpReminder from "./components/RsvpReminder/RsvpReminder";
 // Pages
 import QuanLyKhachMoi from "./page/QuanLyKhachMoi";
 
@@ -79,14 +79,13 @@ function App() {
       <FallingHy />
       <MusicPlayer />
 
-      {/* Floating Glassmorphic Navbar */}
-      <NavigationBar
-        activeSection={activeSection}
-        onNavigate={scrollToSection}
-      />
-
       {/* Main Wedding Content */}
       <main className="wedding-main-content">
+        {/* Floating Glassmorphic Navbar */}
+        <NavigationBar
+          activeSection={activeSection}
+          onNavigate={scrollToSection}
+        />
         <section id="hero">
           <Hero />
         </section>
@@ -126,6 +125,7 @@ function App() {
         <footer id="footer">
           <Footer />
         </footer>
+        <RsvpReminder />
       </main>
 
       {/* Nút cuộn nhanh lên đầu trang */}
