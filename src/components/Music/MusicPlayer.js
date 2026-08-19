@@ -23,13 +23,16 @@ function MusicPlayer() {
   const [currentTrackIndex, setCurrentTrackIndex] = useState(0);
 
   const [tenKhach, setTenKhach] = useState("");
-  const [dangTaiKhach, setDangTaiKhach] = useState(false);
+  const [dangTaiKhach, setDangTaiKhach] = useState(true); // Mặc định là true để kiểm tra ID trước
 
   useEffect(() => {
     const params = new URLSearchParams(window.location.search);
     const guestId = params.get("guest");
 
-    if (!guestId) return;
+    if (!guestId) {
+      setDangTaiKhach(false);
+      return;
+    }
 
     setDangTaiKhach(true);
 
@@ -61,6 +64,7 @@ function MusicPlayer() {
   }, [currentTrackIndex, playing]);
 
   const handleOpen = async () => {
+    // KHÔNG CHO PHÁT NẾU ĐANG TẢI TÊN KHÁCH HOẶC ĐANG MỞ
     if (dangTaiKhach || isOpening) return;
 
     setIsOpening(true);
@@ -125,10 +129,10 @@ function MusicPlayer() {
                 alt="Ảnh hoa"
                 className="envelope-img back-flower"
               />
-              {/* LỚP 2: Card Thiệp cưới nghiêng (Nằm kẹp ở giữa) */}
+
+              {/* LỚP 2: Card Thiệp cưới nghiêng */}
               <div className="invitation-card-wrapper">
                 <div className="invitation-card">
-                  {/* Trang trí lá */}
                   <div className="leaf-decor left">
                     <img src={leafLeft} alt="" />
                   </div>
@@ -166,28 +170,56 @@ function MusicPlayer() {
               </div>
 
               {/* LỚP 3: Nắp & Mặt trước phong bì */}
-              <div className="lop3-phongbi">
+              <div
+                className={`lop3-phongbi ${dangTaiKhach ? "disabled" : ""}`}
+                onClick={handleOpen}
+              >
                 <img
                   src={anhphongbiloptren}
                   alt="Phong bì lớp trên"
                   className="envelope-img front-layer"
-                  onClick={handleOpen}
                 />
+
                 <div className="guest-section">
-                  {dangTaiKhach ? (
-                    <span className="loading-guest">
-                      Đang chuẩn bị thiệp...
-                    </span>
-                  ) : tenKhach ? (
-                    <>
-                      <p className="invite-label">Trân trọng kính mời</p>
-                      <h3 className="guest-name-display">{tenKhach}</h3>
-                    </>
-                  ) : (
-                    <>
-                      <p className="invite-label">Trân trọng kính mời</p>
-                    </>
-                  )}
+                  <AnimatePresence mode="wait">
+                    {dangTaiKhach ? (
+                      /* KHU VỰC LOADING SANG TRỌNG */
+                      <motion.div
+                        className="guest-loading-box"
+                        key="loading"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        transition={{ duration: 0.3 }}
+                      >
+                        <span className="guest-spinner"></span>
+                        <p className="loading-text">
+                          Đang viết tên quan khách...
+                        </p>
+                      </motion.div>
+                    ) : (
+                      /* KHU VỰC HIỂN THỊ TÊN KHI LOAD XONG */
+                      <motion.div
+                        className="guest-info-box"
+                        key="content"
+                        initial={{ opacity: 0, y: 10, filter: "blur(5px)" }}
+                        animate={{ opacity: 1, y: 0, filter: "blur(0px)" }}
+                        transition={{ duration: 0.6, ease: "easeOut" }}
+                      >
+                        <p className="invite-label">Trân trọng kính mời</p>
+                        {tenKhach ? (
+                          <h3 className="guest-name-display">{tenKhach}</h3>
+                        ) : (
+                          <h3 className="guest-name-display default-guest">
+                            Quý Khách
+                          </h3>
+                        )}
+                        <span className="tap-hint">
+                          {isOpening ? "Đang mở..." : "Chạm để mở thiệp"}
+                        </span>
+                      </motion.div>
+                    )}
+                  </AnimatePresence>
                 </div>
               </div>
             </div>
