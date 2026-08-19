@@ -26,6 +26,8 @@ import {
 
 import {
   SearchOutlined,
+  FacebookFilled,
+  MessageOutlined,
   CopyOutlined,
   LinkOutlined,
   ReloadOutlined,
@@ -143,6 +145,8 @@ const QuanLyKhachMoiContent = () => {
       moi: "Chưa mời",
       xacNhan: "Chưa xác nhận",
       quanHe: "AE họ hàng",
+      facebook: "",
+      daGuiFacebook: "Chưa gửi",
       ghiChu: "",
     });
     setModalMo(true);
@@ -156,6 +160,8 @@ const QuanLyKhachMoiContent = () => {
       quanHe: record.quanHe || "",
       moi: record.moi || "Chưa mời",
       xacNhan: record.xacNhan || "Chưa xác nhận",
+      facebook: record.facebook || "",
+      daGuiFacebook: record.daGuiFacebook || "Chưa gửi",
       ghiChu: record.ghiChu || "",
     });
     setModalMo(true);
@@ -332,7 +338,70 @@ const QuanLyKhachMoiContent = () => {
       message.error("Cập nhật thất bại.");
     }
   };
+  // ========================================
+  // TẠO NỘI DUNG LỜI MỜI FACEBOOK
+  // ========================================
+  const taoNoiDungMoi = (record) => {
+    const ten = record.hoTen || "bạn";
+    const linkThiep = record.link || "[Chưa có link thiệp]";
 
+    // Xử lý cách xưng hô đơn giản
+    let cachGoi = "bạn";
+
+    if (/chú/i.test(ten)) cachGoi = "chú";
+    else if (/cô/i.test(ten)) cachGoi = "cô";
+    else if (/bác/i.test(ten)) cachGoi = "bác";
+    else if (/anh/i.test(ten)) cachGoi = "anh";
+    else if (/chị/i.test(ten)) cachGoi = "chị";
+    else if (/dì/i.test(ten)) cachGoi = "dì";
+    else if (/cậu/i.test(ten)) cachGoi = "cậu";
+
+    // Nếu tên có "và người thương"
+    const laCapDoi = /và người thương|vợ chồng|hai bạn|cả hai/i.test(ten);
+
+    const doiTuong = laCapDoi ? "hai bạn" : cachGoi;
+
+    return `Ngày 27.12.2026, bố mẹ mình sẽ tổ chức lễ cưới cho mình. ❤️
+
+Đây là một ngày đặc biệt và ý nghĩa đối với mình cũng như gia đình. Mình rất mong ${doiTuong} có thể sắp xếp thời gian đến chung vui, ăn bữa cơm thân mật và gửi những lời chúc tốt đẹp nhất đến hai vợ chồng mình. 🥰
+
+💒 Ngày vui: 27.12.2026
+📍 Địa điểm: Nhà thờ Đồng Quan, xã Vũ Quý, tỉnh Hưng Yên
+💌 Thiệp cưới: ${linkThiep}
+
+Rất mong ${doiTuong} bớt chút thời gian đến chung vui với vợ chồng mình nhé! ❤️`;
+  };
+  const copyNoiDungMoi = async (record) => {
+    if (!record.link) {
+      message.warning("Khách mời này chưa có link thiệp.");
+      return;
+    }
+
+    try {
+      const noiDung = taoNoiDungMoi(record);
+
+      await navigator.clipboard.writeText(noiDung);
+
+      message.success(`Đã copy lời mời của ${record.hoTen}!`);
+    } catch (error) {
+      console.error(error);
+      message.error("Không thể copy nội dung lời mời.");
+    }
+  };
+  const moFacebook = (record) => {
+    if (!record.facebook) {
+      message.warning("Khách mời này chưa có link Facebook.");
+      return;
+    }
+
+    let url = record.facebook.trim();
+
+    if (!/^https?:\/\//i.test(url)) {
+      url = `https://${url}`;
+    }
+
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
   // ========================================
   // FILTERING LOGIC
   // ========================================
@@ -609,6 +678,104 @@ const QuanLyKhachMoiContent = () => {
             Tạo link
           </Button>
         ),
+    },
+    {
+      title: "Facebook",
+      width: 180,
+      render: (_, record) => {
+        if (!record.facebook) {
+          return (
+            <Text type="secondary" style={{ fontSize: 12 }}>
+              Chưa có
+            </Text>
+          );
+        }
+
+        return (
+          <Space size={6}>
+            <Tooltip title="Mở Facebook">
+              <Button
+                size="small"
+                type="primary"
+                ghost
+                shape="circle"
+                icon={<FacebookFilled />}
+                onClick={() => moFacebook(record)}
+              />
+            </Tooltip>
+
+            <Tooltip title="Copy link Facebook">
+              <Button
+                size="small"
+                shape="circle"
+                icon={<CopyOutlined />}
+                onClick={async () => {
+                  try {
+                    await navigator.clipboard.writeText(record.facebook);
+                    message.success("Đã copy link Facebook!");
+                  } catch {
+                    message.error("Không thể copy link Facebook.");
+                  }
+                }}
+              />
+            </Tooltip>
+
+            <Tooltip title="Copy lời mời">
+              <Button
+                size="small"
+                shape="circle"
+                icon={<MessageOutlined />}
+                onClick={() => copyNoiDungMoi(record)}
+              />
+            </Tooltip>
+          </Space>
+        );
+      },
+    },
+    {
+      title: "Gửi Facebook",
+      width: 150,
+      align: "center",
+      render: (_, record) => {
+        const daGui = record.daGuiFacebook === "Đã gửi";
+
+        if (!record.facebook) {
+          return (
+            <Tooltip title="Chưa có link Facebook">
+              <Button size="small" disabled icon={<FacebookFilled />}>
+                Chưa có FB
+              </Button>
+            </Tooltip>
+          );
+        }
+
+        return (
+          <Space size={4}>
+            <Tooltip title="Copy nội dung lời mời">
+              <Button
+                size="small"
+                icon={<CopyOutlined />}
+                onClick={() => copyNoiDungMoi(record)}
+              />
+            </Tooltip>
+
+            <Tooltip title="Mở Facebook của khách">
+              <Button
+                size="small"
+                type="primary"
+                icon={<FacebookFilled />}
+                onClick={() => moFacebook(record)}
+                style={{
+                  background: "#1877F2",
+                  borderColor: "#1877F2",
+                }}
+              >
+                {daGui ? "Đã gửi" : "Gửi"}
+              </Button>
+            </Tooltip>
+          </Space>
+        );
+      },
     },
     {
       title: "Thao tác",
@@ -973,7 +1140,7 @@ const QuanLyKhachMoiContent = () => {
               showTotal: (total) => `Tổng cộng ${total} khách mời`,
               style: { padding: "16px 24px", margin: 0 },
             }}
-            scroll={{ x: 1100 }}
+            scroll={{ x: 1500 }}
           />
         </Card>
       </div>
@@ -1039,7 +1206,33 @@ const QuanLyKhachMoiContent = () => {
               </Form.Item>
             </Col>
           </Row>
-
+          <Row gutter={12}>
+            <Form.Item
+              label="Link Facebook"
+              name="facebook"
+              rules={[
+                {
+                  type: "url",
+                  message: "Link Facebook không hợp lệ.",
+                },
+              ]}
+            >
+              <Input
+                size="large"
+                prefix={<FacebookFilled style={{ color: "#1877F2" }} />}
+                placeholder="https://www.facebook.com/..."
+                style={{ borderRadius: 8 }}
+              />
+            </Form.Item>
+            <Col span={12}>
+              <Form.Item label="Trạng thái gửi Facebook" name="daGuiFacebook">
+                <Select size="large" style={{ borderRadius: 8 }}>
+                  <Option value="Chưa gửi">Chưa gửi</Option>
+                  <Option value="Đã gửi">Đã gửi</Option>
+                </Select>
+              </Form.Item>
+            </Col>
+          </Row>
           <Row gutter={12}>
             <Col span={12}>
               <Form.Item label="Trạng thái mời" name="moi">

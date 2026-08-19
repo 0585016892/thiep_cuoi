@@ -1,12 +1,12 @@
 // ========================================
-// GOOGLE APPS SCRIPT API
+// GOOGLE APPS SCRIPT API - GUEST API
 // ========================================
 
 const API_URL =
-  "https://script.google.com/macros/s/AKfycbxXgtR1lTFatRI7weRFHbJTAmwiPqUfS5Yf2sZeeEk-aZKtkuFA66ur3Nj_8MDGP_7bIQ/exec";
+  "https://script.google.com/macros/s/AKfycbyT-IUKcRjFyAYDycAdJVmNZzLcszoqrJkqoUr5_W-yyILsm9aOcgtSp9s-2p-O2JYO/exec";
 
 // ========================================
-// GET
+// GET API
 // ========================================
 
 async function getAPI(params = {}) {
@@ -31,16 +31,18 @@ async function getAPI(params = {}) {
 }
 
 // ========================================
-// POST
+// POST API
 // ========================================
 
 async function postAPI(data = {}) {
   try {
     const response = await fetch(API_URL, {
       method: "POST",
+
       headers: {
         "Content-Type": "text/plain;charset=utf-8",
       },
+
       body: JSON.stringify(data),
     });
 
@@ -60,7 +62,7 @@ async function postAPI(data = {}) {
 }
 
 // ========================================
-// LẤY DANH SÁCH
+// LẤY DANH SÁCH KHÁCH
 // ========================================
 
 export async function layDanhSachKhach() {
@@ -70,7 +72,7 @@ export async function layDanhSachKhach() {
 }
 
 // ========================================
-// LẤY KHÁCH
+// LẤY MỘT KHÁCH
 // ========================================
 
 export async function layKhach(id) {
@@ -97,6 +99,7 @@ export async function themKhach({
   quanHe = "",
   moi = "Chưa mời",
   xacNhan = "Chưa xác nhận",
+  facebook = "",
   ghiChu = "",
 }) {
   if (!hoTen?.trim()) {
@@ -108,11 +111,19 @@ export async function themKhach({
 
   return await postAPI({
     hanhDong: "themKhach",
+
     hoTen: hoTen.trim(),
+
     soDienThoai: String(soDienThoai || "").trim(),
+
     quanHe: String(quanHe || "").trim(),
+
     moi,
+
     xacNhan,
+
+    facebook: String(facebook || "").trim(),
+
     ghiChu: String(ghiChu || "").trim(),
   });
 }
@@ -128,6 +139,7 @@ export async function suaKhach({
   quanHe = "",
   moi = "Chưa mời",
   xacNhan = "Chưa xác nhận",
+  facebook = "",
   ghiChu = "",
 }) {
   if (!id) {
@@ -146,12 +158,21 @@ export async function suaKhach({
 
   return await postAPI({
     hanhDong: "suaKhach",
+
     id: String(id),
+
     hoTen: hoTen.trim(),
+
     soDienThoai: String(soDienThoai || "").trim(),
+
     quanHe: String(quanHe || "").trim(),
+
     moi,
+
     xacNhan,
+
+    facebook: String(facebook || "").trim(),
+
     ghiChu: String(ghiChu || "").trim(),
   });
 }
@@ -170,6 +191,7 @@ export async function xoaKhach(id) {
 
   return await postAPI({
     hanhDong: "xoaKhach",
+
     id: String(id),
   });
 }
@@ -188,12 +210,13 @@ export async function taoLink(id) {
 
   return await postAPI({
     hanhDong: "taoLink",
+
     id: String(id),
   });
 }
 
 // ========================================
-// 🚀 TẠO LINK HÀNG LOẠT
+// TẠO LINK HÀNG LOẠT
 // ========================================
 
 export async function taoLinkHangLoat() {
@@ -203,14 +226,23 @@ export async function taoLinkHangLoat() {
 }
 
 // ========================================
-// CẬP NHẬT MỜI
+// CẬP NHẬT TRẠNG THÁI MỜI
 // ========================================
 
 export async function capNhatMoi(id, giaTri) {
+  if (!id) {
+    return {
+      thanhCong: false,
+      thongBao: "Thiếu ID khách mời.",
+    };
+  }
+
   return await postAPI({
     hanhDong: "capNhatMoi",
+
     id: String(id),
-    giaTri,
+
+    giaTri: String(giaTri || ""),
   });
 }
 
@@ -219,10 +251,19 @@ export async function capNhatMoi(id, giaTri) {
 // ========================================
 
 export async function capNhatXacNhan(id, giaTri) {
+  if (!id) {
+    return {
+      thanhCong: false,
+      thongBao: "Thiếu ID khách mời.",
+    };
+  }
+
   return await postAPI({
     hanhDong: "capNhatXacNhan",
+
     id: String(id),
-    giaTri,
+
+    giaTri: String(giaTri || ""),
   });
 }
 
@@ -231,10 +272,19 @@ export async function capNhatXacNhan(id, giaTri) {
 // ========================================
 
 export async function capNhatQuanHe(id, giaTri) {
+  if (!id) {
+    return {
+      thanhCong: false,
+      thongBao: "Thiếu ID khách mời.",
+    };
+  }
+
   return await postAPI({
     hanhDong: "capNhatQuanHe",
+
     id: String(id),
-    giaTri,
+
+    giaTri: String(giaTri || ""),
   });
 }
 
@@ -243,12 +293,43 @@ export async function capNhatQuanHe(id, giaTri) {
 // ========================================
 
 export async function capNhatGhiChu(id, giaTri) {
+  if (!id) {
+    return {
+      thanhCong: false,
+      thongBao: "Thiếu ID khách mời.",
+    };
+  }
+
   return await postAPI({
     hanhDong: "capNhatGhiChu",
+
     id: String(id),
-    giaTri,
+
+    giaTri: String(giaTri || ""),
   });
 }
+
+// ========================================
+// CẬP NHẬT FACEBOOK
+// ========================================
+
+export async function capNhatFacebook(id, facebook) {
+  if (!id) {
+    return {
+      thanhCong: false,
+      thongBao: "Thiếu ID khách mời.",
+    };
+  }
+
+  return await postAPI({
+    hanhDong: "capNhatFacebook",
+
+    id: String(id),
+
+    giaTri: String(facebook || "").trim(),
+  });
+}
+
 // ========================================
 // KHÁCH XÁC NHẬN THAM DỰ
 // ========================================
@@ -276,29 +357,116 @@ export async function xacNhanThamDu(id, giaTri) {
     giaTri: String(giaTri),
   });
 }
+
+// ========================================
+// LẤY DANH SÁCH GHI CHÚ
+// ========================================
+
 export async function layDanhSachGhiChu() {
   return await getAPI({
     action: "layDanhSachGhiChu",
   });
 }
+
+// ========================================
+// TẠO NỘI DUNG TIN NHẮN
+// ========================================
+
+export async function taoTinNhan(id) {
+  if (!id) {
+    return {
+      thanhCong: false,
+      thongBao: "Thiếu ID khách mời.",
+    };
+  }
+
+  return await getAPI({
+    action: "taoTinNhan",
+
+    id: String(id),
+  });
+}
+
+// ========================================
+// LẤY TIN NHẮN CỦA MỘT KHÁCH
+// ========================================
+
+export async function layTinNhan(id) {
+  if (!id) {
+    return {
+      thanhCong: false,
+      thongBao: "Thiếu ID khách mời.",
+    };
+  }
+
+  return await getAPI({
+    action: "layTinNhan",
+
+    id: String(id),
+  });
+}
+
+// ========================================
+// ĐÁNH DẤU ĐÃ GỬI
+// ========================================
+
+export async function capNhatDaGui(id) {
+  if (!id) {
+    return {
+      thanhCong: false,
+      thongBao: "Thiếu ID khách mời.",
+    };
+  }
+
+  return await postAPI({
+    hanhDong: "capNhatDaGui",
+
+    id: String(id),
+  });
+}
+
+// ========================================
+// TẠO TIN NHẮN HÀNG LOẠT
+// ========================================
+
+export async function taoTinNhanHangLoat() {
+  return await postAPI({
+    hanhDong: "taoTinNhanHangLoat",
+  });
+}
+
 // ========================================
 // EXPORT DEFAULT
 // ========================================
 
 const guestApi = {
+  // Khách
   layDanhSachKhach,
   layKhach,
   themKhach,
   suaKhach,
   xoaKhach,
+
+  // Link thiệp
   taoLink,
   taoLinkHangLoat,
+
+  // Trạng thái
   capNhatMoi,
   capNhatXacNhan,
   capNhatQuanHe,
   capNhatGhiChu,
+  capNhatFacebook,
   xacNhanThamDu,
+
+  // Ghi chú
   layDanhSachGhiChu,
+
+  // Tin nhắn
+  taoTinNhan,
+  layTinNhan,
+  capNhatDaGui,
+  taoTinNhanHangLoat,
 };
 
 export default guestApi;
