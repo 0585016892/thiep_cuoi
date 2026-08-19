@@ -42,7 +42,7 @@ export default function FooterWedding() {
 
           <div className="arch-date-pill">
             <CalendarDays size={16} />
-            <span>10 . 01 . 2027</span>
+            <span>27 . 12 . 2026</span>
           </div>
         </motion.div>
 
@@ -63,8 +63,8 @@ export default function FooterWedding() {
               </div>
               <div className="info-content">
                 <span className="info-label">Thời Gian</span>
-                <h4>Chủ Nhật, 10 Tháng 01, 2027</h4>
-                <p>Đón khách: 10:30 AM — Khai tiệc: 11:30 AM</p>
+                <h4>Chủ Nhật, 27 Tháng 12, 2027</h4>
+                <p>Đón khách: 8:30 AM — Khai tiệc: 9:00 AM</p>
               </div>
             </div>
 

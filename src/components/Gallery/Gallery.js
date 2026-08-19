@@ -1,130 +1,178 @@
 import React, { useState } from "react";
 import { motion } from "framer-motion";
-import { FiZoomIn } from "react-icons/fi";
+import { Swiper, SwiperSlide } from "swiper/react";
+import {
+  EffectCoverflow,
+  Pagination,
+  Navigation,
+  Autoplay,
+} from "swiper/modules";
 import Lightbox from "yet-another-react-lightbox";
+
+// Import CSS của Swiper
+import "swiper/css";
+import "swiper/css/effect-coverflow";
+import "swiper/css/pagination";
+import "swiper/css/navigation";
+
 import "yet-another-react-lightbox/styles.css";
 import "./Gallery.css";
-
+import kiniem5 from "../../assets/anhkiniem/IMG_0413.JPG";
+import kiniem6 from "../../assets/anhkiniem/IMG_1257.JPG";
+import kiniem7 from "../../assets/anhkiniem/IMG_1329.JPG";
+import kiniem8 from "../../assets/anhkiniem/IMG_1378.jpg";
+import kiniem9 from "../../assets/anhkiniem/IMG_1405.JPG";
+import kiniem10 from "../../assets/anhkiniem/IMG_2676.JPG";
+import kiniem1 from "../../assets/anhkiniem/kiniem1.JPEG";
+import kiniem2 from "../../assets/anhkiniem/kiniem2.JPEG";
+import kiniem3 from "../../assets/anhkiniem/kiniem3.JPEG";
+import kiniem4 from "../../assets/anhkiniem/kiniem4.JPEG";
 function Gallery() {
-  const [index, setIndex] = useState(-1);
+  const [lightboxIndex, setLightboxIndex] = useState(-1);
 
   const images = [
     {
-      src: "https://images.unsplash.com/photo-1522673607200-164d1b6ce486?q=80&w=1974&auto=format&fit=crop",
+      src: kiniem1,
       title: "Khoảnh Khắc Đáng Nhớ",
     },
     {
-      src: "https://images.unsplash.com/photo-1511285560929-80b456fea0bc?q=80&w=1974&auto=format&fit=crop",
+      src: kiniem2,
       title: "Hành Trình Yêu Thương",
     },
     {
-      src: "https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1974&auto=format&fit=crop",
+      src: kiniem3,
       title: "Ngày Chung Đôi",
     },
     {
-      src: "https://images.unsplash.com/photo-1515934751635-c81c6bc9a2d8?q=80&w=1974&auto=format&fit=crop",
+      src: kiniem4,
       title: "Nụ Cười An Yên",
     },
     {
-      src: "https://images.unsplash.com/photo-1519225421980-715cb0215aed?q=80&w=1974&auto=format&fit=crop",
+      src: kiniem5,
       title: "Bên Nhau Bình Yên",
     },
     {
-      src: "https://images.unsplash.com/photo-1513278974582-3e1b4a4fa21d?q=80&w=1974&auto=format&fit=crop",
+      src: kiniem6,
+      title: "Trọn Vẹn Ước Mơ",
+    },
+    {
+      src: kiniem7,
+      title: "Ngày Chung Đôi",
+    },
+    {
+      src: kiniem8,
+      title: "Nụ Cười An Yên",
+    },
+    {
+      src: kiniem9,
+      title: "Bên Nhau Bình Yên",
+    },
+    {
+      src: kiniem10,
       title: "Trọn Vẹn Ước Mơ",
     },
   ];
 
   return (
-    <section className="sage-gallery-section">
-      {/* Background Soft Glow */}
-      <div className="gallery-blur-glow blur-left"></div>
-      <div className="gallery-blur-glow blur-right"></div>
-
-      <div className="gallery-content-wrapper">
-        {/* HEADER SECTION */}
+    <section className="album-gallery-section">
+      <div className="album-container">
+        {/* Tiêu đề */}
         <motion.div
-          className="editorial-gallery-header"
-          initial={{ opacity: 0, y: 30 }}
+          className="album-header"
+          initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true, margin: "-50px" }}
-          transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
         >
-          <div className="gallery-badge">
+          <div className="rsvp-badge">
             <span className="dot"></span>
-            <span>SWEET MEMORIES</span>
+            <span>WEDDING GALLERY</span>
             <span className="dot"></span>
           </div>
 
-          <h2 className="gallery-title">Khoảnh Khắc Hạnh Phúc</h2>
-
-          <div className="header-leaf-divider">
-            <span className="line"></span>
-            <span className="leaf">🌿</span>
-            <span className="line"></span>
-          </div>
-
-          <p className="gallery-subtitle">
-            Những góc ảnh lưu giữ tình yêu nhẹ nhàng, bình yên và trọn vẹn nhất
-            của chúng mình 🤍
-          </p>
+          <h2 className="wishes-title">ẢNH CƯỚI</h2>
         </motion.div>
 
-        {/* EDITORIAL MASONRY GRID */}
-        <div className="gallery-masonry-grid">
-          {images.map((img, i) => (
-            <motion.div
-              key={i}
-              className={`gallery-card card-layout-${i}`}
-              initial={{ opacity: 0, y: 35 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: "-30px" }}
-              transition={{ duration: 0.8, delay: i * 0.1 }}
-              whileHover={{ y: -6 }}
-              onClick={() => setIndex(i)}
+        {/* 3D Coverflow Slider */}
+        <div className="swiper-coverflow-wrapper">
+          <Swiper
+            effect={"coverflow"}
+            grabCursor={true}
+            centeredSlides={true}
+            slidesPerView={"auto"}
+            loop={true}
+            autoplay={{
+              delay: 3500,
+              disableOnInteraction: false,
+            }}
+            coverflowEffect={{
+              rotate: 0, // Giữ góc nghiêng bằng 0 để ảnh song song
+              stretch: -40, // Khoảng cách ép sát các slide vào giữa
+              depth: 200, // Độ sâu 3D làm ảnh hai bên chìm về sau
+              modifier: 1, // Hệ số nhân độ sâu
+              slideShadows: false, // Tắt bóng mặc định của Swiper để dùng shadow mềm tùy chỉnh
+            }}
+            pagination={{
+              clickable: true,
+              el: ".custom-swiper-pagination",
+            }}
+            navigation={{
+              nextEl: ".custom-swiper-button-next",
+              prevEl: ".custom-swiper-button-prev",
+            }}
+            modules={[EffectCoverflow, Pagination, Navigation, Autoplay]}
+            className="wedding-album-swiper"
+          >
+            {images.map((img, i) => (
+              <SwiperSlide key={i} className="album-slide">
+                <div className="slide-card" onClick={() => setLightboxIndex(i)}>
+                  <img src={img.src} alt={img.title} loading="lazy" />
+                </div>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+
+          {/* Nút bấm Prev / Next tròn màu xám đậm */}
+          <div className="custom-swiper-button-prev">
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
             >
-              <div className="image-frame">
-                <img src={img.src} alt={img.title} loading="lazy" />
+              <path d="M15 18l-6-6 6-6" />
+            </svg>
+          </div>
+          <div className="custom-swiper-button-next">
+            <svg
+              viewBox="0 0 24 24"
+              width="20"
+              height="20"
+              fill="none"
+              stroke="currentColor"
+              strokeWidth="2"
+            >
+              <path d="M9 18l6-6-6-6" />
+            </svg>
+          </div>
 
-                {/* OVERLAY ON HOVER */}
-                <div className="card-overlay">
-                  <div className="overlay-info">
-                    <span className="view-btn">
-                      <FiZoomIn className="zoom-icon" /> Phóng to
-                    </span>
-                    <p className="image-caption">{img.title}</p>
-                  </div>
-                </div>
-
-                {/* Corner Tag Decor */}
-                <div className="frame-corner-tag">
-                  <span>0{i + 1}</span>
-                </div>
-              </div>
-            </motion.div>
-          ))}
+          {/* Dấu chấm Pagination bên dưới */}
+          <div className="custom-swiper-pagination"></div>
         </div>
       </div>
 
-      {/* LIGHTBOX POPUP */}
+      {/* Lightbox khi nhấp xem phóng to */}
       <Lightbox
-        open={index >= 0}
-        close={() => setIndex(-1)}
-        index={index}
+        open={lightboxIndex >= 0}
+        close={() => setLightboxIndex(-1)}
+        index={lightboxIndex}
         slides={images}
         styles={{
           container: {
-            background: "rgba(248, 250, 247, 0.96)",
-            backdropFilter: "blur(20px)",
-          },
-          button: {
-            color: "#6b7c67",
-          },
-          navigationPrev: {
-            color: "#242c24",
-          },
-          navigationNext: {
-            color: "#242c24",
+            background: "rgba(20, 20, 20, 0.92)",
+            backdropFilter: "blur(10px)",
           },
         }}
       />

@@ -42,8 +42,12 @@ const WeddingInfo = () => {
               Bà: <strong>Nguyễn Thị Thịnh</strong>
             </p>
             <p className="family-location">
+              <FaMapMarkerAlt className="mini-icon" /> Thôn 3, xã Vũ Quý, tỉnh
+              Hưng Yên
+            </p>
+            <p className="family-location" style={{ fontSize: "11px" }}>
               <FaMapMarkerAlt className="mini-icon" /> Thôn Phụng Thượng, xã Vũ
-              Quý, tỉnh Hưng Yên
+              An, tỉnh Thái Bindh
             </p>
           </div>
 
@@ -60,8 +64,12 @@ const WeddingInfo = () => {
               Bà: <strong>Đoàn Thị Thìn</strong>
             </p>
             <p className="family-location">
-              <FaMapMarkerAlt className="mini-icon" /> Thôn Đông, xã Kiến Xương,
-              tỉnh Hưng Yên
+              <FaMapMarkerAlt className="mini-icon" /> Thôn Ngái Đông, xã Quang
+              Bình, tỉnh Hưng Yên
+            </p>
+            <p className="family-location" style={{ fontSize: "11px" }}>
+              <FaMapMarkerAlt className="mini-icon" /> Thôn Đông, xã Quang Bình,
+              tỉnh Thái Bình
             </p>
           </div>
         </div>
@@ -83,7 +91,9 @@ const WeddingInfo = () => {
 
         {/* --- THỜI GIAN & ĐỊA ĐIỂM CỬ HÀNH --- */}
         <div className="event-details-card">
-          <p className="venue-header">LỄ THÀNH HÔN CỬ HÀNH TẠI TƯ GIA</p>
+          <p className="venue-header">
+            LỄ THÀNH HÔN CỬ HÀNH TẠI TƯ GIA NHÀ TRAI
+          </p>
 
           <div className="event-time-badge">
             <FaClock className="time-icon" />

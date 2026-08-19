@@ -1,281 +1,172 @@
-@import url("https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=Playfair+Display:ital,wght@0,500;0,600;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&display=swap");
 
-:root {
-  --gallery-sage: #6b7c67;
-  --gallery-sage-soft: #eef2ed;
-  --gallery-sage-border: #cbd5c9;
-  --gallery-dark: #242c24;
-  --gallery-gold: #c2a15f;
-  --gallery-cream: #fdfcf9;
-}
-
-.sage-gallery-section {
+.album-gallery-section {
   position: relative;
   width: 100%;
-  padding: 100px 20px;
-  background-color: var(--gallery-cream);
-  font-family: "Plus Jakarta Sans", sans-serif;
-  color: var(--gallery-dark);
+  padding: 60px 0 80px 0;
+  /* Tạo hoa văn vân giấy nhẹ mờ ở phông nền */
+  background-image: radial-gradient(rgba(0, 0, 0, 0.03) 1px, transparent 0);
+  background-size: 24px 24px;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
-/* Background Soft Glows */
-.gallery-blur-glow {
-  position: absolute;
-  width: 380px;
-  height: 380px;
-  border-radius: 50%;
-  background: radial-gradient(
-    circle,
-    rgba(107, 124, 103, 0.12) 0%,
-    rgba(255, 255, 255, 0) 70%
-  );
-  pointer-events: none;
-}
-
-.blur-left {
-  top: 10%;
-  left: -100px;
-}
-
-.blur-right {
-  bottom: 10%;
-  right: -100px;
-}
-
-.gallery-content-wrapper {
-  max-width: 1140px;
+.album-container {
+  width: 100%;
+  max-width: 1200px;
   margin: 0 auto;
-  position: relative;
-  z-index: 2;
 }
 
-/* HEADER STYLES */
-.editorial-gallery-header {
+/* TIÊU ĐỀ ALBUM ẢNH */
+.album-header {
   text-align: center;
-  max-width: 650px;
-  margin: 0 auto 50px;
+  margin-bottom: 30px;
 }
 
-.gallery-badge {
-  display: inline-flex;
-  align-items: center;
-  gap: 8px;
-  font-family: "Cinzel", serif;
-  font-size: 0.8rem;
-  letter-spacing: 3px;
-  color: var(--gallery-sage);
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.gallery-badge .dot {
-  width: 4px;
-  height: 4px;
-  background-color: var(--gallery-sage);
-  border-radius: 50%;
-}
-
-.gallery-title {
+.album-title {
   font-family: "Playfair Display", serif;
-  font-size: 2.6rem;
-  font-weight: 600;
-  color: var(--gallery-dark);
+  font-size: 1.6rem;
+  font-weight: 700;
+  letter-spacing: 2px;
+  color: #4a1525; /* Tông màu đỏ đô / mận chín sang trọng */
+  text-transform: uppercase;
   margin: 0;
 }
 
-.header-leaf-divider {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 15px;
-  margin: 15px 0;
-}
-
-.header-leaf-divider .line {
-  height: 1px;
-  width: 50px;
-  background: linear-gradient(
-    90deg,
-    transparent,
-    var(--gallery-sage-border),
-    transparent
-  );
-}
-
-.header-leaf-divider .leaf {
-  font-size: 0.9rem;
-  color: var(--gallery-sage);
-}
-
-.gallery-subtitle {
-  font-size: 0.95rem;
-  color: #556054;
-  line-height: 1.6;
-  margin: 0;
-}
-
-/* MASONRY GRID LAYOUT */
-.gallery-masonry-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 24px;
-}
-
-.gallery-card {
-  cursor: pointer;
-  border-radius: 20px;
-  overflow: hidden;
-  background: white;
-  border: 1px solid var(--gallery-sage-border);
-  box-shadow: 0 10px 30px rgba(36, 44, 36, 0.04);
-  transition:
-    transform 0.4s cubic-bezier(0.16, 1, 0.3, 1),
-    box-shadow 0.4s ease;
-}
-
-.gallery-card:hover {
-  box-shadow: 0 18px 40px rgba(36, 44, 36, 0.12);
-}
-
-.image-frame {
+/* WRAPPER LỚN CHO SWIPER & CÁC NÚT */
+.swiper-coverflow-wrapper {
   position: relative;
+  width: 100%;
+  padding: 20px 0 40px 0;
+}
+
+.wedding-album-swiper {
+  width: 100%;
+  padding-top: 20px !important;
+  padding-bottom: 50px !important;
+  overflow: visible !important; /* Để hiệu ứng 3D hiển thị full màn hình */
+}
+
+/* KÍCH THƯỚC SLIDE */
+.album-slide {
+  width: 320px !important; /* Chiều rộng ảnh trung tâm */
+  height: 480px !important;
+  transition: all 0.5s ease;
+}
+
+/* TẤM ẢNH */
+.slide-card {
   width: 100%;
   height: 100%;
-  min-height: 280px;
+  border-radius: 16px;
   overflow: hidden;
+  cursor: pointer;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
+  background: #ffffff;
+  transition:
+    transform 0.4s ease,
+    filter 0.5s ease,
+    opacity 0.5s ease;
 }
 
-.image-frame img {
+.slide-card img {
   width: 100%;
   height: 100%;
   object-fit: cover;
   display: block;
-  transition: transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  user-select: none;
 }
 
-.gallery-card:hover img {
-  transform: scale(1.06);
+/* HIỆU ỨNG ẢNH KHÔNG PHẢI CENTER (2 BÊN) */
+.swiper-slide:not(.swiper-slide-active) .slide-card {
+  opacity: 0.55; /* Mờ nhẹ các ảnh hai bên */
+  filter: brightness(0.92);
 }
 
-/* Custom Grid Spans for Magazine feel */
-.card-layout-0 {
-  grid-row: span 2;
+.swiper-slide-active .slide-card {
+  opacity: 1;
+  filter: brightness(1);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.18);
 }
 
-.card-layout-0 .image-frame {
-  min-height: 580px;
-}
-
-.card-layout-3 {
-  grid-row: span 2;
-}
-
-.card-layout-3 .image-frame {
-  min-height: 580px;
-}
-
-/* OVERLAY */
-.card-overlay {
+/* NÚT ĐIỀU HƯỚNG PREV / NEXT (HÌNH TRÒN XÁM ĐẬM BÊN TRONG ẢNH) */
+.custom-swiper-button-prev,
+.custom-swiper-button-next {
   position: absolute;
-  inset: 0;
-  background: linear-gradient(
-    to top,
-    rgba(36, 44, 36, 0.7) 0%,
-    rgba(36, 44, 36, 0.1) 60%,
-    transparent 100%
-  );
-  opacity: 0;
-  transition: opacity 0.4s ease;
+  top: 45%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  background-color: rgba(45, 45, 45, 0.75);
+  color: #ffffff;
+  border-radius: 50%;
   display: flex;
-  align-items: flex-end;
-  padding: 24px;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+  cursor: pointer;
+  backdrop-filter: blur(4px);
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
-.gallery-card:hover .card-overlay {
+.custom-swiper-button-prev {
+  left: calc(50% - 220px); /* Vị trí đè nhẹ lên mép trái ảnh trung tâm */
+}
+
+.custom-swiper-button-next {
+  right: calc(50% - 220px); /* Vị trí đè nhẹ lên mép phải ảnh trung tâm */
+}
+
+.custom-swiper-button-prev:hover,
+.custom-swiper-button-next:hover {
+  background-color: rgba(20, 20, 20, 0.9);
+  transform: translateY(-50%) scale(1.08);
+}
+
+/* SWIPER PAGINATION (DẤU CHẤM DƯỚI) */
+.custom-swiper-pagination {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 8px;
+  z-index: 10;
+}
+
+.custom-swiper-pagination .swiper-pagination-bullet {
+  width: 8px;
+  height: 8px;
+  background-color: #c4b8aa;
+  opacity: 0.6;
+  border-radius: 50%;
+  margin: 0 !important;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.custom-swiper-pagination .swiper-pagination-bullet-active {
+  width: 22px;
+  border-radius: 10px;
+  background-color: #6a2c3e; /* Màu hoạt động trùng với tông màu chính */
   opacity: 1;
 }
 
-.overlay-info {
-  transform: translateY(15px);
-  transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-}
-
-.gallery-card:hover .overlay-info {
-  transform: translateY(0);
-}
-
-.view-btn {
-  display: inline-flex;
-  align-items: center;
-  gap: 6px;
-  background: rgba(255, 255, 255, 0.9);
-  backdrop-filter: blur(8px);
-  color: var(--gallery-dark);
-  padding: 6px 14px;
-  border-radius: 20px;
-  font-size: 0.8rem;
-  font-weight: 600;
-  margin-bottom: 8px;
-}
-
-.zoom-icon {
-  color: var(--gallery-sage);
-}
-
-.image-caption {
-  color: white;
-  font-family: "Playfair Display", serif;
-  font-size: 1.1rem;
-  margin: 0;
-}
-
-/* Corner Number Tag */
-.frame-corner-tag {
-  position: absolute;
-  top: 15px;
-  right: 15px;
-  background: rgba(253, 252, 249, 0.85);
-  backdrop-filter: blur(6px);
-  padding: 4px 10px;
-  border-radius: 12px;
-  font-family: "Cinzel", serif;
-  font-size: 0.75rem;
-  font-weight: 700;
-  color: var(--gallery-sage);
-  border: 1px solid rgba(255, 255, 255, 0.8);
-}
-
-/* RESPONSIVE */
-@media (max-width: 992px) {
-  .gallery-masonry-grid {
-    grid-template-columns: repeat(2, 1fr);
+/* RESPONSIVE TRÊN ĐIỆN THOẠI */
+@media (max-width: 768px) {
+  .album-slide {
+    width: 260px !important;
+    height: 390px !important;
   }
 
-  .card-layout-0 .image-frame,
-  .card-layout-3 .image-frame {
-    min-height: 380px;
-  }
-}
-
-@media (max-width: 600px) {
-  .gallery-title {
-    font-size: 2.1rem;
+  .custom-swiper-button-prev {
+    left: 15px;
   }
 
-  .gallery-masonry-grid {
-    grid-template-columns: 1fr;
-    gap: 18px;
-  }
-
-  .card-layout-0,
-  .card-layout-3 {
-    grid-row: auto;
-  }
-
-  .image-frame,
-  .card-layout-0 .image-frame,
-  .card-layout-3 .image-frame {
-    min-height: 320px;
+  .custom-swiper-button-next {
+    right: 15px;
   }
 }

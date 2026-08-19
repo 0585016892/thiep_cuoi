@@ -7,6 +7,7 @@ import WeddingInfo from "./components/WeddingInfo/WeddingInfo.jsx";
 import Countdown from "./components/Countdown/Countdown";
 import LoveStory from "./components/LoveStory/LoveStory";
 import Gallery from "./components/Gallery/Gallery";
+import MemoriesGallery from "./components/Gallery/MemoriesGallery.jsx";
 import Timeline from "./components/Timeline/Timeline";
 import RSVP from "./components/RSVP/RSVP";
 import Wishes from "./components/Wishes/Wishes";
@@ -15,6 +16,7 @@ import Footer from "./components/Footer/Footer.jsx";
 import MusicPlayer from "./components/Music/MusicPlayer";
 import FallingHy from "./components/Hero/FallingHy";
 import RsvpReminder from "./components/RsvpReminder/RsvpReminder";
+
 // Pages
 import QuanLyKhachMoi from "./page/QuanLyKhachMoi";
 
@@ -22,11 +24,18 @@ import QuanLyKhachMoi from "./page/QuanLyKhachMoi";
 import NavigationBar from "./components/Navigation/NavigationBar";
 import ScrollToTop from "./components/Navigation/ScrollToTop";
 
+// Component Phân cách giữa các Section
+const SectionDivider = () => (
+  <div className="section-divider">
+    <span className="divider-line"></span>
+    <span className="divider-icon">囍</span>
+    <span className="divider-line"></span>
+  </div>
+);
+
 function App() {
-  // 1. TẤT CẢ HOOKS PHẢI ĐƯỢC KHAI BÁO DƯỚI ĐÂY (TOP-LEVEL)
   const [activeSection, setActiveSection] = useState("hero");
 
-  // Hàm cuộn mượt đến section theo id
   const scrollToSection = (id) => {
     const element = document.getElementById(id);
     if (element) {
@@ -34,7 +43,6 @@ function App() {
     }
   };
 
-  // Lắng nghe sự kiện scroll để highlight tab tương ứng trên Navbar
   useEffect(() => {
     const handleScroll = () => {
       const sections = [
@@ -46,6 +54,7 @@ function App() {
         "qr-gift",
         "love-story",
         "wishes",
+        "memori-gallery",
       ];
 
       const scrollPosition = window.scrollY + 200;
@@ -67,68 +76,84 @@ function App() {
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
-  // 2. CÁC LỆNH ĐIỀU KIỆN / EARLY RETURN ĐẶT SAU TẤT CẢ HOOKS
   if (window.location.pathname === "/quan-ly-khach-moi") {
     return <QuanLyKhachMoi />;
   }
 
-  // 3. RENDER TRANG CHÍNH
   return (
     <div className="wedding-app-container">
       {/* Hiệu ứng hoa rơi & Trình phát nhạc */}
       <FallingHy />
       <MusicPlayer />
 
-      {/* Main Wedding Content */}
+      {/* Main Content */}
       <main className="wedding-main-content">
-        {/* Floating Glassmorphic Navbar */}
         <NavigationBar
           activeSection={activeSection}
           onNavigate={scrollToSection}
         />
-        <section id="hero">
+
+        <section id="hero" className="seamless-section">
           <Hero />
         </section>
 
-        <section id="wedding-info">
+        <SectionDivider />
+
+        <section id="wedding-info" className="seamless-section">
           <WeddingInfo />
         </section>
 
-        <section id="gallery">
+        <SectionDivider />
+
+        <section id="gallery" className="seamless-section">
           <Gallery />
         </section>
 
-        <section id="timeline">
+        <SectionDivider />
+
+        <section id="timeline" className="seamless-section">
           <Timeline />
         </section>
 
-        <section id="countdown">
+        <SectionDivider />
+
+        <section id="countdown" className="seamless-section">
           <Countdown />
         </section>
 
-        <section id="rsvp">
+        <SectionDivider />
+
+        <section id="rsvp" className="seamless-section">
           <RSVP />
         </section>
 
-        <section id="qr-gift">
+        <SectionDivider />
+
+        <section id="qr-gift" className="seamless-section">
           <QRGift />
         </section>
 
-        <section id="love-story">
+        <SectionDivider />
+
+        <section id="love-story" className="seamless-section">
           <LoveStory />
         </section>
+        <section id="memori-gallery" className="seamless-section">
+          <MemoriesGallery />
+        </section>
+        <SectionDivider />
 
-        <section id="wishes">
+        <section id="wishes" className="seamless-section">
           <Wishes />
         </section>
 
         <footer id="footer">
           <Footer />
         </footer>
+
         <RsvpReminder />
       </main>
 
-      {/* Nút cuộn nhanh lên đầu trang */}
       <ScrollToTop onScrollTop={() => scrollToSection("hero")} />
     </div>
   );

@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Hero.css";
 import { motion } from "framer-motion";
-import anhcuoi from "../../assets/anhcuoi.png";
+import anhcuoi from "../../assets/anhkiniem/kiniem3.JPEG";
 import { FaCalendarAlt, FaMapMarkerAlt, FaHeart } from "react-icons/fa";
 
 function Hero() {
@@ -55,7 +55,7 @@ function Hero() {
 
           <div className="names-creative">
             <motion.h1
-              className="groom-name"
+              className="bride-name"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.3, duration: 1 }}

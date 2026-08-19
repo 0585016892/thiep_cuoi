@@ -1,15 +1,114 @@
-html {
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap");
+
+/* ==========================================
+   1. UNIFIED BAGKROUND (TONG XANH - TRẮNG SẠCH)
+   ========================================== */
+html,
+body {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #fcfdfd; /* Trắng sáng tinh tế, loại bỏ cảm giác ố vàng */
   scroll-behavior: smooth;
+  font-family: "Plus Jakarta Sans", sans-serif;
+  color: #1e2923;
 }
 
 .wedding-app-container {
+  position: relative;
   width: 100%;
   min-height: 100vh;
-  position: relative;
-  background-color: #fdfcf9;
+  /* Nền trắng tươi kết hợp các vệt sáng xanh mint mờ */
+  background:
+    radial-gradient(
+      circle at 50% 0%,
+      rgba(16, 82, 45, 0.05) 0%,
+      transparent 60%
+    ),
+    radial-gradient(
+      circle at 10% 30%,
+      rgba(200, 230, 205, 0.25) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 90% 70%,
+      rgba(16, 82, 45, 0.04) 0%,
+      transparent 50%
+    ),
+    #fcfdfd;
   overflow-x: hidden;
 }
 
-.wedding-main-content section {
-  scroll-margin-top: 80px; /* Offset để khi cuộn tới không bị đè bởi Header */
+.wedding-main-content {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* ==========================================
+   2. TRONG SUỐT CHO CÁC SECTION CON
+   ========================================== */
+.seamless-section {
+  position: relative;
+  width: 100%;
+  background: transparent !important;
+  padding: 24px 0;
+}
+
+/* ==========================================
+   3. ĐƯỜNG PHÂN CÁCH SẠCH SẼ (SECTION DIVIDER)
+   ========================================== */
+.section-divider {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin: 20px auto;
+  width: 80%;
+  max-width: 380px;
+  opacity: 0.7;
+}
+
+.divider-line {
+  flex: 1;
+  height: 1px;
+  background: linear-gradient(90deg, transparent, #10522d, transparent);
+}
+
+.divider-icon {
+  font-family: "Playfair Display", serif;
+  font-size: 1.1rem;
+  color: #10522d;
+  font-weight: bold;
+}
+
+/* ==========================================
+   4. THẺ CARD TRẮNG TINH TẾ (GLASSMORPHISM)
+   ========================================== */
+/* Áp dụng nền trắng mờ viền nét cho các hộp thông tin */
+.wedding-main-content section .card,
+.wedding-main-content section .info-box,
+.wedding-main-content section .timeline-item,
+.wedding-main-content section .wish-card,
+.wedding-main-content section .rsvp-container,
+.wedding-main-content section .gallery-wrapper {
+  background: #ffffff !important;
+  border: 1px solid #e1ebe3 !important;
+  box-shadow: 0 10px 25px rgba(16, 82, 45, 0.05) !important;
+  border-radius: 20px !important;
+}
+
+/* ==========================================
+   5. RESPONSIVE
+   ========================================== */
+@media (max-width: 768px) {
+  .seamless-section {
+    padding: 12px 0;
+  }
+
+  .section-divider {
+    margin: 12px auto;
+  }
 }

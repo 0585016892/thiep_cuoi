@@ -37,7 +37,7 @@ export default function NavigationBar({ activeSection, onNavigate }) {
         <motion.div className="nav-glass-bar">
           {/* LOGO */}
           <div className="nav-logo" onClick={() => onNavigate("hero")}>
-            <span>K</span>
+            <span>H</span>
             <span className="heart">❤</span>
             <span>T</span>
           </div>
