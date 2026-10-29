@@ -120,6 +120,8 @@ const QuanLyKhachMoiContent = () => {
     try {
       setDangTai(true);
       const data = await layDanhSachKhach();
+      console.log(data);
+
       if (Array.isArray(data)) {
         setDanhSach(data);
       } else {
@@ -458,6 +460,42 @@ Rất mong ${doiTuong} bớt chút thời gian đến chung vui với vợ chồ
       return matchKeyword && matchStatus && matchQuanHe;
     });
   }, [danhSach, tuKhoa, boLocTrangThai, boLocQuanHe]);
+
+  // THỐNG KÊ THEO DANH SÁCH ĐANG LỌC
+  const thongKeDanhSachLoc = useMemo(() => {
+    const tong = danhSachLoc.length;
+
+    const daMoi = danhSachLoc.filter((khach) => khach.moi === "Đã mời").length;
+
+    const chuaMoi = danhSachLoc.filter(
+      (khach) => khach.moi !== "Đã mời",
+    ).length;
+
+    const thamDu = danhSachLoc.filter((khach) => khach.xacNhan === "Có").length;
+
+    const vang = danhSachLoc.filter(
+      (khach) => khach.xacNhan === "Không",
+    ).length;
+
+    const chuaPhanHoi = danhSachLoc.filter(
+      (khach) => !khach.xacNhan || khach.xacNhan === "Chưa xác nhận",
+    ).length;
+
+    const theoQuanHe = DANH_SACH_QUAN_HE.map((quanHe) => ({
+      quanHe,
+      soLuong: danhSachLoc.filter((khach) => khach.quanHe === quanHe).length,
+    })).filter((item) => item.soLuong > 0);
+
+    return {
+      tong,
+      daMoi,
+      chuaMoi,
+      thamDu,
+      vang,
+      chuaPhanHoi,
+      theoQuanHe,
+    };
+  }, [danhSachLoc]);
 
   // ========================================
   // THỐNG KÊ (Sử dụng đầy đủ các biến)
@@ -1028,6 +1066,118 @@ Rất mong ${doiTuong} bớt chút thời gian đến chung vui với vợ chồ
             </Card>
           </Col>
         </Row>
+
+        {/* THỐNG KÊ DANH SÁCH ĐANG LỌC */}
+        <Card
+          bordered={false}
+          style={{
+            borderRadius: 16,
+            marginBottom: 20,
+            background: "rgba(255, 255, 255, 0.9)",
+            boxShadow: "0 4px 20px rgba(0,0,0,0.03)",
+          }}
+        >
+          <div style={{ marginBottom: 16 }}>
+            <Title level={4} style={{ margin: 0, color: BRAND_PRIMARY }}>
+              <TeamOutlined /> Thống kê danh sách đang lọc
+            </Title>
+
+            <Text type="secondary">
+              Đang hiển thị {thongKeDanhSachLoc.tong} / {tongKhach} khách mời
+            </Text>
+          </div>
+
+          <Row gutter={[12, 12]}>
+            {[
+              {
+                title: "Tổng khách lọc",
+                value: thongKeDanhSachLoc.tong,
+                color: BRAND_PRIMARY,
+              },
+              {
+                title: "Đã mời",
+                value: thongKeDanhSachLoc.daMoi,
+                color: "#10B981",
+              },
+              {
+                title: "Chưa mời",
+                value: thongKeDanhSachLoc.chuaMoi,
+                color: "#D97706",
+              },
+              {
+                title: "Sẽ tham dự",
+                value: thongKeDanhSachLoc.thamDu,
+                color: "#2563EB",
+              },
+              {
+                title: "Vắng mặt",
+                value: thongKeDanhSachLoc.vang,
+                color: "#DC2626",
+              },
+              {
+                title: "Chưa phản hồi",
+                value: thongKeDanhSachLoc.chuaPhanHoi,
+                color: "#7C3AED",
+              },
+            ].map((item) => (
+              <Col xs={12} sm={8} md={4} key={item.title}>
+                <Card
+                  size="small"
+                  bordered
+                  style={{
+                    height: "100%",
+                    borderRadius: 12,
+                    background: "#FFFCF7",
+                  }}
+                >
+                  <Statistic
+                    title={item.title}
+                    value={item.value}
+                    valueStyle={{
+                      color: item.color,
+                      fontWeight: 700,
+                      fontSize: 25,
+                    }}
+                  />
+                </Card>
+              </Col>
+            ))}
+          </Row>
+
+          <div style={{ marginTop: 20 }}>
+            <Text strong>Phân loại theo mối quan hệ</Text>
+
+            <div
+              style={{
+                display: "flex",
+                flexWrap: "wrap",
+                gap: 8,
+                marginTop: 12,
+              }}
+            >
+              {thongKeDanhSachLoc.theoQuanHe.length > 0 ? (
+                thongKeDanhSachLoc.theoQuanHe.map((item) => (
+                  <Tag
+                    key={item.quanHe}
+                    color={QUAN_HE_COLOR_MAP[item.quanHe] || "default"}
+                    style={{
+                      padding: "5px 10px",
+                      borderRadius: 8,
+                      fontSize: 13,
+                      margin: 0,
+                    }}
+                  >
+                    {item.quanHe}: {item.soLuong} khách
+                  </Tag>
+                ))
+              ) : (
+                <Text type="secondary">
+                  Không có khách mời phù hợp với bộ lọc.
+                </Text>
+              )}
+            </div>
+          </div>
+        </Card>
 
         {/* ==================================
             FILTER & TOOLBAR

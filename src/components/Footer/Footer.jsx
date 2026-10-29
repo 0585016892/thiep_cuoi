@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { motion } from "framer-motion";
 import {
   CalendarDays,
@@ -8,17 +8,77 @@ import {
   Heart,
   Shirt,
 } from "lucide-react";
+import { layKhach } from "../../api/guestApi";
 import "./Footer.css";
 
+// Thông tin tiệc cưới nhà trai
+const THONG_TIN_NHA_TRAI = {
+  thoiGian: "Chủ Nhật, 27 Tháng 12, 2027",
+  donKhach: "8:30 AM",
+  khaiTiec: "9:00 AM",
+  tenDiaDiem: "Tư Gia Nhà Trai",
+  diaChi: "Xã Vũ Quý, tỉnh Hưng Yên",
+  mapUrl: "https://maps.google.com/?q=20.420832,106.402754",
+  mapEmbed:
+    "https://maps.google.com/maps?q=20.420832,106.402754&z=15&output=embed",
+};
+
+const THONG_TIN_NHA_GAI = {
+  thoiGian: "Chủ Nhật, 27 Tháng 12, 2026",
+  donKhach: "8:30 AM",
+  khaiTiec: "9:00 AM",
+  tenDiaDiem: "Tư Gia Nhà Gái",
+  diaChi: "20°23'32.3\"N 106°24'18.6\"E",
+
+  mapUrl: "https://www.google.com/maps?q=20.392352741369223,106.402550805051",
+
+  mapEmbed:
+    "https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d3651.5475070417483!2d106.402550805051!3d20.392352741369223!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDIzJzMyLjMiTiAxMDbCsDI0JzE4LjYiRQ!5e1!3m2!1svi!2s!4v1793259524575!5m2!1svi!2s",
+};
+
 export default function FooterWedding() {
+  const [quanHe, setQuanHe] = useState("");
+  const [dangTaiKhach, setDangTaiKhach] = useState(true);
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const guestId = params.get("guest");
+
+    if (!guestId) {
+      setDangTaiKhach(false);
+      return;
+    }
+
+    layKhach(guestId)
+      .then((data) => {
+        if (data?.thanhCong && data?.khach) {
+          setQuanHe(data.khach.quanHe || "");
+        }
+      })
+      .catch((error) => {
+        console.error("Lỗi lấy thông tin khách mời:", error);
+      })
+      .finally(() => {
+        setDangTaiKhach(false);
+      });
+  }, []);
+
+  // Chỉ khách có quan hệ Bạn cô dâu mới hiển thị thông tin nhà gái
+  const laKhachNhaGai = quanHe.trim().toLowerCase() === "bạn cô dâu";
+
+  const thongTin = laKhachNhaGai ? THONG_TIN_NHA_GAI : THONG_TIN_NHA_TRAI;
+
+  // Tránh hiển thị nhầm nhà trai trong lúc đang tải thông tin khách
+  if (dangTaiKhach) {
+    return null;
+  }
+
   return (
     <footer className="arch-footer-section">
-      {/* Soft Radial Ambient Lights */}
       <div className="arch-ambient ambient-1"></div>
       <div className="arch-ambient ambient-2"></div>
 
       <div className="arch-footer-container">
-        {/* ARCH DOME HEADER */}
         <motion.div
           className="arch-header-card"
           initial={{ opacity: 0, y: 40 }}
@@ -46,9 +106,7 @@ export default function FooterWedding() {
           </div>
         </motion.div>
 
-        {/* MAIN CONTENT GRID */}
         <div className="arch-content-grid">
-          {/* LEFT: DETAILS & DRESSCODE */}
           <motion.div
             className="arch-details-column"
             initial={{ opacity: 0, x: -30 }}
@@ -56,31 +114,31 @@ export default function FooterWedding() {
             viewport={{ once: true }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            {/* ITEM 1: DATE */}
             <div className="arch-info-block">
               <div className="info-icon-badge">
                 <CalendarDays size={20} />
               </div>
               <div className="info-content">
                 <span className="info-label">Thời Gian</span>
-                <h4>Chủ Nhật, 27 Tháng 12, 2027</h4>
-                <p>Đón khách: 8:30 AM — Khai tiệc: 9:00 AM</p>
+                <h4>{thongTin.thoiGian}</h4>
+                <p>
+                  Đón khách: {thongTin.donKhach} — Khai tiệc:{" "}
+                  {thongTin.khaiTiec}
+                </p>
               </div>
             </div>
 
-            {/* ITEM 2: VENUE */}
             <div className="arch-info-block">
               <div className="info-icon-badge">
                 <MapPin size={20} />
               </div>
               <div className="info-content">
                 <span className="info-label">Địa Điểm Tổ Chức</span>
-                <h4>Tư Gia Nhà Nam</h4>
-                <p>Xã Vũ Quý, tỉnh Hưng Yên</p>
+                <h4>{thongTin.tenDiaDiem}</h4>
+                <p>{thongTin.diaChi}</p>
               </div>
             </div>
 
-            {/* ITEM 3: DRESSCODE */}
             <div className="arch-info-block">
               <div className="info-icon-badge">
                 <Shirt size={20} />
@@ -93,7 +151,6 @@ export default function FooterWedding() {
             </div>
           </motion.div>
 
-          {/* RIGHT: MAP & DIRECT NAVIGATION */}
           <motion.div
             className="arch-map-column"
             initial={{ opacity: 0, x: 30 }}
@@ -106,8 +163,9 @@ export default function FooterWedding() {
                 <span className="map-title">
                   <Navigation size={15} /> Vị Trí Tiệc Cưới
                 </span>
+
                 <a
-                  href="https://maps.google.com/?q=20.420832,106.402754"
+                  href={thongTin.mapUrl}
                   target="_blank"
                   rel="noreferrer"
                   className="btn-open-map"
@@ -119,16 +177,15 @@ export default function FooterWedding() {
               <div className="arch-map-frame">
                 <iframe
                   title="wedding-location"
-                  src="https://www.google.com/maps/embed?pb=!1m17!1m12!1m3!1d1016.3186585439761!2d106.40275426959623!3d20.42083225564106!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m2!1m1!2zMjDCsDI1JzE1LjAiTiAxMDbCsDI0JzEyLjIiRQ!5e1!3m2!1svi!2s!4v1779352518614!5m2!1svi!2s"
-                  allowFullScreen=""
+                  src={thongTin.mapEmbed}
+                  allowFullScreen
                   loading="lazy"
-                ></iframe>
+                />
               </div>
             </div>
           </motion.div>
         </div>
 
-        {/* FOOTER BOTTOM NOTE */}
         <div className="arch-footer-bottom">
           <div className="thank-message">
             <Sparkles size={16} className="sparkle" />
