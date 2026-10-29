@@ -76,6 +76,7 @@ const DANH_SACH_QUAN_HE = [
   "Gia đình",
   "Đồng nghiệp",
   "Khác",
+  "Bạn cô dâu",
 ];
 
 // Định nghĩa màu sắc Badge cho từng loại quan hệ
@@ -89,6 +90,7 @@ const QUAN_HE_COLOR_MAP = {
   "Đại học": "blue",
   "Công ty": "geekblue",
   "Đồng nghiệp": "purple",
+  "Bạn cô dâu": "red",
   Khác: "magenta",
 };
 
