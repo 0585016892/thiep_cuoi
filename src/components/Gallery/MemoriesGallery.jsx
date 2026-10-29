@@ -14,7 +14,7 @@ import "./MemoriesGallery.css";
 import kiniem1 from "../../assets/anhkiniem/kiniem1.JPEG";
 import kiniem2 from "../../assets/anhkiniem/kiniem2.JPEG";
 import kiniem3 from "../../assets/anhkiniem/kiniem3.JPEG";
-import kiniem4 from "../../assets/anhkiniem/kiniem4.JPEG";
+import kiniem4 from "../../assets/anhkiniem/kiniem3.JPEG";
 import kiniem5 from "../../assets/anhkiniem/IMG_0413.JPG";
 import kiniem6 from "../../assets/anhkiniem/IMG_1257.JPG";
 import kiniem7 from "../../assets/anhkiniem/IMG_1329.JPG";

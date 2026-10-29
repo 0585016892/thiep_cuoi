@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import "./Hero.css";
 import { motion } from "framer-motion";
-import anhcuoi from "../../assets/anhkiniem/kiniem3.JPEG";
+import anhcuoi from "../../assets/anhkiniem/anhcuoi2.jpg";
 import { FaCalendarAlt, FaMapMarkerAlt, FaHeart } from "react-icons/fa";
 
 function Hero() {

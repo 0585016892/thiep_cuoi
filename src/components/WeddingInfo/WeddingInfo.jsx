@@ -1,8 +1,8 @@
 import React from "react";
 import { motion } from "framer-motion";
 import { FaMapMarkerAlt, FaCalendarAlt, FaClock } from "react-icons/fa";
-import { GiRing } from "react-icons/gi";
 import "./WeddingInfo.css";
+import ringImage from "../../assets/Bill.png";
 
 const WeddingInfo = () => {
   return (
@@ -42,7 +42,7 @@ const WeddingInfo = () => {
               Bà: <strong>Nguyễn Thị Thịnh</strong>
             </p>
             <p className="family-location">
-              <FaMapMarkerAlt className="mini-icon" /> Thôn 3, xã Vũ Quý, tỉnh
+              <FaMapMarkerAlt className="mini-icon" /> Thôn 4, xã Vũ Quý, tỉnh
               Hưng Yên
             </p>
             <p className="family-location" style={{ fontSize: "11px" }}>
@@ -52,7 +52,11 @@ const WeddingInfo = () => {
           </div>
 
           <div className="family-center-icon">
-            <GiRing className="wedding-ring-icon" />
+            <img
+              src={ringImage}
+              alt="Nhẫn cưới"
+              className="wedding-ring-icon"
+            />
           </div>
 
           <div className="family-box bride-family">

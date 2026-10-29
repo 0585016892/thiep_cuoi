@@ -17,16 +17,16 @@ import "swiper/css/navigation";
 
 import "yet-another-react-lightbox/styles.css";
 import "./Gallery.css";
-import kiniem5 from "../../assets/anhkiniem/IMG_0413.JPG";
-import kiniem6 from "../../assets/anhkiniem/IMG_1257.JPG";
-import kiniem7 from "../../assets/anhkiniem/IMG_1329.JPG";
+import kiniem5 from "../../assets/anhkiniem/anhcuoi.jpg";
+import kiniem6 from "../../assets/anhkiniem/anhcuoi1.jpg";
+import kiniem7 from "../../assets/anhkiniem/anhcuoi4.jpg";
 import kiniem8 from "../../assets/anhkiniem/IMG_1378.jpg";
 import kiniem9 from "../../assets/anhkiniem/IMG_1405.JPG";
 import kiniem10 from "../../assets/anhkiniem/IMG_2676.JPG";
 import kiniem1 from "../../assets/anhkiniem/kiniem1.JPEG";
 import kiniem2 from "../../assets/anhkiniem/kiniem2.JPEG";
 import kiniem3 from "../../assets/anhkiniem/kiniem3.JPEG";
-import kiniem4 from "../../assets/anhkiniem/kiniem4.JPEG";
+import kiniem4 from "../../assets/anhkiniem/kiniem4.jpg";
 function Gallery() {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
 
