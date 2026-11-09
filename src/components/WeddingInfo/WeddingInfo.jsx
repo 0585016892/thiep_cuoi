@@ -63,7 +63,7 @@ const WeddingInfo = () => {
           ong: "Trần Khánh Duy",
           ba: "Nguyễn Thị Thịnh",
           diaChi1: "Thôn 4, xã Vũ Quý, tỉnh Hưng Yên",
-          diaChi2: "Thôn Phụng Thượng, xã Vũ An, tỉnh Thái Bình",
+          diaChi2: "Thôn Đồng Tâm, xã Vũ An, tỉnh Thái Bình",
         },
       ]
     : [
@@ -73,7 +73,7 @@ const WeddingInfo = () => {
           ong: "Trần Khánh Duy",
           ba: "Nguyễn Thị Thịnh",
           diaChi1: "Thôn 4, xã Vũ Quý, tỉnh Hưng Yên",
-          diaChi2: "Thôn Phụng Thượng, xã Vũ An, tỉnh Thái Bình",
+          diaChi2: "Thôn Đồng Tâm, xã Vũ An, tỉnh Thái Bình",
         },
         {
           className: "bride-family",
@@ -175,7 +175,7 @@ const WeddingInfo = () => {
 
           <div className="event-time-badge">
             <FaClock className="time-icon" />
-            <span>12:05 SÁNG</span>
+            <span>13:00 CHIỀU</span>
           </div>
 
           <div className="minimal-date-display">

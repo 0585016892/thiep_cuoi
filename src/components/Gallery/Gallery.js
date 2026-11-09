@@ -18,15 +18,15 @@ import "swiper/css/navigation";
 import "yet-another-react-lightbox/styles.css";
 import "./Gallery.css";
 import kiniem5 from "../../assets/anhkiniem/anhcuoi.jpg";
-import kiniem6 from "../../assets/anhkiniem/anhcuoi1.jpg";
+import kiniem6 from "../../assets/anhkiniem/anhcuoi5.jpg";
 import kiniem7 from "../../assets/anhkiniem/anhcuoi4.jpg";
-import kiniem8 from "../../assets/anhkiniem/IMG_1378.jpg";
-import kiniem9 from "../../assets/anhkiniem/IMG_1405.JPG";
-import kiniem10 from "../../assets/anhkiniem/IMG_2676.JPG";
+import kiniem8 from "../../assets/anhkiniem/anhcuoi6.jpg";
+import kiniem9 from "../../assets/anhkiniem/anhcuoi7.JPG";
+import kiniem10 from "../../assets/anhkiniem/anhcuoi1.jpg";
 import kiniem1 from "../../assets/anhkiniem/kiniem1.JPEG";
-import kiniem2 from "../../assets/anhkiniem/kiniem2.JPEG";
+import kiniem2 from "../../assets/anhkiniem/anhcuoi8.JPG";
 import kiniem3 from "../../assets/anhkiniem/kiniem3.JPEG";
-import kiniem4 from "../../assets/anhkiniem/kiniem4.jpg";
+import kiniem4 from "../../assets/anhkiniem/anhcuoi9.JPG";
 function Gallery() {
   const [lightboxIndex, setLightboxIndex] = useState(-1);
 

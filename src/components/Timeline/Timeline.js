@@ -31,7 +31,7 @@ const TIMELINE_NHA_TRAI = [
   {
     icon: <FaChurch />,
     title: "Thánh Lễ Hôn Phối",
-    time: "07:00 AM • 26.12.2026",
+    time: "08:00 AM • 26.12.2026",
     location: "Giáo xứ Đồng Quan",
     map: "https://maps.app.goo.gl/qgz9At8wYAMLviVA8",
     description: "Nguyện hứa thủy chung trước Thiên Chúa & gia đình.",

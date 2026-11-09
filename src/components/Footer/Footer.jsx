@@ -14,10 +14,10 @@ import "./Footer.css";
 // Thông tin tiệc cưới nhà trai
 const THONG_TIN_NHA_TRAI = {
   thoiGian: "Chủ Nhật, 27 Tháng 12, 2027",
-  donKhach: "8:30 AM",
-  khaiTiec: "9:00 AM",
+  donKhach: "7:30 AM",
+  khaiTiec: "8:00 AM",
   tenDiaDiem: "Tư Gia Nhà Trai",
-  diaChi: "Xã Vũ Quý, tỉnh Hưng Yên",
+  diaChi: "Thôn 4,xã Vũ Quý, Tỉnh Hưng Yên ( Nhà thờ Đồng Quan )",
   mapUrl: "https://maps.google.com/?q=20.420832,106.402754",
   mapEmbed:
     "https://maps.google.com/maps?q=20.420832,106.402754&z=15&output=embed",
