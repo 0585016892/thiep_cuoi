@@ -167,15 +167,21 @@ const WeddingInfo = () => {
         </div>
 
         <div className="event-details-card">
+          <h5>
+            TRÂN TRỌNG KÍNH MỜI QUÝ KHÁCH ĐẾN DỰ BỮA CƠM THÂN MẬT CHUNG VUI CÙNG
+            GIA ĐÌNH CHÚNG TÔI
+          </h5>
           <p className="venue-header">
             {laKhachNhaGai
-              ? "LỄ XIN DÂU CỬ HÀNH TẠI TƯ GIA NHÀ GÁI"
+              ? "TẠI TƯ GIA NHÀ GÁI"
               : "LỄ THÀNH HÔN CỬ HÀNH TẠI TƯ GIA NHÀ TRAI"}
           </p>
 
           <div className="event-time-badge">
             <FaClock className="time-icon" />
-            <span>13:00 CHIỀU</span>
+            <span>
+              {laKhachNhaGai ? "Vào lúc 9:00 Sáng " : "Vào lúc 8:00 Sáng"}
+            </span>
           </div>
 
           <div className="minimal-date-display">

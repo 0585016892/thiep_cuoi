@@ -21,6 +21,7 @@ const THONG_TIN_NHA_TRAI = {
   mapUrl: "https://maps.google.com/?q=20.420832,106.402754",
   mapEmbed:
     "https://maps.google.com/maps?q=20.420832,106.402754&z=15&output=embed",
+  title: "“Sự gì Thiên Chúa đã kết hợp, loài người không được phân ly.”",
 };
 
 const THONG_TIN_NHA_GAI = {
@@ -29,6 +30,7 @@ const THONG_TIN_NHA_GAI = {
   khaiTiec: "9:00 AM",
   tenDiaDiem: "Tư Gia Nhà Gái",
   diaChi: "20°23'32.3\"N 106°24'18.6\"E",
+  title: "",
 
   mapUrl: "https://www.google.com/maps?q=20.392352741369223,106.402550805051",
 
@@ -96,9 +98,7 @@ export default function FooterWedding() {
             Khánh Hưng <span className="ampersand">&</span> Trang Trang
           </h1>
 
-          <p className="arch-quote">
-            “Sự gì Thiên Chúa đã kết hợp, loài người không được phân ly.”
-          </p>
+          <p className="arch-quote">{thongTin.title}</p>
 
           <div className="arch-date-pill">
             <CalendarDays size={16} />
